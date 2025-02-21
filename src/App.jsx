@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Herosection from "./components/Herosection";
 import Projects from "./components/Projects";
-import About from "./components/about";
+import About from "./components/AboutUS";
 // import Contact from "./components/Contact";
 import { MdMenu, MdClose } from "react-icons/md";
 
