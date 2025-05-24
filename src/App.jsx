@@ -6,8 +6,18 @@ import Projects from "./components/Projects";
 import About from "./components/AboutUS";
 // import Contact from "./components/Contact";
 import { MdMenu, MdClose } from "react-icons/md";
+import ScrollToTop from "./components/ScrollToTop"; // pastikan path-nya sesuai
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800, // durasi animasi
+      once: true, // animasi hanya terjadi sekali
+    });
+  }, []);
   return (
     <Router>
       <MainApp />
@@ -40,6 +50,7 @@ function MainApp() {
 
       {/* Konten utama tetap di samping kanan */}
       <div className="flex-1 ml-0 md:ml-[21.5rem] p-5">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Herosection />} />
           <Route path="/projects" element={<Projects />} />

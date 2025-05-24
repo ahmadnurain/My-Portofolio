@@ -61,11 +61,13 @@ const Projects = () => {
         <Squares speed={0.0} squareSize={100} direction="diagonal" borderColor="#252e33" hoverFillColor="#222" />
       </div>
       <section className="relative max-w-6xl mx-auto md:mt-10 mt-24 px-6 md:px-24 pb-10 z-10">
-        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-3xl font-bold text-center mb-8">My Projects</h2>
+        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-3xl font-bold text-center mb-8" data-aos="fade-down" data-aos-duration="1700" data-aos-delay="0">
+          My Projects
+        </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
           {projects.map((project) => (
-            <div key={project.id} className="bg-black border-3 border-blue-500/30 rounded-lg shadow-lg overflow-hidden transform">
+            <div key={project.id} className="bg-black border-3 border-blue-500/30 rounded-lg shadow-lg overflow-hidden transform" data-aos="flip-left" data-aos-duration="1700" data-aos-delay="300">
               <img src={project.image} alt={project.title} className="w-full h-52 object-cover" />
               <div className="p-5">
                 <h3 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-xl font-bold">{project.title}</h3>

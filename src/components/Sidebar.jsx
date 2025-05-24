@@ -21,30 +21,34 @@ const Sidebar = ({ onClose }) => {
 
       {/* Profile Section */}
       <div className="flex items-center gap-4 mb-6 -ml-14">
-        <img src="/IMG_5sw456.JPG" alt="Profile" className="w-20 h-20 rounded-lg object-cover" />
+        <img src="/IMG_5sw456.JPG" alt="Profile" className="w-20 h-20 rounded-lg object-cover" data-aos="fade-right" data-aos-duration="1700" />
         <div>
-          <h2 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Ahmad Nur Ain</h2>
-          <p className="text-sm text-gray-500 ">Fullstack Developer</p>
+          <h2 className="text-lg font-semibold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500" data-aos="fade-down" data-aos-duration="1700" data-aos-delay="300">
+            Ahmad Nur Ain
+          </h2>
+          <p className="text-sm text-gray-500 " data-aos="fade-up" data-aos-duration="1700" data-aos-delay="900">
+            Fullstack Developer
+          </p>
         </div>
       </div>
-      <hr className="w-80 h-[0.4px] border-0 bg-gradient-to-r from-cyan-400 to-blue-500" />
+      <hr className="w-80 h-[0.4px] border-0 bg-gradient-to-r from-cyan-400 to-blue-500" data-aos="fade-right" data-aos-duration="1700" data-aos-delay="900" />
 
       {/* Menu Section */}
       <nav className="w-full mt-7">
         <ul className="space-y-7 text-xl px-2">
-          <li>
+          <li data-aos="fade-left" data-aos-duration="1700" data-aos-delay="300">
             <Link to="/" className={`group p-3 font-medium rounded-2xl flex items-center gap-3 transition duration-300 cursor-pointer ${isActiveBg("/")} ${location.pathname === "/" ? "" : "hover:bg-white/20"}`}>
               <CiHome className={`${location.pathname === "/" ? "text-cyan-400" : "text-gray-400"} group-hover:text-white transition duration-300`} />
               <span className={`${isActiveText("/")} ${location.pathname === "/" ? "" : "group-hover:text-white"} transition duration-300`}>Home</span>
             </Link>
           </li>
-          <li>
+          <li data-aos="fade-left" data-aos-duration="1700" data-aos-delay="900">
             <Link to="/projects" className={`group p-3 font-medium rounded-2xl flex items-center gap-3 transition duration-300 cursor-pointer ${isActiveBg("/projects")} ${location.pathname === "/projects" ? "" : "hover:bg-white/20"}`}>
               <CiFolderOn className={`${location.pathname === "/projects" ? "text-cyan-400" : "text-gray-400"} group-hover:text-white transition duration-300`} />
               <span className={`${isActiveText("/projects")} ${location.pathname === "/projects" ? "" : "group-hover:text-white"} transition duration-300`}>Projects</span>
             </Link>
           </li>
-          <li>
+          <li data-aos="fade-left" data-aos-duration="1700" data-aos-delay="1200">
             <Link to="/about" className={`group p-3 font-medium rounded-2xl flex items-center gap-3 transition duration-300 cursor-pointer ${isActiveBg("/about")} ${location.pathname === "/about" ? "" : "hover:bg-white/20"}`}>
               <CiUser className={`${location.pathname === "/about" ? "text-cyan-400" : "text-gray-400"} group-hover:text-white transition duration-300`} />
               <span className={`${isActiveText("/about")} ${location.pathname === "/about" ? "" : "group-hover:text-white"} transition duration-300`}>About</span>
