@@ -109,7 +109,9 @@ const About = () => {
       </section>
 
       <section className="relative max-w-6xl mx-auto mt-10 px-6 md:px-24 pb-10 z-10">
-        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8">Experiences</h2>
+        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8" data-aos="fade-down" data-aos-duration="1700">
+          Experiences
+        </h2>
 
         {/* Container dengan Garis Vertikal */}
         <div className="relative pl-6">
