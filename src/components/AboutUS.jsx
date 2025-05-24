@@ -43,16 +43,16 @@ const About = () => {
       <section className="relative flex flex-col md:flex-row items-center justify-between py-20 max-w-6xl px-6 md:px-14 mx-auto w-full md:pl-24 z-10">
         <div className="w-full md:w-1/2 text-center md:text-left order-2 lg:order-1 md:order-1">
           <h1 className="text-white text-3xl md:text-5xl font-bold mb-2">Ahmad Nur Ain</h1>
-          <h2 className="text-sky-500 text-xl md:text-3xl font-semibold mb-6">Fullstack Developer</h2>
+          <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-xl md:text-3xl font-semibold mb-6">Fullstack Developer</h2>
           <p className="text-gray-300 text-base md:text-xl mb-6 px-4 lg:px-0 md:px-0">
             I am a passionate developer who loves building scalable web applications, solving challenging problems, and learning new technologies. I specialize in frontend and backend development to create seamless digital experiences.
           </p>
           <button
             onClick={() => window.open("https://docs.google.com/document/d/1fALeu2bNIOs_FfKvHwSUY8lVAT1uByw8wubohEn1Qg4/edit?usp=sharing", "_blank")}
-            className="px-5 py-3 mt-6 md:mt-8 bg-black rounded-xl border-2 border-white text-white font-semibold text-base md:text-lg flex items-center gap-2 hover:bg-stone-900 hover:text-white transition duration-300 cursor-pointer mx-auto md:mx-0"
+            className="px-5 py-3 mt-6 md:mt-8 backdrop-blur-sm bg-black/50 rounded-xl border-3 border-blue-500/30 text-white font-semibold text-base md:text-lg flex items-center gap-2 transition duration-300 cursor-pointer mx-auto md:mx-0 hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-cyan-600/20 hover:scale-110"
           >
-            <GoDownload className="text-lg md:text-xl" />
-            Download Resume
+            <GoDownload className="text-lg md:text-xl text-cyan-500" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Download Resume</span>
           </button>
         </div>
         <div className="w-full md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mb-7 order-1 lg:order-2 md:order-2">
@@ -61,10 +61,10 @@ const About = () => {
       </section>
 
       <section className="relative max-w-6xl mx-auto mt-10 px-6 md:px-24 pb-10 z-10">
-        <h2 className="text-white text-2xl font-bold text-start mb-6 md:mb-8">Tech Stack & Skills</h2>
+        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8">Tech Stack & Skills</h2>
         <div className="flex flex-wrap justify-start gap-3">
           {skills.map((skill, index) => (
-            <div key={index} className="flex items-center gap-3 bg-black border border-white/25 px-3 py-2 rounded-lg transition-transform hover:scale-105">
+            <div key={index} className="flex items-center gap-3 bg-black border-1  border-blue-500/30 px-3 py-2 rounded-lg transition-transform hover:scale-105">
               {skill.icon}
               <span className="text-white text-sm md:text-base lg:text-base font-light">{skill.name}</span>
             </div>
@@ -73,12 +73,12 @@ const About = () => {
       </section>
 
       <section className="relative max-w-6xl mx-auto mt-10 px-6 md:px-24 pb-3 z-10">
-        <h2 className="text-white text-2xl font-bold text-start mb-6 md:mb-8">Educations</h2>
+        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8">Educations</h2>
 
         {/* Container dengan Garis Vertikal */}
         <div className="relative pl-6">
           {/* Garis Vertikal */}
-          <div className="absolute left-7 top-0 w-0.5 bg-gray-600 h-full"></div>
+          <div className="absolute left-7 top-0 w-0.5 bg-cyan-500  h-full"></div>
 
           {/* Pengalaman 1 - Freelance */}
           <div className="relative flex items-start gap-6 mb-10 -ml-6">
@@ -98,12 +98,12 @@ const About = () => {
       </section>
 
       <section className="relative max-w-6xl mx-auto mt-10 px-6 md:px-24 pb-10 z-10">
-        <h2 className="text-white text-2xl font-bold text-start mb-6 md:mb-8">Experiences</h2>
+        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8">Experiences</h2>
 
         {/* Container dengan Garis Vertikal */}
         <div className="relative pl-6">
           {/* Garis Vertikal */}
-          <div className="absolute left-7 top-0 w-0.5 bg-gray-600 h-full"></div>
+          <div className="absolute left-7 top-0 w-0.5 bg-cyan-500 h-full"></div>
 
           {/* Pengalaman 1 - Freelance */}
           <div className="relative flex items-start gap-6 mb-10 -ml-6">
@@ -127,10 +127,10 @@ const About = () => {
       </section>
 
       <section className="relative max-w-6xl mx-auto mt-10 px-6 md:px-24 pb-10 z-10">
-        <h2 className="text-white text-2xl font-bold text-start mb-6 md:mb-8">Certificates</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
+        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8">Certificates</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 border">
           {certificates.map((cert, index) => (
-            <div key={index} className="relative group overflow-hidden rounded-lg border border-gray-600 shadow-lg">
+            <div key={index} className="relative group overflow-hidden rounded-lg border-4  border-gray-600 shadow-lg">
               <img
                 src={cert.src}
                 alt={`Certificate ${index + 1}`}

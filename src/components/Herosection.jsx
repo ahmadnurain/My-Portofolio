@@ -22,20 +22,28 @@ const Herosection = () => {
       <section className="flex flex-1 flex-col items-center justify-center h-screen text-center px-6 ">
         {/* Judul */}
         <h1 className="text-4xl md:text-6xl font-bold text-white z-10">
-          <span className="text-sky-600">Hallo! I&apos;m</span> Ahmad Nur Ain
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Hallo! I&apos;m</span> Ahmad Nur Ain
         </h1>
 
         {/* Paragraf */}
         <p className="mt-7 text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-2xl z-10 ">
-          I&apos;m a passionate <span className="text-sky-600 ">Fullstack Developer.</span> I love coding, problem-solving, and creating intuitive user experiences.
+          I&apos;m a passionate <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 ">Fullstack Developer.</span> I love coding, problem-solving, and creating intuitive user experiences.
         </p>
         <div className="flex gap-6 mt-16 z-10">
-          <button onClick={() => navigate("/about")} className="px-7 py-2 bg-white/20 rounded-xl text-white font-semibold text-lg hover:bg-white/25 transition duration-300 cursor-pointer ">
-            About
+          <button
+            onClick={() => navigate("/about")}
+            className="px-7 py-2 backdrop-blur-md bg-black/50 border-3 border-blue-500/30 overflow-hidden relative rounded-xl text-white font-semibold text-lg hover:scale-105 hover:inset-0 hover:bg-gradient-to-r from-blue-600/20 to-cyan-600/20 transition duration-300 cursor-pointer "
+          >
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">About</span>
           </button>
-          <button className="px-8 py-3 border border-white bg-white/20 rounded-xl font-semibold text-white flex items-center gap-2 text-lg hover:bg-white/25 transition duration-300 cursor-pointer" onClick={handleCopy}>
-            {copied ? <MdCheck /> : <MdContentCopy />}
-            {copied ? "Copied!" : "Email"}
+          <button
+            className="px-8 py-3  backdrop-blur-md bg-black/50 border-3 border-blue-500/30 overflow-hidden relative rounded-xl font-semibold text-white flex items-center gap-2 text-lg hover:scale-105  hover:inset-0 hover:bg-gradient-to-r from-blue-600/20 to-cyan-600/20 duration-300 cursor-pointer"
+            onClick={handleCopy}
+          >
+            <div className="inline-flex items-center gap-1">
+              {copied ? <MdCheck className="text-cyan-400" /> : <MdContentCopy className="text-cyan-400" />}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">{copied ? "Copied!" : "Email"}</span>
+            </div>
           </button>
         </div>
       </section>
