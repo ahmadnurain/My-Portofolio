@@ -14,6 +14,9 @@ const Sidebar = ({ onClose }) => {
 
   return (
     <div className="w-80 h-screen bg-black backdrop-blur-lg text-white flex flex-col items-center p-5 shadow-md z-10 relative">
+      <div className="absolute -top-10 right-4  w-36 h-36 bg-cyan-500/20 rounded-full blur-3xl" />
+      <div className="absolute -bottom-10 left-4  w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl" />
+
       {/* Tombol Close untuk Mobile */}
       <button className="absolute top-4 right-4 text-3xl md:hidden text-cyan-500" onClick={onClose}>
         <MdClose />
@@ -31,7 +34,19 @@ const Sidebar = ({ onClose }) => {
           </p>
         </div>
       </div>
-      <hr className="w-80 h-[0.4px] border-0 bg-gradient-to-r from-cyan-400 to-blue-500" data-aos="fade-right" data-aos-duration="1700" data-aos-delay="900" />
+      <div className="relative w-80" data-aos="fade-right" data-aos-duration="1700" data-aos-delay="900">
+        {/* Garis utama */}
+        <hr className="w-full h-[2px] border-0 bg-gradient-to-r from-cyan-400 to-blue-500" />
+
+        {/* Glow di bawah garis */}
+        <div
+          className="absolute top-full left-0 w-full h-16 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-40 blur-2xl"
+          style={{
+            WebkitMaskImage: "linear-gradient(to bottom, black, transparent)",
+            maskImage: "linear-gradient(to bottom, black, transparent)",
+          }}
+        />
+      </div>
 
       {/* Menu Section */}
       <nav className="w-full mt-7">
@@ -58,7 +73,7 @@ const Sidebar = ({ onClose }) => {
       </nav>
 
       {/* Social Media Icons */}
-      <div className="mt-auto flex gap-9 mb-14">
+      <div className="mt-auto flex gap-9 mb-14 z-1">
         <a href="https://github.com/ahmadnurain" target="_blank" rel="noopener noreferrer">
           <FaGithub className="text-cyan-400 text-3xl hover:scale-105 hover:text-gray-300 transition duration-300" />
         </a>

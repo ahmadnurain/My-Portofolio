@@ -58,7 +58,7 @@ const Projects = () => {
   return (
     <div className="relative w-full min-h-screen">
       <div className="fixed inset-0 h-screen">
-        <Squares speed={0.0} squareSize={100} direction="diagonal" borderColor="#252e33" hoverFillColor="#222" />
+        <Squares speed={0.0} squareSize={100} direction="diagonal" borderColor="oklch(71.5% 0.143 215.221)" hoverFillColor="#222" />
       </div>
       <section className="relative max-w-6xl mx-auto md:mt-10 mt-24 px-6 md:px-24 pb-10 z-10">
         <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-3xl font-bold text-center mb-8" data-aos="fade-down" data-aos-duration="1700" data-aos-delay="0">

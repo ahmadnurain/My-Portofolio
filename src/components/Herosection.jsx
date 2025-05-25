@@ -16,7 +16,7 @@ const Herosection = () => {
   return (
     <>
       <div className="fixed inset-0 h-screen">
-        <Squares speed={0.0} squareSize={100} direction="diagonal" borderColor="#252e33" hoverFillColor="#222" />
+        <Squares speed={0.0} squareSize={100} direction="diagonal" borderColor="oklch(71.5% 0.143 215.221)" hoverFillColor="#222" />
       </div>
 
       <section className="flex flex-1 flex-col items-center justify-center h-screen text-center px-6 ">

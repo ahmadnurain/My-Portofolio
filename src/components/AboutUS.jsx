@@ -35,9 +35,9 @@ const About = () => {
   ];
 
   return (
-    <div className="relative w-full min-h-screen">
+    <div className="relative w-full min-h-screen overflow-y-hidden">
       <div className="fixed inset-0 h-screen">
-        <Squares speed={0.0} squareSize={100} direction="diagonal" borderColor="#252e33" hoverFillColor="#222" />
+        <Squares speed={0.0} squareSize={100} direction="diagonal" borderColor="oklch(71.5% 0.143 215.221)" hoverFillColor="#222" />
       </div>
 
       <section className="relative flex flex-col md:flex-row items-center justify-between py-20 max-w-6xl px-6 md:px-14 mx-auto w-full md:pl-24 z-10">
@@ -53,13 +53,14 @@ const About = () => {
           </p>
           <button
             onClick={() => window.open("https://docs.google.com/document/d/1fALeu2bNIOs_FfKvHwSUY8lVAT1uByw8wubohEn1Qg4/edit?usp=sharing", "_blank")}
-            className="px-5 py-3 mt-6 md:mt-8 backdrop-blur-sm bg-black/50 rounded-xl border-3 border-blue-500/30 text-white font-semibold text-base md:text-lg flex items-center gap-2 transition duration-300 cursor-pointer mx-auto md:mx-0 hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-cyan-600/20 hover:scale-110"
+            className="px-5 py-3 mt-6 md:mt-8 backdrop-blur-sm bg-black/50 rounded-xl border-2 border-blue-500/30 text-white font-semibold text-base md:text-lg flex items-center gap-2 cursor-pointer mx-auto md:mx-0
+             hover:scale-105 hover:inset-0 hover:bg-gradient-to-r from-blue-600/20 to-cyan-600/20 transition duration-300"
             data-aos="fade-up"
             data-aos-duration="1700"
             data-aos-delay="600"
           >
-            <GoDownload className="text-lg md:text-xl text-cyan-500" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">Download Resume</span>
+            <GoDownload className="text-lg md:text-xl text-cyan-500 transition-all duration-500" />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 transition-all duration-500">Download Resume</span>
           </button>
         </div>
         <div className="w-full md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mb-7 order-1 lg:order-2 md:order-2" data-aos="flip-left" data-aos-duration="1700" data-aos-delay="900">
