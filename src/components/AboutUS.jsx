@@ -2,6 +2,8 @@ import { GoDownload } from "react-icons/go";
 import { FaHtml5, FaCss3Alt, FaJs, FaPhp, FaBootstrap, FaReact, FaLaravel, FaNodeJs, FaPython, FaGitAlt, FaLinux, FaDatabase, FaFigma } from "react-icons/fa";
 import { SiTailwindcss, SiMysql, SiExpress } from "react-icons/si";
 import Squares from "../blocks/Backgrounds/Squares/Squares";
+import SectionTitle from "./SectionTitle";
+import { motion } from "framer-motion";
 
 const About = () => {
   const skills = [
@@ -35,129 +37,149 @@ const About = () => {
   ];
 
   return (
-    <div className="relative w-full min-h-screen overflow-y-hidden">
-      <div className="fixed inset-0 h-screen">
-        <Squares speed={0.0} squareSize={100} direction="diagonal" borderColor="oklch(71.5% 0.143 215.221)" hoverFillColor="#222" />
+    <div className="relative w-full min-h-screen overflow-hidden py-20">
+      {/* Background */}
+      <div className="absolute inset-0 h-full z-0">
+        <Squares speed={0.1} squareSize={50} direction="diagonal" borderColor="#333" hoverFillColor="#222" />
       </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black pointer-events-none z-0" />
 
-      <section className="relative flex flex-col md:flex-row items-center justify-between py-20 max-w-6xl px-6 md:px-14 mx-auto w-full md:pl-24 z-10">
-        <div className="w-full md:w-1/2 text-center md:text-left order-2 lg:order-1 md:order-1">
-          <h1 className="text-white text-3xl md:text-5xl font-bold mb-2" data-aos="fade-down" data-aos-duration="1700" data-aos-delay="0">
-            Ahmad Nur Ain
-          </h1>
-          <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-xl md:text-3xl font-semibold mb-6" data-aos="fade-up" data-aos-duration="1700" data-aos-delay="0">
-            Fullstack Developer
-          </h2>
-          <p className="text-gray-300 text-base md:text-xl mb-6 px-4 lg:px-0 md:px-0" data-aos="fade-right" data-aos-duration="1700" data-aos-delay="300">
-            I am a passionate developer who loves building scalable web applications, solving challenging problems, and learning new technologies. I specialize in frontend and backend development to create seamless digital experiences.
-          </p>
-          <button
-            onClick={() => window.open("https://docs.google.com/document/d/1fALeu2bNIOs_FfKvHwSUY8lVAT1uByw8wubohEn1Qg4/edit?usp=sharing", "_blank")}
-            className="px-5 py-3 mt-6 md:mt-8 backdrop-blur-sm bg-black/50 rounded-xl border-2 border-blue-500/30 text-white font-semibold text-base md:text-lg flex items-center gap-2 cursor-pointer mx-auto md:mx-0
-             hover:scale-105 hover:inset-0 hover:bg-gradient-to-r from-blue-600/20 to-cyan-600/20 transition duration-300"
-            data-aos="fade-up"
-            data-aos-duration="1700"
-            data-aos-delay="600"
-          >
-            <GoDownload className="text-lg md:text-xl text-cyan-500 transition-all duration-500" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 transition-all duration-500">Download Resume</span>
-          </button>
-        </div>
-        <div className="w-full md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0 mb-7 order-1 lg:order-2 md:order-2" data-aos="flip-left" data-aos-duration="1700" data-aos-delay="900">
-          <img src="/IMG_5sw456.JPG" alt="Profile" className="w-52 h-52 md:w-72 md:h-72 object-cover rounded-lg shadow-lg" />
-        </div>
-      </section>
+      <div className="relative z-10 container mx-auto px-6 md:px-12">
+        <SectionTitle title="About Me" subtitle="Who I Am" />
 
-      <section className="relative max-w-6xl mx-auto mt-10 px-6 md:px-24 pb-10 z-10">
-        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8" data-aos="fade-down" data-aos-duration="1700" data-aos-delay="900">
-          Tech Stack & Skills
-        </h2>
-        <div className="flex flex-wrap justify-start gap-3" data-aos="fade-up" data-aos-duration="1700">
-          {skills.map((skill, index) => (
-            <div key={index} className="flex items-center gap-3 bg-black border-1  border-blue-500/30 px-3 py-2 rounded-lg transition-transform hover:scale-105">
-              {skill.icon}
-              <span className="text-white text-sm md:text-base lg:text-base font-light">{skill.name}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+        {/* Hero Section */}
+        <section className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24">
+          <div className="w-full md:w-1/2 text-center md:text-left order-2 md:order-1">
+            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+              <h3 className="text-cyan-400 font-mono text-xl mb-2">&lt;Hello /&gt;</h3>
+              <h1 className="text-white text-4xl md:text-5xl font-bold mb-6">
+                I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Ahmad Nur Ain</span>
+              </h1>
+              <p className="text-gray-300 text-lg leading-relaxed mb-8 border-l-4 border-cyan-500/30 pl-6">
+                A passionate Fullstack Developer who loves building scalable web applications. I specialize in turning complex problems into simple, beautiful, and intuitive interface designs.
+              </p>
 
-      <section className="relative max-w-6xl mx-auto mt-10 px-6 md:px-24 pb-3 z-10">
-        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8" data-aos="fade-down" data-aos-duration="1700">
-          Educations
-        </h2>
-
-        {/* Container dengan Garis Vertikal */}
-        <div className="relative pl-6">
-          {/* Garis Vertikal */}
-          <div className="absolute left-7 top-0 w-0.5 bg-cyan-500  h-full" data-aos="fade-up" data-aos-duration="1700" data-aos-delay="300"></div>
-
-          {/* Pengalaman 1 - Freelance */}
-          <div className="relative flex items-start gap-6 mb-10 -ml-6">
-            {/* Ikon */}
-            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center border-2 border-gray-600" data-aos="fade-down" data-aos-duration="1700" data-aos-delay="300">
-              <img src="/Logo-Universitas-Majalengka (1).png" alt="Freelance" className="w-10 h-10 rounded-full" />
-            </div>
-
-            {/* Konten */}
-            <div data-aos="fade-left" data-aos-duration="1700" data-aos-delay="300">
-              <p className="text-gray-400 text-sm">2023 - Present</p>
-              <h3 className="text-white text-sm lg:text-lg md:text-lg font-semibold">Universitas Majalengka</h3>
-              <p className="text-gray-300">Informatics</p>
-            </div>
+              <button
+                onClick={() => window.open("https://docs.google.com/document/d/1fALeu2bNIOs_FfKvHwSUY8lVAT1uByw8wubohEn1Qg4/edit?usp=sharing", "_blank")}
+                className="group relative px-8 py-3 bg-cyan-500/10 border border-cyan-500/50 text-cyan-400 font-mono font-bold rounded-lg overflow-hidden transition-all hover:bg-cyan-500 hover:text-black hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <GoDownload className="text-xl" />
+                  Download Resume
+                </span>
+              </button>
+            </motion.div>
           </div>
-        </div>
-      </section>
 
-      <section className="relative max-w-6xl mx-auto mt-10 px-6 md:px-24 pb-10 z-10">
-        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8" data-aos="fade-down" data-aos-duration="1700">
-          Experiences
-        </h2>
+          <div className="w-full md:w-1/2 flex justify-center order-1 md:order-2">
+            <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
+              {/* Tech Circle Background */}
+              <div className="absolute inset-0 border-2 border-dashed border-cyan-500/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
+              <div className="absolute -inset-4 border border-cyan-500/20 rounded-full"></div>
 
-        {/* Container dengan Garis Vertikal */}
-        <div className="relative pl-6">
-          {/* Garis Vertikal */}
-          <div className="absolute left-7 top-0 w-0.5 bg-cyan-500 h-full" data-aos="fade-up" data-aos-duration="1700" data-aos-delay="300"></div>
-
-          {/* Pengalaman 1 - Freelance */}
-          <div className="relative flex items-start gap-6 mb-10 -ml-6">
-            {/* Ikon */}
-            <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center border-2 border-gray-600" data-aos="fade-down" data-aos-duration="1700" data-aos-delay="300">
-              <img src="/rsz_1675850058179-removebg-preview.png" alt="Freelance" className="w-10 h-10 rounded-full" />
-            </div>
-
-            {/* Konten */}
-            <div data-aos="fade-left" data-aos-duration="1700" data-aos-delay="300">
-              <p className="text-gray-400 text-sm">Septermber 2023 - Oktober 2023</p>
-              <h3 className="text-white text-sm lg:text-lg md:text-lg font-semibold">
-                Project-Based <br />
-                Virtual Intern: Frontend Core Initiative <br />
-                Studio x Rakamin Academy
-              </h3>
-              <p className="text-gray-300">Intern</p>
-            </div>
+              <img src="/IMG_5sw456.JPG" alt="Profile" className="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl border-4 border-black z-10" />
+            </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="relative max-w-6xl mx-auto mt-10 px-6 md:px-24 pb-10 z-10">
-        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-2xl font-bold text-start mb-6 md:mb-8" data-aos="fade-down" data-aos-duration="1700" data-aos-delay="300">
-          Certificates
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 border">
-          {certificates.map((cert, index) => (
-            <div key={index} className="relative group overflow-hidden rounded-lg border-4  border-gray-600 shadow-lg" data-aos="flip-right" data-aos-duration="1700" data-aos-delay="300">
-              <img
-                src={cert.src}
-                alt={`Certificate ${index + 1}`}
-                className={`w-full object-cover transition-transform duration-300 group-hover:scale-105
-            ${cert.orientation === "portrait" ? "aspect-[3/4]" : ""}
-          `}
-              />
+        {/* Tech Stack */}
+        <section className="mb-24">
+          <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+            <span className="text-cyan-400">01.</span> Tech Stack
+            <span className="h-px bg-gray-800 flex-1 ml-4"></span>
+          </h3>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
+            {skills.map((skill, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="flex flex-col items-center justify-center p-4 bg-white/5 border border-white/10 rounded-xl hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all duration-300 group"
+              >
+                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300 filter grayscale group-hover:grayscale-0">{skill.icon}</div>
+                <span className="text-xs text-gray-400 group-hover:text-cyan-300 font-mono">{skill.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* Education & Experience Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
+          {/* Education */}
+          <section>
+            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <span className="text-cyan-400">02.</span> Education
+            </h3>
+            <div className="relative pl-8 border-l border-cyan-500/20 space-y-12">
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
+                <div className="absolute -left-[41px] bg-black border-2 border-cyan-500 w-5 h-5 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
+                <div className="bg-gradient-to-r from-white/5 to-transparent border-l-4 border-cyan-500 p-6 rounded-r-xl hover:bg-white/10 transition-colors">
+                  <div className="flex items-center gap-4 mb-4">
+                    <img src="/Logo-Universitas-Majalengka (1).png" alt="Unma" className="w-12 h-12 rounded-full bg-white p-1" />
+                    <div>
+                      <h3 className="text-lg font-bold text-white">Universitas Majalengka</h3>
+                      <p className="text-cyan-400 text-sm font-mono">Informatics Engineering</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-400 text-sm font-mono">2023 - Present</p>
+                </div>
+              </motion.div>
             </div>
-          ))}
+          </section>
+
+          {/* Experience */}
+          <section>
+            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+              <span className="text-cyan-400">03.</span> Experience
+            </h3>
+            <div className="relative pl-8 border-l border-cyan-500/20 space-y-12">
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
+                <div className="absolute -left-[41px] bg-black border-2 border-cyan-500 w-5 h-5 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
+                <div className="bg-gradient-to-r from-white/5 to-transparent border-l-4 border-cyan-500 p-6 rounded-r-xl hover:bg-white/10 transition-colors">
+                  <div className="flex items-center gap-4 mb-4">
+                    <img src="/rsz_1675850058179-removebg-preview.png" alt="Rakamin" className="w-12 h-12 rounded-full bg-white p-1" />
+                    <div>
+                      <h3 className="text-lg font-bold text-white">Rakamin Academy</h3>
+                      <p className="text-cyan-400 text-sm font-mono">Frontend Core Initiative</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-400 text-sm font-mono">Sep 2023 - Oct 2023</p>
+                  <p className="text-gray-500 text-xs mt-2 italic">Project-Based Virtual Intern</p>
+                </div>
+              </motion.div>
+            </div>
+          </section>
         </div>
-      </section>
+
+        {/* Certificates */}
+        <section>
+          <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+            <span className="text-cyan-400">04.</span> Certificates
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {certificates.map((cert, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-xl bg-gray-900 border border-white/10 hover:border-cyan-500/50 transition-all duration-300 shadow-lg"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img src={cert.src} alt={`Certificate ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100" />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span className="text-cyan-400 text-sm font-mono font-bold border-b border-cyan-400 pb-1">View Certificate</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 };

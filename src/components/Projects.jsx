@@ -1,6 +1,8 @@
-import Squares from "../blocks/Backgrounds/Squares/Squares";
-import { FaReact, FaLaravel, FaDatabase } from "react-icons/fa";
+import { FaReact, FaLaravel, FaDatabase, FaGithub } from "react-icons/fa";
 import { SiTailwindcss, SiFramer, SiFilament } from "react-icons/si";
+import { motion } from "framer-motion";
+import Squares from "../blocks/Backgrounds/Squares/Squares";
+import SectionTitle from "./SectionTitle";
 
 const techIcons = {
   Reactjs: <FaReact className="text-blue-400" />,
@@ -9,8 +11,6 @@ const techIcons = {
   "Framer Motion": <SiFramer className="text-purple-500" />,
   Filament: <SiFilament className="text-orange-500" />,
   MySQL: <FaDatabase className="text-yellow-400" />,
-
-  // MagicUI & Midtrans pakai img
   MagicUI: <img src="/OIP__3_-removebg-preview.png" alt="MagicUI" className="w-5 h-5" />,
   Midtrans: <img src="/erasebg-transformed.webp" alt="Midtrans" className="w-5 h-5" />,
 };
@@ -54,45 +54,88 @@ const projects = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 const Projects = () => {
   return (
-    <div className="relative w-full min-h-screen">
-      <div className="fixed inset-0 h-screen">
-        <Squares speed={0.0} squareSize={100} direction="diagonal" borderColor="oklch(71.5% 0.143 215.221)" hoverFillColor="#222" />
+    <div className="relative w-full min-h-screen overflow-hidden py-20">
+      {/* Background */}
+      <div className="absolute inset-0 h-full z-0">
+        <Squares speed={0.1} squareSize={50} direction="diagonal" borderColor="#333" hoverFillColor="#222" />
       </div>
-      <section className="relative max-w-6xl mx-auto md:mt-10 mt-24 px-6 md:px-24 pb-10 z-10">
-        <h2 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-3xl font-bold text-center mb-8" data-aos="fade-down" data-aos-duration="1700" data-aos-delay="0">
-          My Projects
-        </h2>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black pointer-events-none z-0" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
+      <div className="relative z-10 container mx-auto px-6 md:px-12">
+        <SectionTitle title="Featured Projects" subtitle="My Work" />
+
+        <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true }} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
-            <div key={project.id} className="bg-black border-3 border-blue-500/30 rounded-lg shadow-lg overflow-hidden transform" data-aos="flip-left" data-aos-duration="1700" data-aos-delay="300">
-              <img src={project.image} alt={project.title} className="w-full h-52 object-cover" />
-              <div className="p-5">
-                <h3 className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 text-xl font-bold">{project.title}</h3>
-                <p className="text-gray-300 text-sm mt-2">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mt-3">
+            <motion.div
+              key={project.id}
+              variants={item}
+              className="group relative bg-gray-900/50 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
+            >
+              {/* Image Container */}
+              <div className="relative h-64 overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-300" />
+                <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+
+                {/* Overlay Tech Icons */}
+                <div className="absolute top-4 right-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+                  <div className="bg-black/50 backdrop-blur-md p-2 rounded-lg border border-white/10">
+                    <FaGithub className="text-white text-xl" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-8 relative z-20">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors flex items-center gap-2">
+                  {project.title}
+                  <span className="text-xs font-mono font-normal text-gray-500 border border-gray-700 px-2 py-0.5 rounded">v1.0</span>
+                </h3>
+                <p className="text-gray-400 text-sm mb-6 line-clamp-3 leading-relaxed group-hover:text-gray-300 transition-colors">{project.description}</p>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mb-8">
                   {project.technologies.map((tech, index) => (
-                    <span key={index} className="flex items-center gap-1 text-xs bg-gray-900 border border-blue-500/30 text-white px-2 py-1 rounded-xl">
+                    <span key={index} className="flex items-center gap-1.5 text-xs font-mono font-medium bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 px-3 py-1.5 rounded-full">
                       {techIcons[tech] || null}
                       {tech}
                     </span>
                   ))}
                 </div>
+
+                {/* Action Button */}
                 <a
                   href={project.sourceCode}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block mt-4 text-center border-2 border-blue-500/30 text-white text-sm font-bold py-2 rounded-xl hover:bg-gradient-to-r from-cyan-500/10 to-blue-500/10 hover:text-cyan-500 transition duration-300 hover:scale-105 "
+                  className="w-full block text-center py-3 bg-white/5 border border-white/10 rounded-xl text-white font-semibold hover:bg-cyan-600 hover:border-cyan-500 transition-all duration-300 group/btn"
                 >
-                  View Source Code
+                  <span className="flex items-center justify-center gap-2">
+                    View Source Code
+                    <FaGithub className="text-lg group-hover/btn:rotate-12 transition-transform" />
+                  </span>
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
-      </section>
+        </motion.div>
+      </div>
     </div>
   );
 };
