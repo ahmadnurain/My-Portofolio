@@ -57,7 +57,7 @@ const Herosection = () => {
           </button>
 
           <a
-            href="https://linkedin.com/in/ahmad-nur-ain-4a615225"
+            href="https://www.linkedin.com/in/ahmad-nur-ain-4a6152253/"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 bg-[#0a66c2]/10 hover:bg-[#0a66c2]/20 backdrop-blur-md border border-[#0a66c2]/30 text-white rounded-full font-medium text-sm transition-all duration-300 flex items-center justify-center gap-3"
