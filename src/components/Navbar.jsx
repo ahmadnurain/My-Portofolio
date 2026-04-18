@@ -1,15 +1,14 @@
 import { useState, useEffect } from "react";
 import { MdMenu, MdClose } from "react-icons/md";
-import { Link } from "react-scroll"; // Using react-scroll for smooth scrolling in SPA
+import { Link } from "react-scroll"; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Handle scroll effect for navbar background
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 20) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -21,58 +20,68 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", to: "home" },
-    { name: "Projects", to: "projects" },
     { name: "About", to: "about" },
+    { name: "Projects", to: "projects" },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled || isOpen ? "bg-black/80 backdrop-blur-md border-b border-white/10" : "bg-transparent"}`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 flex justify-center mt-6 px-4 md:px-0`}>
+      <div className={`transition-all duration-500 max-w-4xl w-full mx-auto flex items-center justify-between px-6 py-3 rounded-full border ${
+        scrolled ? "bg-white/5 backdrop-blur-xl border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]" : "bg-transparent border-transparent"
+      }`}>
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-          <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center text-black font-bold font-mono text-xl">&lt;/&gt;</div>
-          <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500 hidden sm:block">Ahmad Nur Ain</span>
+        <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+          <div className="w-9 h-9 rounded-full bg-white text-black flex flex-col items-center justify-center font-display font-bold text-lg leading-none tracking-tighter">
+            <span>A</span>
+          </div>
+          <span className="text-lg font-bold font-display tracking-wide text-white hidden sm:block">Ahmad.</span>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link key={link.name} to={link.to} smooth={true} duration={800} spy={true} offset={-80} className="text-gray-300 hover:text-cyan-400 font-medium cursor-pointer transition-colors relative group">
-              {link.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-          ))}
+        <div className="hidden md:flex items-center gap-6">
+          <div className="flex bg-white/5 rounded-full px-2 py-1 items-center gap-2 border border-white/5 relative z-10">
+            {navLinks.map((link) => (
+              <Link key={link.name} to={link.to} smooth={true} duration={800} spy={true} offset={-80} 
+                activeClass="!text-white !bg-white/15 shadow-[0_0_20px_rgba(5,150,105,0.5)] border-brand-green/30 font-semibold"
+                className="text-sm text-gray-400 hover:text-white hover:bg-white/10 px-4 py-2 rounded-full font-medium cursor-pointer transition-all duration-300 border border-transparent">
+                {link.name}
+              </Link>
+            ))}
+          </div>
           <button
             onClick={() => window.open("https://docs.google.com/document/d/1fALeu2bNIOs_FfKvHwSUY8lVAT1uByw8wubohEn1Qg4/edit?usp=sharing", "_blank")}
-            className="px-5 py-2 bg-white/10 border border-white/20 rounded-full text-white font-medium hover:bg-cyan-500/20 hover:border-cyan-500/50 transition-all duration-300"
+            className="text-sm px-6 py-2.5 bg-brand-green/20 hover:bg-brand-green border border-brand-green/30 hover:border-brand-green rounded-full text-white font-medium shadow-[0_0_15px_rgba(5,150,105,0.3)] hover:shadow-[0_0_25px_rgba(5,150,105,0.6)] transition-all duration-300"
           >
             Resume
           </button>
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="md:hidden text-white text-2xl p-2" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <MdClose /> : <MdMenu />}
+        <button className="md:hidden text-white hover:bg-white/10 rounded-full p-2 transition-colors" onClick={() => setIsOpen(!isOpen)}>
+          {isOpen ? <MdClose size={24} /> : <MdMenu size={24} />}
         </button>
       </div>
 
       {/* Mobile Menu Dropdown */}
-      <div className={`md:hidden absolute top-full left-0 w-full bg-black/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300 overflow-hidden ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}>
-        <div className="flex flex-col items-center py-8 space-y-6">
+      <div className={`md:hidden absolute top-[calc(100%+10px)] max-w-[calc(100%-2rem)] mx-auto w-full left-0 right-0 bg-[#0a0a0a]/95 backdrop-blur-2xl rounded-2xl border border-white/10 transition-all duration-500 overflow-hidden ${isOpen ? "max-h-96 opacity-100 py-6 shadow-2xl" : "max-h-0 opacity-0 py-0"}`}>
+        <div className="flex flex-col items-center space-y-4">
           {navLinks.map((link) => (
-            <Link key={link.name} to={link.to} smooth={true} duration={800} offset={-80} onClick={() => setIsOpen(false)} className="text-xl text-gray-300 hover:text-cyan-400 font-medium cursor-pointer">
+            <Link key={link.name} to={link.to} smooth={true} duration={800} offset={-80} onClick={() => setIsOpen(false)} 
+              className="text-xl text-gray-300 hover:text-white font-medium cursor-pointer transition-colors w-full text-center py-2">
               {link.name}
             </Link>
           ))}
-          <button
-            onClick={() => {
-              window.open("https://docs.google.com/document/d/1fALeu2bNIOs_FfKvHwSUY8lVAT1uByw8wubohEn1Qg4/edit?usp=sharing", "_blank");
-              setIsOpen(false);
-            }}
-            className="px-8 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full text-white font-bold shadow-lg shadow-cyan-500/20"
-          >
-            Resume
-          </button>
+          <div className="pt-4 border-t border-white/10 w-3/4 flex justify-center">
+            <button
+              onClick={() => {
+                window.open("https://docs.google.com/document/d/1fALeu2bNIOs_FfKvHwSUY8lVAT1uByw8wubohEn1Qg4/edit?usp=sharing", "_blank");
+                setIsOpen(false);
+              }}
+              className="w-full max-w-[200px] px-6 py-3 bg-brand-green hover:bg-brand-green/80 rounded-full text-white font-bold transition-colors"
+            >
+              Resume
+            </button>
+          </div>
         </div>
       </div>
     </nav>

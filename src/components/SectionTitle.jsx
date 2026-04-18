@@ -2,20 +2,15 @@ import { motion } from "framer-motion";
 
 const SectionTitle = ({ title, subtitle }) => {
   return (
-    <div className="mb-16 text-center">
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="inline-block">
-        <div className="flex items-center justify-center gap-2 mb-2">
-          <span className="h-[1px] w-8 bg-cyan-500/50"></span>
-          <span className="text-cyan-400 font-mono text-sm tracking-wider uppercase">{subtitle}</span>
-          <span className="h-[1px] w-8 bg-cyan-500/50"></span>
-        </div>
-        <h2 className="text-4xl md:text-5xl font-bold text-white relative">
-          <span className="absolute -inset-1 blur-xl bg-cyan-500/20 rounded-full"></span>
-          <span className="relative bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400">{title}</span>
+    <div className="mb-12 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6 w-full">
+      <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, ease: "easeOut" }}>
+        <h2 className="text-4xl md:text-6xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-green/20 to-brand-blue/60 tracking-tighter mb-2">
+          {title}
         </h2>
-        {/* Decorative corner brackets */}
-        <div className="absolute -top-4 -left-6 w-4 h-4 border-t-2 border-l-2 border-cyan-500/30"></div>
-        <div className="absolute -bottom-4 -right-6 w-4 h-4 border-b-2 border-r-2 border-cyan-500/30"></div>
+      </motion.div>
+      <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }} className="flex items-center gap-3">
+        <span className="text-brand-green font-mono text-xs tracking-[0.2em] uppercase font-bold">{subtitle}</span>
+        <div className="h-[2px] w-12 bg-white/20"></div>
       </motion.div>
     </div>
   );

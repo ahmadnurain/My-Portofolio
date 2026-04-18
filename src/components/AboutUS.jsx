@@ -1,185 +1,186 @@
+import { useState } from "react";
 import { GoDownload } from "react-icons/go";
-import { FaHtml5, FaCss3Alt, FaJs, FaPhp, FaBootstrap, FaReact, FaLaravel, FaNodeJs, FaPython, FaGitAlt, FaLinux, FaDatabase, FaFigma } from "react-icons/fa";
-import { SiTailwindcss, SiMysql, SiExpress } from "react-icons/si";
-import Squares from "../blocks/Backgrounds/Squares/Squares";
+import { FaHtml5, FaCss3Alt, FaJs, FaPhp, FaReact, FaLaravel, FaNodeJs, FaPython, FaGitAlt, FaDatabase, FaFigma } from "react-icons/fa";
+import { SiTailwindcss, SiMysql } from "react-icons/si";
+import { MdClose, MdWorkOutline, MdSchool } from "react-icons/md";
 import SectionTitle from "./SectionTitle";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const About = () => {
+  const [selectedCert, setSelectedCert] = useState(null);
+  
   const skills = [
-    { icon: <FaHtml5 className="text-orange-500 text-2xl" />, name: "HTML5" },
-    { icon: <FaCss3Alt className="text-blue-500 text-2xl" />, name: "CSS3" },
-    { icon: <FaJs className="text-yellow-300 text-2xl" />, name: "JavaScript" },
-    { icon: <FaPhp className="text-indigo-500 text-2xl" />, name: "PHP" },
-    { icon: <FaBootstrap className="text-purple-600 text-2xl" />, name: "Bootstrap" },
-    { icon: <SiTailwindcss className="text-sky-500 text-2xl" />, name: "TailwindCSS" },
-    { icon: <FaReact className="text-sky-500 text-2xl" />, name: "ReactJS" },
-    { icon: <FaLaravel className="text-red-600 text-2xl" />, name: "Laravel" },
-    { icon: <FaNodeJs className="text-green-500 text-2xl" />, name: "Node.js" },
-    { icon: <SiExpress className="text-gray-500 text-2xl" />, name: "Express.js" },
-    { icon: <SiMysql className="text-blue-600 text-2xl" />, name: "MySQL" },
-    { icon: <FaDatabase className="text-blue-500 text-2xl" />, name: "Database" },
-    { icon: <FaLinux className="text-gray-400 text-2xl" />, name: "Linux" },
-    { icon: <FaPython className="text-yellow-400 text-2xl" />, name: "Python" },
-    { icon: <FaGitAlt className="text-red-500 text-2xl" />, name: "Git" },
-    { icon: <FaFigma className="text-purple-500 text-2xl" />, name: "Figma" },
+    { icon: <FaHtml5 />, name: "HTML" },
+    { icon: <FaCss3Alt />, name: "CSS" },
+    { icon: <FaJs />, name: "JS" },
+    { icon: <FaPhp />, name: "PHP" },
+    { icon: <SiTailwindcss />, name: "Tailwind" },
+    { icon: <FaReact />, name: "React" },
+    { icon: <FaLaravel />, name: "Laravel" },
+    { icon: <FaNodeJs />, name: "Node.js" },
+    { icon: <SiMysql />, name: "MySQL" },
+    { icon: <FaPython />, name: "Python" },
+    { icon: <FaGitAlt />, name: "Git" },
+    { icon: <FaFigma />, name: "Figma" },
   ];
 
   const certificates = [
-    { src: "/certificate codepolitan html_page-0001.jpg", orientation: "landscape" },
-    { src: "/certificate codepolitan mengenal pemrograman _page-0001.jpg", orientation: "landscape" },
-    { src: "/certificate_page-0001.jpg", orientation: "landscape" },
-    { src: "/sertifikat_course_570_2603325_100823231029_page-0001.jpg", orientation: "landscape" },
-    { src: "/sertifikat_course_123_2603325_220623080050_page-0001.jpg", orientation: "landscape" },
-    { src: "/sertifikat pelatihan jwd_3_page-0001.jpg", orientation: "landscape" },
-    { src: "/Sertifikat talenthub Kemenaker Ahmad Nur Ain (2).png", orientation: "portrait" },
-    { src: "/30 (1).png", orientation: "portrait" },
+    { src: "/certificate codepolitan html_page-0001.jpg" },
+    { src: "/certificate codepolitan mengenal pemrograman _page-0001.jpg" },
+    { src: "/certificate_page-0001.jpg" },
+    { src: "/sertifikat pelatihan jwd_3_page-0001.jpg" },
   ];
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden py-20">
-      {/* Background */}
-      <div className="absolute inset-0 h-full z-0">
-        <Squares speed={0.1} squareSize={50} direction="diagonal" borderColor="#333" hoverFillColor="#222" />
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-black pointer-events-none z-0" />
-
-      <div className="relative z-10 container mx-auto px-6 md:px-12">
-        <SectionTitle title="About Me" subtitle="Who I Am" />
-
-        {/* Hero Section */}
-        <section className="flex flex-col md:flex-row items-center justify-between gap-12 mb-24">
-          <div className="w-full md:w-1/2 text-center md:text-left order-2 md:order-1">
-            <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-              <h3 className="text-cyan-400 font-mono text-xl mb-2">&lt;Hello /&gt;</h3>
-              <h1 className="text-white text-4xl md:text-5xl font-bold mb-6">
-                I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Ahmad Nur Ain</span>
-              </h1>
-              <p className="text-gray-300 text-lg leading-relaxed mb-8 border-l-4 border-cyan-500/30 pl-6">
-                A passionate Fullstack Developer who loves building scalable web applications. I specialize in turning complex problems into simple, beautiful, and intuitive interface designs.
-              </p>
-
-              <button
-                onClick={() => window.open("https://docs.google.com/document/d/1fALeu2bNIOs_FfKvHwSUY8lVAT1uByw8wubohEn1Qg4/edit?usp=sharing", "_blank")}
-                className="group relative px-8 py-3 bg-cyan-500/10 border border-cyan-500/50 text-cyan-400 font-mono font-bold rounded-lg overflow-hidden transition-all hover:bg-cyan-500 hover:text-black hover:shadow-[0_0_20px_rgba(6,182,212,0.5)]"
-              >
-                <span className="relative z-10 flex items-center gap-2">
-                  <GoDownload className="text-xl" />
-                  Download Resume
-                </span>
-              </button>
-            </motion.div>
-          </div>
-
-          <div className="w-full md:w-1/2 flex justify-center order-1 md:order-2">
-            <motion.div initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="relative">
-              {/* Tech Circle Background */}
-              <div className="absolute inset-0 border-2 border-dashed border-cyan-500/30 rounded-full animate-[spin_10s_linear_infinite]"></div>
-              <div className="absolute -inset-4 border border-cyan-500/20 rounded-full"></div>
-
-              <img src="/IMG_5sw456.JPG" alt="Profile" className="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full shadow-2xl border-4 border-black z-10" />
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Tech Stack */}
-        <section className="mb-24">
-          <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            <span className="text-cyan-400">01.</span> Tech Stack
-            <span className="h-px bg-gray-800 flex-1 ml-4"></span>
-          </h3>
-
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="flex flex-col items-center justify-center p-4 bg-white/5 border border-white/10 rounded-xl hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all duration-300 group"
-              >
-                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300 filter grayscale group-hover:grayscale-0">{skill.icon}</div>
-                <span className="text-xs text-gray-400 group-hover:text-cyan-300 font-mono">{skill.name}</span>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Education & Experience Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-24">
-          {/* Education */}
-          <section>
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-              <span className="text-cyan-400">02.</span> Education
-            </h3>
-            <div className="relative pl-8 border-l border-cyan-500/20 space-y-12">
-              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-                <div className="absolute -left-[41px] bg-black border-2 border-cyan-500 w-5 h-5 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
-                <div className="bg-gradient-to-r from-white/5 to-transparent border-l-4 border-cyan-500 p-6 rounded-r-xl hover:bg-white/10 transition-colors">
-                  <div className="flex items-center gap-4 mb-4">
-                    <img src="/Logo-Universitas-Majalengka (1).png" alt="Unma" className="w-12 h-12 rounded-full bg-white p-1" />
-                    <div>
-                      <h3 className="text-lg font-bold text-white">Universitas Majalengka</h3>
-                      <p className="text-cyan-400 text-sm font-mono">Informatics Engineering</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-400 text-sm font-mono">2023 - Present</p>
-                </div>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* Experience */}
-          <section>
-            <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-              <span className="text-cyan-400">03.</span> Experience
-            </h3>
-            <div className="relative pl-8 border-l border-cyan-500/20 space-y-12">
-              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="relative">
-                <div className="absolute -left-[41px] bg-black border-2 border-cyan-500 w-5 h-5 rounded-full shadow-[0_0_10px_rgba(6,182,212,0.5)]"></div>
-                <div className="bg-gradient-to-r from-white/5 to-transparent border-l-4 border-cyan-500 p-6 rounded-r-xl hover:bg-white/10 transition-colors">
-                  <div className="flex items-center gap-4 mb-4">
-                    <img src="/rsz_1675850058179-removebg-preview.png" alt="Rakamin" className="w-12 h-12 rounded-full bg-white p-1" />
-                    <div>
-                      <h3 className="text-lg font-bold text-white">Rakamin Academy</h3>
-                      <p className="text-cyan-400 text-sm font-mono">Frontend Core Initiative</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-400 text-sm font-mono">Sep 2023 - Oct 2023</p>
-                  <p className="text-gray-500 text-xs mt-2 italic">Project-Based Virtual Intern</p>
-                </div>
-              </motion.div>
-            </div>
-          </section>
+    <div className="w-full py-32 bg-[#050505]">
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        <div className="mb-16">
+          <SectionTitle title="About & Career" subtitle="My Story" />
         </div>
 
-        {/* Certificates */}
-        <section>
-          <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
-            <span className="text-cyan-400">04.</span> Certificates
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certificates.map((cert, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-xl bg-gray-900 border border-white/10 hover:border-cyan-500/50 transition-all duration-300 shadow-lg"
-              >
-                <div className="aspect-video overflow-hidden">
-                  <img src={cert.src} alt={`Certificate ${index + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100" />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                  <span className="text-cyan-400 text-sm font-mono font-bold border-b border-cyan-400 pb-1">View Certificate</span>
-                </div>
-              </motion.div>
-            ))}
+        <div className="flex flex-col gap-6">
+          
+          {/* Top Profile / Description */}
+          <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between gap-12 mb-10">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} 
+              className="w-full lg:w-3/5 flex flex-col justify-center text-center lg:text-left"
+            >
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-semibold text-white mb-6 tracking-tight leading-[1.1]">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-green to-teal-200">Crafting</span> <span className="text-gray-400 font-light italic">clean code</span> &<br className="hidden lg:block"/> intuitive designs.
+              </h2>
+              <div className="text-gray-400 text-base md:text-lg leading-relaxed space-y-4 font-light mb-8 max-w-2xl mx-auto lg:mx-0">
+                <p>I'm a Fullstack Developer in Indonesia, focused on building scalable, robust web apps. I translate complex problems into user-friendly digital experiences.</p>
+                <p>I constantly explore new frameworks and backend architectures to become a well-rounded software engineer.</p>
+              </div>
+              <div className="flex justify-center lg:justify-start">
+                <button
+                  onClick={() => window.open("https://docs.google.com/document/d/1fALeu2bNIOs_FfKvHwSUY8lVAT1uByw8wubohEn1Qg4/edit?usp=sharing", "_blank")}
+                  className="inline-flex items-center gap-3 px-8 py-3.5 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-all hover:scale-[1.02] shadow-lg"
+                >
+                  Download Resume <GoDownload size={18} />
+                </button>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.1 }}
+              className="w-full lg:w-2/5 flex justify-center lg:justify-end"
+            >
+              <div className="relative w-64 h-64 md:w-80 md:h-80">
+                <div className="absolute inset-0 bg-brand-green/20 rounded-full blur-[80px] opacity-60"></div>
+                <img src="/IMG_5sw456.JPG" alt="Ahmad Profile" className="relative w-full h-full object-cover object-center rounded-full filter grayscale transition-all duration-700 hover:grayscale-0 shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-white/10" />
+              </div>
+            </motion.div>
           </div>
-        </section>
+
+          {/* Education & Experience (Journey) */}
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white/[0.02] backdrop-blur-xl rounded-3xl border border-white/[0.08] p-6 md:p-8"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+              {/* Experience Column */}
+              <div>
+                <h3 className="text-base font-medium text-white tracking-wide flex items-center gap-2 border-b border-white/10 pb-3 mb-6">
+                  <MdWorkOutline className="text-brand-blue" size={20} /> Experience
+                </h3>
+                
+                <div className="relative border-l border-white/10 pl-5 space-y-8 hover:border-brand-blue/30 transition-colors">
+                  <div className="relative group">
+                    <div className="absolute w-3 h-3 rounded-full bg-[#050505] border-[1.5px] border-brand-blue -left-[26px] top-1 group-hover:scale-125 transition-transform" />
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-brand-blue mb-1">Sep 2023 - Oct 2023</div>
+                    <h4 className="text-base font-semibold text-white group-hover:text-brand-blue transition-colors mb-1">Frontend Core Initiative</h4>
+                    <p className="text-gray-400 text-xs font-light mb-2">Rakamin Academy</p>
+                    <p className="text-gray-500 text-xs leading-relaxed">Built project-based virtual modules and mastered core frontend frameworks.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Education Column */}
+              <div>
+                <h3 className="text-base font-medium text-white tracking-wide flex items-center gap-2 border-b border-white/10 pb-3 mb-6">
+                  <MdSchool className="text-brand-green" size={20} /> Education
+                </h3>
+                
+                <div className="relative border-l border-white/10 pl-5 space-y-8 hover:border-brand-green/30 transition-colors">
+                  <div className="relative group">
+                    <div className="absolute w-3 h-3 rounded-full bg-[#050505] border-[1.5px] border-brand-green -left-[26px] top-1 group-hover:scale-125 transition-transform" />
+                    <div className="text-[10px] font-mono uppercase tracking-wider text-brand-green mb-1">2023 - Present</div>
+                    <h4 className="text-base font-semibold text-white group-hover:text-brand-green transition-colors mb-1">Informatics Engineering</h4>
+                    <p className="text-gray-400 text-xs font-light mb-2">Universitas Majalengka</p>
+                    <p className="text-gray-500 text-xs leading-relaxed">Studying core computer science, algorithm development, and modern SWE practices.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Tech Stack & Certs Bottom Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.3 }}
+              className="bg-white/[0.02] backdrop-blur-xl rounded-3xl border border-white/[0.08] p-6 md:p-8"
+            >
+               <h3 className="text-sm font-medium text-white tracking-wider uppercase mb-6">Tech Stack</h3>
+               <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                  {skills.map((skill, index) => (
+                    <div key={index} className="flex flex-col items-center justify-center p-3 rounded-2xl bg-white/5 border border-white/5 hover:border-white/20 transition-all hover:bg-white/10 shrink-0">
+                      <div className="text-2xl text-gray-400 mb-2">{skill.icon}</div>
+                      <span className="text-[10px] font-mono text-gray-500">{skill.name}</span>
+                    </div>
+                  ))}
+               </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.4 }}
+              className="bg-white/[0.02] backdrop-blur-xl rounded-3xl border border-white/[0.08] p-6 md:p-8"
+            >
+                <h3 className="text-sm font-medium text-white tracking-wider uppercase mb-6">Certifications</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {certificates.map((cert, index) => (
+                    <div
+                      key={index}
+                      onClick={() => setSelectedCert(cert.src)}
+                      className="group relative aspect-video overflow-hidden rounded-xl bg-black border border-white/10 hover:border-white/30 cursor-pointer transition-all"
+                    >
+                      <img src={cert.src} alt={`Certificate ${index + 1}`} className="w-full h-full object-cover filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="bg-white/10 backdrop-blur-sm border border-white/20 px-3 py-1.5 rounded-full text-[10px] font-bold text-white uppercase tracking-wider">Expand</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
+
+      {/* Certificate Modal */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl px-4" 
+            onClick={() => setSelectedCert(null)}
+          >
+            <button 
+              className="absolute top-6 right-6 text-white hover:text-white bg-white/5 hover:bg-white/10 p-3 rounded-full transition-all border border-white/10 shadow-lg"
+              onClick={() => setSelectedCert(null)}
+            >
+              <MdClose size={24} />
+            </button>
+            <motion.img 
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              src={selectedCert} 
+              alt="Certificate View" 
+              className="max-w-full max-h-[90vh] object-contain rounded-2xl shadow-2xl border border-white/10"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { MdContentCopy, MdCheck, MdArrowForward } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { MdContentCopy, MdCheck, MdArrowRightAlt } from "react-icons/md";
+import { FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
-import CodeTyping from "./animations/CodeTyping";
 import Squares from "../blocks/Backgrounds/Squares/Squares";
 
 const Herosection = () => {
   const [copied, setCopied] = useState(false);
   const email = "ahmadnurain82@gmail.com";
-  const navigate = useNavigate();
 
   const handleCopy = () => {
     navigator.clipboard.writeText(email);
@@ -17,56 +15,65 @@ const Herosection = () => {
   };
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 z-0">
-        <Squares speed={0.1} squareSize={50} direction="diagonal" borderColor="#333" hoverFillColor="#222" />
+    <div className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-[#050505]">
+      {/* Subtle Background Elements */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <Squares speed={0.05} squareSize={40} direction="diagonal" borderColor="#111" hoverFillColor="#1a1a1a" />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black z-0 pointer-events-none" />
+
+      {/* Gradient Orbs for atmosphere */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand-green/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-brand-blue/10 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
 
       {/* Main Content */}
-      <div className="container mx-auto px-8 md:px-16 py-20 z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        {/* Left Side: Text */}
-        <div className="text-center lg:text-left order-2 lg:order-1">
-          <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
-            <h2 className="text-cyan-400 font-mono text-lg mb-2">Hi there, I am</h2>
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
-              Ahmad <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400">Nur Ain</span>
-            </h1>
-            <p className="text-gray-400 text-lg md:text-xl max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              A passionate <span className="text-white font-semibold">Fullstack Developer</span> crafting modern, high-performance web applications with a focus on user experience.
-            </p>
-          </motion.div>
+      <div className="container mx-auto px-6 md:px-16 z-10 flex flex-col items-center text-center mt-20">
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="max-w-4xl flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-green/10 border border-brand-green/20 text-xs font-semibold text-brand-green mb-8 tracking-wider uppercase backdrop-blur-sm shadow-[0_0_15px_rgba(5,150,105,0.1)]">
+            <span className="relative flex h-2 w-2 mr-1">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-green"></span>
+            </span>
+            Available for hire
+          </div>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold font-display tracking-tighter leading-[0.9] mb-6">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-100 to-brand-green/40">Welcome to my</span>
+            <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-green/80 to-brand-blue">Portfolio.</span>
+          </h1>
 
-          {/* Buttons */}
-          <motion.div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }}>
-            <button
-              onClick={() => document.getElementById("projects").scrollIntoView({ behavior: "smooth" })}
-              className="group px-8 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-full font-semibold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              View Projects
-              <MdArrowForward className="group-hover:translate-x-1 transition-transform" />
-            </button>
+          <p className="text-gray-400 text-lg md:text-xl md:max-w-xl mx-auto leading-relaxed mb-12 font-light">
+            I'm <span className="text-brand-green font-semibold">Ahmad Nur Ain</span>. I build exceptional digital experiences with a focus on modern design and high-performance engineering.
+          </p>
+        </motion.div>
 
-            <button
-              onClick={handleCopy}
-              className="px-8 py-3 bg-white/5 backdrop-blur-md border border-white/10 text-white rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2"
-            >
-              {copied ? <MdCheck className="text-green-400" /> : <MdContentCopy className="text-gray-400" />}
-              <span>{copied ? "Email Copied!" : "Copy Email"}</span>
-            </button>
-          </motion.div>
-        </div>
+        {/* Action Buttons */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }} className="flex flex-col sm:flex-row gap-5">
+          <button
+            onClick={() => document.getElementById("projects").scrollIntoView({ behavior: "smooth" })}
+            className="group px-8 py-4 bg-white text-black hover:bg-gray-200 rounded-full font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-3"
+          >
+            Explore Work
+            <MdArrowRightAlt size={20} className="group-hover:translate-x-2 transition-transform" />
+          </button>
 
-        {/* Right Side: Code Animation */}
-        <div className="order-1 lg:order-2 flex justify-center relative">
-          {/* Ambient Glow */}
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 blur-3xl rounded-full opacity-40 pointer-events-none" />
+          <a
+            href="https://linkedin.com/in/ahmad-nur-ain-4a615225"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 bg-[#0a66c2]/10 hover:bg-[#0a66c2]/20 backdrop-blur-md border border-[#0a66c2]/30 text-white rounded-full font-medium text-sm transition-all duration-300 flex items-center justify-center gap-3"
+          >
+            <FaLinkedin className="text-[#0a66c2]" size={18} />
+            <span>Connect</span>
+          </a>
 
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }} className="relative w-full max-w-lg">
-            <CodeTyping />
-          </motion.div>
-        </div>
+          <button
+            onClick={handleCopy}
+            className="px-8 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/10 text-white rounded-full font-medium text-sm transition-all duration-300 flex items-center justify-center gap-3"
+          >
+            {copied ? <MdCheck className="text-brand-green" size={18} /> : <MdContentCopy className="text-gray-400" size={18} />}
+            <span>{copied ? "Copied" : email}</span>
+          </button>
+        </motion.div>
       </div>
     </div>
   );
