@@ -1,10 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-green: #059669; /* Emerald 600 */
-  --color-brand-blue: #2563eb; /* Blue 600 */
+  --color-primary: #23B08A;
+  --color-primary-hover: #1d9c7b;
+  --color-slate-950: #050607;
+  --color-slate-900: #101214;
+  --color-slate-850: #17191c;
+  --color-slate-800: #1b211e;
+  --color-slate-700: #2A2E33;
   --font-sans: "Inter", sans-serif;
-  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 @layer base {
@@ -12,21 +17,29 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-[#050505] text-white antialiased selection:bg-brand-green/30 selection:text-white;
+    background-color: #050607;
+    color: #dee4df;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  ::selection {
+    background-color: rgba(35, 176, 138, 0.3);
+    color: #ffffff;
   }
   
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #050505;
+    background: #050607;
   }
   ::-webkit-scrollbar-thumb {
-    background: #222;
-    border-radius: 4px;
+    background: #2A2E33;
+    border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #333;
+    background: #3e444d;
   }
 }
 
@@ -39,5 +52,37 @@
   }
   .blue-glow {
     text-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+  }
+
+  .animated-grid-bg {
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.065) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.065) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: gridMovement 20s linear infinite;
+  }
+
+  .ambient-glow-anim {
+    animation: pulseGlow 8s ease-in-out infinite;
+  }
+}
+
+@keyframes gridMovement {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.04;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.08;
+    transform: scale(1.08);
   }
 }

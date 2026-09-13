@@ -1,13 +1,35 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Herosection from "./components/Herosection";
-import Projects from "./components/Projects";
-import About from "./components/AboutUS";
-import Contact from "./components/Contact";
-import ScrollToTop from "./components/ScrollToTop";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Experience from "./pages/Experience";
+import Contact from "./pages/Contact";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+const ScrollToTopOnRoute = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
+const ResumeRedirect = () => {
+  useEffect(() => {
+    window.location.href =
+      "https://drive.google.com/file/d/1YR74DQc5j0UB0gzCUXywt-vm-kDKnvIK/view?usp=sharing";
+  }, []);
+
+  return (
+    <div className="min-h-[60vh] flex items-center justify-center text-gray-400">
+      <p>Redirecting to Resume...</p>
+    </div>
+  );
+};
 
 function App() {
   useEffect(() => {
@@ -20,40 +42,38 @@ function App() {
 
   return (
     <Router>
-      <div className="relative w-full overflow-hidden flex flex-col font-sans text-gray-200">
-        <div className="fixed inset-0 z-[100] pointer-events-none mix-blend-soft-light opacity-[0.03]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
-        {/* Navigation */}
+      <ScrollToTopOnRoute />
+      <div className="relative min-h-screen flex flex-col justify-between overflow-x-hidden bg-[#050607] text-[#dee4df] font-sans antialiased selection:bg-[#23B08A]/30 selection:text-white">
+        {/* Subtle Animated Background Grid & Ambient Glow for all pages */}
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+          <div className="absolute inset-0 animated-grid-bg" />
+          <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#23B08A] rounded-full blur-[140px] pointer-events-none ambient-glow-anim" />
+        </div>
+
+        {/* Floating Capsule Navbar */}
         <Navbar />
 
-        {/* Main Content - Single Page Layout */}
-        <main className="relative z-10 w-full flex-grow">
-          <ScrollToTop />
+        {/* Routes */}
+        <div className="relative z-10 flex-1 flex flex-col">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route
+              path="/experience"
+              element={<Experience />}
+            />
+            <Route
+              path="/contact"
+              element={<Contact />}
+            />
+            <Route path="/resume" element={<ResumeRedirect />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </div>
 
-          <section id="home">
-            <Herosection />
-          </section>
-
-          <section id="about">
-            <About />
-          </section>
-
-          <section id="projects">
-            <Projects />
-          </section>
-
-          <section id="contact">
-            <Contact />
-          </section>
-        </main>
-
-        {/* Footer */}
-        <footer className="relative z-10 py-12 text-center text-gray-500 text-sm border-t border-white/5 bg-[#050505]">
-          <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
-            <div className="text-2xl font-bold font-display text-white mb-4 tracking-tight">A.N.A</div>
-            <p className="mb-2 tracking-wide">© {new Date().getFullYear()} Ahmad Nur Ain. All rights reserved.</p>
-            <p className="opacity-60 text-xs">Crafting minimal digital experiences.</p>
-          </div>
-        </footer>
+        {/* Compact Clean Developer Footer */}
+        <Footer />
       </div>
     </Router>
   );

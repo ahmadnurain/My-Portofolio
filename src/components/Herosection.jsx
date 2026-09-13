@@ -1,190 +1,200 @@
-import { useState, useRef } from "react";
-import { MdContentCopy, MdCheck, MdArrowRightAlt } from "react-icons/md";
-import { FaLinkedin } from "react-icons/fa";
-import { motion, useMotionValue, useTransform } from "framer-motion";
-import Squares from "../blocks/Backgrounds/Squares/Squares";
+import { Link } from "react-router-dom";
+import { MapPin, MessageSquare } from "lucide-react";
+import { motion } from "framer-motion";
+
+// Lucide-style LinkedIn SVG matching Stitch reference
+const LinkedInIcon = () => (
+  <svg
+    className="w-[17px] h-[17px]"
+    fill="none"
+    height="17"
+    width="17"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="1.75"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect height="12" width="4" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
+const techStack = ["Laravel", "React.js", "MySQL", "PostgreSQL", "REST API"];
 
 const Herosection = () => {
-  const [copied, setCopied] = useState(false);
-  const email = "ahmadnurain82@gmail.com";
-
-  // 3D Card Hover Effect setup
-  const cardRef = useRef(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const rotateX = useTransform(y, [-100, 100], [15, -15]);
-  const rotateY = useTransform(x, [-100, 100], [-15, 15]);
-
-  const handleMouseMove = (event) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    x.set(event.clientX - centerX);
-    y.set(event.clientY - centerY);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard.writeText(email);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#050505]">
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 z-0 opacity-30">
-        <Squares speed={0.05} squareSize={40} direction="diagonal" borderColor="#111" hoverFillColor="#1a1a1a" />
-      </div>
+    <div className="w-full max-w-7xl mx-auto pt-[140px] md:pt-[160px] pb-16 px-6 md:px-10 lg:px-12 flex-1 flex flex-col justify-center relative">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        {/* Left Column (~58-60% width) */}
+        <div className="lg:col-span-7 flex flex-col items-start">
+          {/* Eyebrow Animation */}
+          <motion.p
+            initial={{ opacity: 0, y: -15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-gray-400 tracking-wider uppercase text-xs font-medium font-mono mb-6 inline-flex items-center gap-2"
+          >
+            AVAILABLE FOR OPPORTUNITIES
+          </motion.p>
 
-      {/* Gradient Orbs for atmosphere */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-brand-green/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
-      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-white/5 rounded-full blur-[100px] pointer-events-none mix-blend-screen" />
+          {/* Hero Headline Animation */}
+          <motion.h1
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-5xl sm:text-6xl lg:text-[76px] font-extrabold text-[#F2F4F7] tracking-[-0.035em] leading-[0.98] mb-6"
+          >
+            Hi, I&apos;m Ahmad
+            <br />
+            <span className="text-[#26C6A3]">Nur&apos;Ain.</span>
+          </motion.h1>
 
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto px-6 md:px-12 z-10 w-full pt-32 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
-          {/* Left Column: Text Content */}
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }} className="flex flex-col items-start text-left max-w-2xl">
-            {/* Profile Avatar & Badge Group */}
-            <div className="flex flex-wrap items-center gap-4 mb-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-gray-300 tracking-wider uppercase backdrop-blur-sm h-fit">Available for hire</div>
-            </div>
-
-            {/* Typography matching modern layout */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[3rem] xl:text-[4rem] font-bold tracking-tighter leading-[1.05] mb-6 text-white font-sans">
-              Hi, I'm <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-brand-green/80">Ahmad Nur Ain.</span>
-            </h1>
-
-            {/* Subtitle/Stats matching layout */}
-            <div className="flex flex-wrap items-center gap-3 md:gap-4 text-gray-400 text-sm md:text-base mb-6 font-medium">
-              <span className="text-brand-green font-semibold">Software Engineer</span>
-              <span className="w-1 h-1 rounded-full bg-gray-600"></span>
-              <span>Full Stack & Cyber Security</span>
-              <span className="w-1 h-1 rounded-full bg-gray-600"></span>
-              <span>Informatics Student</span>
-            </div>
-
-            <p className="text-gray-400 max-w-lg mb-10 text-sm md:text-base leading-relaxed">
-              Saya adalah mahasiswa Informatika yang antusias membangun solusi digital dari mulai backend hingga frontend. Berpengalaman menangani berbagai project pengembangan web dan memiliki hobi yang mendalam pada keamanan siber
-              (security).
+          {/* Role & Location Animation */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            className="mb-6 space-y-1.5"
+          >
+            <p className="text-[18px] font-semibold text-[#E6E8EB]">
+              Backend &amp; Full-Stack Developer
             </p>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => document.getElementById("projects").scrollIntoView({ behavior: "smooth" })}
-                className="px-8 py-3.5 bg-white text-black hover:bg-gray-200 rounded-full font-semibold text-sm transition-all duration-300 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
-              >
-                See Work
-              </button>
-
-              <a
-                href="https://www.linkedin.com/in/ahmad-nur-ain-4a6152253/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-3.5 bg-[#0a66c2]/10 hover:bg-[#0a66c2]/20 backdrop-blur-md border border-[#0a66c2]/30 text-white rounded-full font-medium text-sm transition-all duration-300 flex items-center justify-center gap-3"
-              >
-                <FaLinkedin className="text-[#0a66c2]" size={18} />
-                <span>Connect</span>
-              </a>
-
-              <button
-                onClick={handleCopy}
-                className="px-8 py-3.5 bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 text-white rounded-full font-medium text-sm transition-all duration-300 flex items-center justify-center gap-3"
-              >
-                {copied ? <MdCheck size={18} /> : <MdContentCopy size={18} className="text-gray-400" />}
-                <span>{copied ? "Address Copied" : "Let's Chat"}</span>
-              </button>
-            </div>
+            <p className="text-[14px] text-gray-400 flex items-center gap-2">
+              <MapPin className="text-[#23B08A] w-[15px] h-[15px] shrink-0" strokeWidth={1.75} />
+              <span>Indramayu / West Java, Indonesia</span>
+            </p>
           </motion.div>
 
-          {/* Right Column: Interactive ID Card / Visual */}
-          <div className="hidden lg:flex justify-center xl:justify-end items-center relative lg:h-[600px] perspective-[1200px]">
-            {/* Floating Container */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1, y: [0, -15, 0] }}
-              transition={{
-                opacity: { duration: 1, delay: 0.2 },
-                scale: { duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] },
-                y: { repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1 },
-              }}
-              className="relative flex flex-col items-center"
-            >
-              {/* Lanyard Strap */}
-              <div className="hidden lg:block w-[2px] h-[90px] bg-gradient-to-b from-transparent via-white/10 to-white/40 shadow-[0_0_15px_rgba(255,255,255,0.1)]"></div>
+          {/* Hero Description Animation */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            className="text-[#A2A9B3] max-w-[620px] text-[16px] md:text-[17px] leading-[1.65] font-normal mb-9"
+          >
+            Informatics graduate from Universitas Majalengka with hands-on experience building web applications using PHP, Laravel, MySQL, PostgreSQL, JavaScript, React.js, Livewire, Tailwind CSS, Filament, and REST APIs. Focused on backend and full-stack development, with experience in API integration, database-driven applications, debugging, and team projects.
+          </motion.p>
 
-              {/* Lanyard Clip */}
-              <div className="hidden lg:block w-4 h-6 border-2 border-white/40 rounded-md -mt-1 z-10 bg-black/50 backdrop-blur-md"></div>
-
-              {/* The 3D Card */}
-              <motion.div
-                ref={cardRef}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                className="relative w-[300px] h-[400px] md:w-[360px] md:h-[480px] rounded-[2rem] border border-white/10 bg-[#0a0a0a]/80 backdrop-blur-xl p-5 md:p-7 flex flex-col justify-between overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.6),inset_0_1px_1px_rgba(255,255,255,0.1)] cursor-grab active:cursor-grabbing z-20 mt-6 lg:mt-0"
+          {/* Primary Action Buttons with Motion */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto"
+          >
+            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                to="/projects"
+                className="inline-flex items-center justify-center min-w-[150px] h-[52px] px-6 rounded-full bg-[#23B08A] text-[#04110D] font-semibold text-sm hover:bg-[#1d9c7b] transition-colors shadow-lg shadow-[#23B08A]/15 min-h-[44px]"
               >
-                {/* Glass glare effect */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-80 pointer-events-none rounded-[2rem]"></div>
-
-                {/* Internal Noise texture */}
-                <div className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }}></div>
-
-                {/* Card Header */}
-                <div className="flex justify-between items-start z-10 relative" style={{ transform: "translateZ(30px)" }}>
-                  <div>
-                    <h3 className="text-white/80 font-bold tracking-widest text-[10px] uppercase">Identity Card</h3>
-                    <p className="text-white/40 text-[9px] uppercase mt-1">Access: Full Stack</p>
-                  </div>
-                </div>
-
-                {/* Card Image / Avatar area */}
-                <div
-                  className="w-full aspect-[4/5] rounded-[1.25rem] overflow-hidden relative z-10 mt-6 border border-white/5 bg-[#050505] group-hover:border-white/20 transition-all duration-500 shadow-inner"
-                  style={{ transform: "translateZ(40px)" }}
-                >
-                  {/* Photo Profile */}
-                  <img
-                    src="/IMG_5sw456.JPG"
-                    alt="Ahmad Nur Ain"
-                    className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
-                    onError={(e) => {
-                      // Fallback if IMG_5sw456.JPG isn't the correct profile picture
-                      e.target.src = "/erasebg-transformed.webp";
-                    }}
-                  />
-                  {/* Subtle overlay for depth & hacker vibe without changing the color */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/10 to-transparent opacity-80 pointer-events-none"></div>
-                </div>
-
-                {/* Card Footer */}
-                <div className="z-10 relative mt-6 flex justify-between items-end w-full" style={{ transform: "translateZ(30px)" }}>
-                  <div className="flex flex-col bg-[#050505]/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/5 shadow-lg">
-                    <h2 className="text-white font-bold text-xl md:text-2xl tracking-tight">Ahmad Nur Ain</h2>
-                    <p className="text-brand-green text-xs mt-0.5 font-medium tracking-wide uppercase">Full-Stack Developer</p>
-                  </div>
-                  {/* Digital Barcode mock */}
-                  <div className="flex gap-[3px] h-8 items-end opacity-40">
-                    <div className="w-1 h-[80%] bg-white rounded-t-sm"></div>
-                    <div className="w-[2px] h-[100%] bg-white rounded-t-sm"></div>
-                    <div className="w-[3px] h-[60%] bg-white rounded-t-sm"></div>
-                    <div className="w-1 h-[90%] bg-white rounded-t-sm"></div>
-                    <div className="w-[2px] h-[70%] bg-white rounded-t-sm"></div>
-                    <div className="w-[4px] h-[100%] bg-white rounded-t-sm"></div>
-                  </div>
-                </div>
-              </motion.div>
+                <span>View Projects</span>
+              </Link>
             </motion.div>
-          </div>
+
+            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
+              <a
+                href="https://www.linkedin.com/in/ahmad-nur-ain-4a6152253"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center h-[52px] px-6 rounded-full border border-white/[0.08] bg-[#17191c] text-gray-200 font-medium text-sm hover:border-[#23B08A]/50 hover:bg-[#1f2226] transition-colors gap-2 min-h-[44px]"
+              >
+                <LinkedInIcon />
+                <span>LinkedIn</span>
+              </a>
+            </motion.div>
+
+            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center h-[52px] px-6 rounded-full border border-white/[0.08] bg-transparent text-gray-300 hover:text-white hover:border-gray-500 hover:bg-white/[0.03] transition-colors text-sm font-medium gap-2 min-h-[44px]"
+              >
+                <MessageSquare className="text-gray-400 w-[17px] h-[17px]" strokeWidth={1.75} />
+                <span>Contact Me</span>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Right Column (~38-40% width) Profile Card with Motion & Interactive Tilt */}
+        <div className="lg:col-span-5 flex justify-center lg:justify-end relative w-full">
+          {/* Ambient Glow */}
+          <motion.div
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.04, 0.08, 0.04],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute -inset-6 bg-[#23B08A] rounded-full blur-[110px] pointer-events-none -z-10"
+          />
+
+          {/* Card Container with Entrance and Floating Effect */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            whileHover={{ y: -6, transition: { duration: 0.3 } }}
+            className="group w-full max-w-[420px] rounded-[26px] bg-[#111416] border border-white/[0.08] p-5 relative shadow-2xl shadow-black/80 hover:border-white/20 transition-colors"
+          >
+            {/* Card Image with subtle zoom on hover */}
+            <div className="w-full h-[320px] sm:h-[340px] rounded-[18px] overflow-hidden bg-[#17191c] mb-5 border border-white/[0.06] relative">
+              <img
+                alt="Ahmad Nur'Ain"
+                className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                src="/IMG_5sw456.JPG"
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = "/erasebg-transformed.webp";
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111416]/60 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+            </div>
+
+            {/* Profile Card Fields */}
+            <div className="space-y-3.5 text-left">
+              <div>
+                <h3 className="text-[21px] font-bold text-[#F2F4F7] tracking-tight group-hover:text-white transition-colors">
+                  Ahmad Nur&apos;Ain
+                </h3>
+                <p className="text-[13px] text-[#23B08A] font-medium mt-0.5">
+                  Backend &amp; Full-Stack Developer
+                </p>
+              </div>
+
+              {/* Tech Stack Badges with Interactive Motion */}
+              <div className="flex flex-wrap gap-2 pt-0.5">
+                {techStack.map((tech, index) => (
+                  <motion.span
+                    key={tech}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: 0.35 + index * 0.05 }}
+                    whileHover={{
+                      scale: 1.08,
+                      borderColor: "rgba(35, 176, 138, 0.4)",
+                      backgroundColor: "rgba(35, 176, 138, 0.08)",
+                    }}
+                    className="h-7 px-3 inline-flex items-center rounded-lg bg-white/[0.035] border border-white/[0.06] text-gray-300 text-[11px] font-mono cursor-default transition-colors"
+                  >
+                    {tech}
+                  </motion.span>
+                ))}
+              </div>
+
+              {/* Availability */}
+              <div className="pt-3.5 border-t border-white/[0.06]">
+                <p className="text-[12px] text-gray-400 leading-snug">
+                  Open to full-time opportunities and selected freelance projects
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </div>
