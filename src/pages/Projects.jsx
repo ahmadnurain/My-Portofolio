@@ -251,9 +251,10 @@ const Projects = () => {
                         </a>
                       )}
                       {!featuredProject.repository && !featuredProject.liveUrl && (
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.06] text-xs font-mono text-gray-400">
-                          <span className="w-2 h-2 rounded-full bg-[#23B08A] animate-pulse" />
-                          Institutional Deployment (Active)
+                        <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.06] text-xs font-mono text-gray-400">
+                          {featuredProject.context?.includes("Institutional")
+                            ? "Institutional Deployment"
+                            : "Collaborative Prototype"}
                         </span>
                       )}
                     </div>
@@ -348,13 +349,16 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* 7. Actions (Rendered when valid URL or Institutional status exists) */}
-                {(project.repository || project.liveUrl || project.context?.includes("Institutional")) && (
+                {/* 7. Actions (Rendered when valid URL, Institutional status, or Collaborative/Team exists) */}
+                {(project.repository || project.liveUrl || project.context?.includes("Institutional") || project.context?.includes("Hackathon") || project.context?.includes("Team") || project.context?.includes("Collaborative")) && (
                   <div className="pt-2 border-t border-white/[0.06] flex flex-wrap items-center justify-end gap-2.5">
-                    {!project.repository && !project.liveUrl && project.context?.includes("Institutional") && (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.02] border border-white/[0.06] text-[11px] font-mono text-gray-400">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#23B08A] animate-pulse" />
-                        Institutional Deployment
+                    {!project.repository && !project.liveUrl && (
+                      <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.02] border border-white/[0.06] text-[11px] font-mono text-gray-400">
+                        {project.context?.includes("Institutional")
+                          ? "Institutional Deployment"
+                          : project.context?.includes("Collaborative")
+                          ? "Collaborative System"
+                          : "Collaborative Prototype"}
                       </span>
                     )}
                     {project.liveUrl && (
