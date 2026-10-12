@@ -120,19 +120,8 @@ const Herosection = () => {
 
         {/* Right Column (~38-40% width) Profile Card with Motion & Interactive Tilt */}
         <div className="lg:col-span-5 flex justify-center lg:justify-end relative w-full">
-          {/* Ambient Glow */}
-          <motion.div
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.04, 0.08, 0.04],
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute -inset-6 bg-[#23B08A] rounded-full blur-[110px] pointer-events-none -z-10"
-          />
+          {/* Static Ambient Glow without continuous GPU repaint loop */}
+          <div className="absolute -inset-6 bg-[#23B08A]/[0.05] rounded-full blur-[90px] pointer-events-none -z-10" />
 
           {/* Card Container with Entrance and Floating Effect */}
           <motion.div
@@ -148,6 +137,9 @@ const Herosection = () => {
                 alt="Ahmad Nur'Ain"
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                 src="/IMG_5sw456.JPG"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
                   e.currentTarget.src = "/erasebg-transformed.webp";

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 const SplashScreen = ({ onComplete }) => {
-  const [progress, setProgress] = useState(0);
+  const [filled, setFilled] = useState(false);
   const [isOpening, setIsOpening] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
 
@@ -11,74 +11,70 @@ const SplashScreen = ({ onComplete }) => {
     // Lock scroll during splash
     document.body.style.overflow = "hidden";
 
-    // Smooth progress counter from 0 to 100 over ~1200ms
-    const startTime = Date.now();
-    const duration = 1200;
+    // Trigger GPU-accelerated CSS clip-path fill shortly after mount
+    const fillTimer = setTimeout(() => {
+      setFilled(true);
+    }, 60);
 
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const pct = Math.min(Math.round((elapsed / duration) * 100), 100);
-      setProgress(pct);
+    // After fill completes (~1100ms), trigger horizontal split opening
+    const openTimer = setTimeout(() => {
+      setIsOpening(true);
+    }, 1150);
 
-      if (pct >= 100) {
-        clearInterval(interval);
-        // Pause briefly once fully filled, then trigger curtain opening
-        setTimeout(() => {
-          setIsOpening(true);
-        }, 180);
-
-        // Complete animation and unmount
-        setTimeout(() => {
-          setIsFinished(true);
-          document.body.style.overflow = "";
-          if (onComplete) onComplete();
-        }, 1100);
-      }
-    }, 16);
+    // Complete reveal and restore scroll
+    const finishTimer = setTimeout(() => {
+      setIsFinished(true);
+      document.body.style.overflow = "";
+      if (onComplete) onComplete();
+    }, 1900);
 
     return () => {
-      clearInterval(interval);
+      clearTimeout(fillTimer);
+      clearTimeout(openTimer);
+      clearTimeout(finishTimer);
       document.body.style.overflow = "";
     };
   }, [onComplete]);
 
-  // Click anywhere to immediately skip and open
+  // Click anywhere for instant skip
   const handleSkip = () => {
     if (!isOpening) {
-      setProgress(100);
+      setFilled(true);
       setIsOpening(true);
       setTimeout(() => {
         setIsFinished(true);
         document.body.style.overflow = "";
         if (onComplete) onComplete();
-      }, 750);
+      }, 650);
     }
   };
 
   if (isFinished) return null;
 
-  // Reusable typography layer with stroke background and filled foreground
+  // Lightweight typography with fluid clamp so text never wraps or overflows on mobile
   const renderTypography = () => (
-    <div className="relative inline-block select-none text-center px-4">
-      {/* 1. Base Stroke Outline (Transparent Fill with Outline) */}
+    <div className="relative inline-flex items-center justify-center select-none text-center px-4 max-w-full">
+      {/* 1. Base Stroke Outline (Transparent Fill with Crisp Outline) */}
       <span
-        className="block font-black tracking-tighter uppercase text-transparent text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
+        className="block font-black tracking-tight uppercase text-transparent whitespace-nowrap text-[clamp(1.75rem,7vw,6.5rem)] leading-none select-none"
         style={{
-          WebkitTextStroke: "1.5px rgba(255, 255, 255, 0.28)",
+          WebkitTextStroke: "1px rgba(255, 255, 255, 0.3)",
           fontFamily: "Inter, sans-serif",
         }}
       >
         AHMAD NUR&apos;AIN
       </span>
 
-      {/* 2. Loading Fill Layer (Progressively fills the text with signature color) */}
+      {/* 2. Hardware-accelerated Fill Layer (Smooth GPU transition, zero React re-render lag) */}
       <span
-        className="absolute inset-0 block font-black tracking-tighter uppercase text-[#23B08A] text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl pointer-events-none transition-all duration-75"
+        aria-hidden="true"
+        className="absolute inset-0 flex items-center justify-center font-black tracking-tight uppercase text-[#23B08A] whitespace-nowrap select-none pointer-events-none text-[clamp(1.75rem,7vw,6.5rem)] leading-none"
         style={{
-          clipPath: `inset(0 ${100 - progress}% 0 0)`,
-          WebkitTextStroke: "1.5px #23B08A",
-          filter: "drop-shadow(0 0 20px rgba(35, 176, 138, 0.45))",
+          clipPath: filled ? "inset(0 0% 0 0)" : "inset(0 100% 0 0)",
+          transition: "clip-path 1.05s cubic-bezier(0.25, 1, 0.5, 1)",
+          WebkitTextStroke: "1px #23B08A",
           fontFamily: "Inter, sans-serif",
+          willChange: "clip-path",
         }}
       >
         AHMAD NUR&apos;AIN
@@ -89,7 +85,7 @@ const SplashScreen = ({ onComplete }) => {
   return (
     <div
       onClick={handleSkip}
-      className="fixed inset-0 z-[9999] pointer-events-auto cursor-pointer select-none overflow-hidden"
+      className="fixed inset-0 z-[9999] pointer-events-auto cursor-pointer select-none overflow-hidden touch-none"
       role="dialog"
       aria-label="Welcome Reveal"
     >
@@ -98,13 +94,13 @@ const SplashScreen = ({ onComplete }) => {
         initial={{ y: 0 }}
         animate={{ y: isOpening ? "-100%" : 0 }}
         transition={{
-          duration: 0.85,
+          duration: 0.75,
           ease: [0.76, 0, 0.24, 1],
         }}
-        className="absolute top-0 left-0 w-full h-[50vh] bg-[#050607] overflow-hidden z-10"
+        className="absolute top-0 left-0 w-full h-[50dvh] min-h-[50vh] bg-[#050607] overflow-hidden z-10 will-change-transform"
       >
         {/* Inner full-height container matching exact screen coordinates */}
-        <div className="absolute top-0 left-0 w-full h-[100vh] flex items-center justify-center">
+        <div className="absolute top-0 left-0 w-full h-[100dvh] min-h-[100vh] flex items-center justify-center">
           {renderTypography()}
         </div>
       </motion.div>
@@ -114,13 +110,13 @@ const SplashScreen = ({ onComplete }) => {
         initial={{ y: 0 }}
         animate={{ y: isOpening ? "100%" : 0 }}
         transition={{
-          duration: 0.85,
+          duration: 0.75,
           ease: [0.76, 0, 0.24, 1],
         }}
-        className="absolute bottom-0 left-0 w-full h-[50vh] bg-[#050607] overflow-hidden z-10"
+        className="absolute bottom-0 left-0 w-full h-[50dvh] min-h-[50vh] bg-[#050607] overflow-hidden z-10 will-change-transform"
       >
         {/* Inner full-height container matching exact screen coordinates */}
-        <div className="absolute bottom-0 left-0 w-full h-[100vh] flex items-center justify-center">
+        <div className="absolute bottom-0 left-0 w-full h-[100dvh] min-h-[100vh] flex items-center justify-center">
           {renderTypography()}
         </div>
       </motion.div>

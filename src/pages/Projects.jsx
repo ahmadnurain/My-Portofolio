@@ -130,6 +130,8 @@ const Projects = () => {
                       <img
                         src={featuredProject.image}
                         alt={featuredProject.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover object-top group-hover/img:scale-103 transition-all duration-500"
                       />
                     </div>
@@ -307,6 +309,8 @@ const Projects = () => {
                       <img
                         src={project.image}
                         alt={project.title}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover object-top grayscale-[15%] group-hover/cardimg:grayscale-0 group-hover/cardimg:scale-103 transition-all duration-500"
                       />
                     </div>
