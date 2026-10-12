@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trophy, ArrowUpRight, Mail, FileText, Terminal, Globe } from "lucide-react";
+import { Trophy, ArrowUpRight, Mail, FileText, Terminal, Globe, Info } from "lucide-react";
 import PropTypes from "prop-types";
 import { projectsData } from "../data/projects";
+import ProjectModal from "../components/ProjectModal";
 
 const GithubIcon = ({ className = "w-3.5 h-3.5" }) => (
   <svg
@@ -40,6 +41,7 @@ const resumeUrl =
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const filteredProjects = projectsData.filter((project) => {
     if (activeFilter === "All") return true;
@@ -121,15 +123,21 @@ const Projects = () => {
                 {/* Left Column: Visual Representation */}
                 <div className="lg:col-span-5 flex flex-col justify-center">
                   {featuredProject.image ? (
-                    <div className="w-full h-64 sm:h-72 lg:h-80 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#090b0d] shadow-lg">
+                    <div
+                      onClick={() => setSelectedProject(featuredProject)}
+                      className="w-full h-64 sm:h-72 lg:h-80 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#090b0d] shadow-lg cursor-pointer group/img"
+                    >
                       <img
                         src={featuredProject.image}
                         alt={featuredProject.title}
-                        className="w-full h-full object-cover object-top hover:scale-102 transition-all duration-500"
+                        className="w-full h-full object-cover object-top group-hover/img:scale-103 transition-all duration-500"
                       />
                     </div>
                   ) : (
-                    <div className="w-full rounded-2xl bg-[#090b0d] border border-white/[0.08] p-5 sm:p-6 relative overflow-hidden flex flex-col justify-between min-h-[280px]">
+                    <div
+                      onClick={() => setSelectedProject(featuredProject)}
+                      className="w-full rounded-2xl bg-[#090b0d] border border-white/[0.08] p-5 sm:p-6 relative overflow-hidden flex flex-col justify-between min-h-[280px] cursor-pointer"
+                    >
                       <div className="flex items-center justify-between border-b border-white/[0.06] pb-3 mb-4">
                         <div className="flex items-center gap-2">
                           <Terminal className="w-4 h-4 text-[#23B08A]" />
@@ -179,7 +187,10 @@ const Projects = () => {
                   </div>
 
                   {/* Title */}
-                  <h2 className="text-2xl sm:text-3xl font-bold text-[#F2F4F7] tracking-tight mb-4 group-hover:text-[#23B08A] transition-colors duration-200">
+                  <h2
+                    onClick={() => setSelectedProject(featuredProject)}
+                    className="text-2xl sm:text-3xl font-bold text-[#F2F4F7] tracking-tight mb-4 group-hover:text-[#23B08A] transition-colors duration-200 cursor-pointer"
+                  >
                     {featuredProject.title}
                   </h2>
 
@@ -224,41 +235,48 @@ const Projects = () => {
                   </div>
 
                   {/* Actions */}
-                  {(featuredProject.repository || featuredProject.liveUrl || featuredProject.context?.includes("Institutional")) && (
-                    <div className="pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-start gap-3">
-                      {featuredProject.repository && (
-                        <a
-                          href={featuredProject.repository}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[44px]"
-                        >
-                          <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
-                          <span>Repository</span>
-                          <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
-                        </a>
-                      )}
-                      {featuredProject.liveUrl && (
-                        <a
-                          href={featuredProject.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#23B08A]/10 border border-[#23B08A]/30 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/20 transition-all min-h-[44px]"
-                        >
-                          <Globe className="w-3.5 h-3.5" />
-                          <span>Live Platform</span>
-                          <ArrowUpRight className="w-3.5 h-3.5" />
-                        </a>
-                      )}
-                      {!featuredProject.repository && !featuredProject.liveUrl && (
-                        <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.06] text-xs font-mono text-gray-400">
-                          {featuredProject.context?.includes("Institutional")
-                            ? "Institutional Deployment"
-                            : "Collaborative Prototype"}
-                        </span>
-                      )}
-                    </div>
-                  )}
+                  <div className="pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-start gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProject(featuredProject)}
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#23B08A]/15 border border-[#23B08A]/40 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/25 transition-all min-h-[44px] cursor-pointer"
+                    >
+                      <Info className="w-3.5 h-3.5" />
+                      <span>Case Study &amp; Details</span>
+                    </button>
+
+                    {featuredProject.repository && (
+                      <a
+                        href={featuredProject.repository}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[44px]"
+                      >
+                        <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
+                        <span>Repository</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
+                      </a>
+                    )}
+                    {featuredProject.liveUrl && (
+                      <a
+                        href={featuredProject.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#23B08A]/10 border border-[#23B08A]/30 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/20 transition-all min-h-[44px]"
+                      >
+                        <Globe className="w-3.5 h-3.5" />
+                        <span>Live Platform</span>
+                        <ArrowUpRight className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                    {!featuredProject.repository && !featuredProject.liveUrl && (
+                      <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.06] text-xs font-mono text-gray-400">
+                        {featuredProject.context?.includes("Institutional")
+                          ? "Institutional Deployment"
+                          : "Collaborative Prototype"}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -282,11 +300,14 @@ const Projects = () => {
                 <div>
                   {/* Optional Real Screenshot Preview */}
                   {project.image && (
-                    <div className="w-full h-48 rounded-xl overflow-hidden mb-6 border border-white/[0.06] bg-[#090b0d]">
+                    <div
+                      onClick={() => setSelectedProject(project)}
+                      className="w-full h-48 rounded-xl overflow-hidden mb-6 border border-white/[0.06] bg-[#090b0d] cursor-pointer group/cardimg"
+                    >
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="w-full h-full object-cover object-top grayscale-[15%] group-hover:grayscale-0 group-hover:scale-102 transition-all duration-500"
+                        className="w-full h-full object-cover object-top grayscale-[15%] group-hover/cardimg:grayscale-0 group-hover/cardimg:scale-103 transition-all duration-500"
                       />
                     </div>
                   )}
@@ -305,7 +326,10 @@ const Projects = () => {
                   </div>
 
                   {/* 2. Project Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#F2F4F7] tracking-tight mb-3 group-hover:text-[#23B08A] transition-colors duration-200">
+                  <h3
+                    onClick={() => setSelectedProject(project)}
+                    className="text-xl sm:text-2xl font-bold text-[#F2F4F7] tracking-tight mb-3 group-hover:text-[#23B08A] transition-colors duration-200 cursor-pointer"
+                  >
                     {project.title}
                   </h3>
 
@@ -349,9 +373,18 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* 7. Actions (Rendered when valid URL, Institutional status, or Collaborative/Team exists) */}
-                {(project.repository || project.liveUrl || project.context?.includes("Institutional") || project.context?.includes("Hackathon") || project.context?.includes("Team") || project.context?.includes("Collaborative")) && (
-                  <div className="pt-2 border-t border-white/[0.06] flex flex-wrap items-center justify-end gap-2.5">
+                {/* 7. Actions Bar with Details Modal Trigger */}
+                <div className="pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-2.5">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProject(project)}
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/50 hover:bg-[#23B08A]/10 transition-all min-h-[40px] cursor-pointer"
+                  >
+                    <Info className="w-3.5 h-3.5 text-[#23B08A]" />
+                    <span>Details</span>
+                  </button>
+
+                  <div className="flex flex-wrap items-center gap-2">
                     {!project.repository && !project.liveUrl && (
                       <span className="inline-flex items-center px-3 py-1 rounded-full bg-white/[0.02] border border-white/[0.06] text-[11px] font-mono text-gray-400">
                         {project.context?.includes("Institutional")
@@ -366,7 +399,7 @@ const Projects = () => {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#23B08A]/10 border border-[#23B08A]/30 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/20 transition-all min-h-[40px]"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#23B08A]/10 border border-[#23B08A]/30 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/20 transition-all min-h-[40px]"
                       >
                         <Globe className="w-3 h-3" />
                         <span>Live</span>
@@ -378,15 +411,15 @@ const Projects = () => {
                         href={project.repository}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[44px]"
+                        className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[40px]"
                       >
                         <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
-                        <span>Repository</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
+                        <span>Code</span>
+                        <ArrowUpRight className="w-3 h-3 text-gray-400" />
                       </a>
                     )}
                   </div>
-                )}
+                </div>
               </motion.div>
             ))}
           </AnimatePresence>
@@ -432,6 +465,12 @@ const Projects = () => {
           </div>
         </div>
       </section>
+      {/* PROJECT DETAILS MODAL DIALOG */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={Boolean(selectedProject)}
+        onClose={() => setSelectedProject(null)}
+      />
     </main>
   );
 };

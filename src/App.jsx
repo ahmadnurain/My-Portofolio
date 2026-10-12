@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import SplashScreen from "./components/SplashScreen";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
@@ -32,6 +33,8 @@ const ResumeRedirect = () => {
 };
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -43,6 +46,7 @@ function App() {
   return (
     <Router>
       <ScrollToTopOnRoute />
+      {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       <div className="relative min-h-screen flex flex-col justify-between overflow-x-hidden bg-[#050607] text-[#dee4df] font-sans antialiased selection:bg-[#23B08A]/30 selection:text-white">
         {/* Subtle Animated Background Grid & Ambient Glow for all pages */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">

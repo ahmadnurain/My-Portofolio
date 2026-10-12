@@ -86,3 +86,10 @@
     transform: scale(1.08);
   }
 }
+
+body.modal-open header {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-24px) translateX(-50%) !important;
+  transition: opacity 0.25s ease, transform 0.25s ease !important;
+}
