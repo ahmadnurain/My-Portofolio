@@ -37,7 +37,7 @@ const filterCategories = [
 ];
 
 const resumeUrl =
-  "https://drive.google.com/file/d/1YR74DQc5j0UB0gzCUXywt-vm-kDKnvIK/view?usp=sharing";
+  "https://drive.google.com/file/d/1Umr-i8VQbLUF4gqKKZcGrVMKxn0sDYtx/view?usp=sharing";
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState("All");
