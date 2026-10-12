@@ -26,8 +26,8 @@ const techStack = ["Laravel", "React.js", "MySQL", "PostgreSQL", "REST API"];
 
 const Herosection = () => {
   return (
-    <div className="w-full max-w-7xl mx-auto pt-[140px] md:pt-[160px] pb-16 px-6 md:px-10 lg:px-12 flex-1 flex flex-col justify-center relative">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <div className="w-full max-w-7xl mx-auto pt-24 sm:pt-32 md:pt-[150px] pb-12 sm:pb-16 px-4 sm:px-8 md:px-10 lg:px-12 flex-1 flex flex-col justify-center relative">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
         {/* Left Column (~58-60% width) */}
         <div className="lg:col-span-7 flex flex-col items-start">
           {/* Eyebrow Animation */}
@@ -35,7 +35,7 @@ const Herosection = () => {
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-gray-400 tracking-wider uppercase text-xs font-medium font-mono mb-6 inline-flex items-center gap-2"
+            className="text-gray-400 tracking-wider uppercase text-[11px] sm:text-xs font-medium font-mono mb-4 sm:mb-6 inline-flex items-center gap-2"
           >
             AVAILABLE FOR OPPORTUNITIES
           </motion.p>
@@ -45,7 +45,7 @@ const Herosection = () => {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl sm:text-6xl lg:text-[76px] font-extrabold text-[#F2F4F7] tracking-[-0.035em] leading-[0.98] mb-6"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-[74px] font-extrabold text-[#F2F4F7] tracking-[-0.035em] leading-[1.05] sm:leading-[0.98] mb-5 sm:mb-6"
           >
             Hi, I&apos;m Ahmad
             <br />
@@ -57,13 +57,13 @@ const Herosection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-            className="mb-6 space-y-1.5"
+            className="mb-5 sm:mb-6 space-y-1.5"
           >
-            <p className="text-[18px] font-semibold text-[#E6E8EB]">
+            <p className="text-[16px] sm:text-[18px] font-semibold text-[#E6E8EB]">
               Backend &amp; Full-Stack Developer
             </p>
-            <p className="text-[14px] text-gray-400 flex items-center gap-2">
-              <MapPin className="text-[#23B08A] w-[15px] h-[15px] shrink-0" strokeWidth={1.75} />
+            <p className="text-[13px] sm:text-[14px] text-gray-400 flex items-center gap-2">
+              <MapPin className="text-[#23B08A] w-[14px] sm:w-[15px] h-[14px] sm:h-[15px] shrink-0" strokeWidth={1.75} />
               <span>Indramayu / West Java, Indonesia</span>
             </p>
           </motion.div>
@@ -73,7 +73,7 @@ const Herosection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-            className="text-[#A2A9B3] max-w-[620px] text-[16px] md:text-[17px] leading-[1.65] font-normal mb-9"
+            className="text-[#A2A9B3] max-w-[620px] text-sm sm:text-[16px] md:text-[17px] leading-relaxed font-normal mb-7 sm:mb-9"
           >
             Informatics graduate from Universitas Majalengka with hands-on experience building web applications using PHP, Laravel, MySQL, PostgreSQL, JavaScript, React.js, Livewire, Tailwind CSS, Filament, and REST APIs. Focused on backend and full-stack development, with experience in API integration, database-driven applications, debugging, and team projects.
           </motion.p>
@@ -83,35 +83,35 @@ const Herosection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto"
+            className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 w-full sm:w-auto"
           >
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className="flex-1 sm:flex-initial">
               <Link
                 to="/projects"
-                className="inline-flex items-center justify-center min-w-[150px] h-[52px] px-6 rounded-full bg-[#23B08A] text-[#04110D] font-semibold text-sm hover:bg-[#1d9c7b] transition-colors shadow-lg shadow-[#23B08A]/15 min-h-[44px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center min-w-[130px] sm:min-w-[150px] h-[46px] sm:h-[52px] px-5 sm:px-6 rounded-full bg-[#23B08A] text-[#04110D] font-semibold text-xs sm:text-sm hover:bg-[#1d9c7b] transition-colors shadow-lg shadow-[#23B08A]/15 min-h-[44px]"
               >
                 <span>View Projects</span>
               </Link>
             </motion.div>
 
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className="flex-1 sm:flex-initial">
               <a
                 href="https://www.linkedin.com/in/ahmad-nur-ain-4a6152253"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center h-[52px] px-6 rounded-full border border-white/[0.08] bg-[#17191c] text-gray-200 font-medium text-sm hover:border-[#23B08A]/50 hover:bg-[#1f2226] transition-colors gap-2 min-h-[44px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center h-[46px] sm:h-[52px] px-5 sm:px-6 rounded-full border border-white/[0.08] bg-[#17191c] text-gray-200 font-medium text-xs sm:text-sm hover:border-[#23B08A]/50 hover:bg-[#1f2226] transition-colors gap-2 min-h-[44px]"
               >
                 <LinkedInIcon />
                 <span>LinkedIn</span>
               </a>
             </motion.div>
 
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center h-[52px] px-6 rounded-full border border-white/[0.08] bg-transparent text-gray-300 hover:text-white hover:border-gray-500 hover:bg-white/[0.03] transition-colors text-sm font-medium gap-2 min-h-[44px]"
+                className="w-full sm:w-auto inline-flex items-center justify-center h-[46px] sm:h-[52px] px-5 sm:px-6 rounded-full border border-white/[0.08] bg-transparent text-gray-300 hover:text-white hover:border-gray-500 hover:bg-white/[0.03] transition-colors text-xs sm:text-sm font-medium gap-2 min-h-[44px]"
               >
-                <MessageSquare className="text-gray-400 w-[17px] h-[17px]" strokeWidth={1.75} />
+                <MessageSquare className="text-gray-400 w-[15px] sm:w-[17px] h-[15px] sm:h-[17px]" strokeWidth={1.75} />
                 <span>Contact Me</span>
               </Link>
             </motion.div>
@@ -119,7 +119,7 @@ const Herosection = () => {
         </div>
 
         {/* Right Column (~38-40% width) Profile Card with Motion & Interactive Tilt */}
-        <div className="lg:col-span-5 flex justify-center lg:justify-end relative w-full">
+        <div className="lg:col-span-5 flex justify-center lg:justify-end relative w-full mt-4 lg:mt-0">
           {/* Static Ambient Glow without continuous GPU repaint loop */}
           <div className="absolute -inset-6 bg-[#23B08A]/[0.05] rounded-full blur-[90px] pointer-events-none -z-10" />
 
@@ -129,10 +129,10 @@ const Herosection = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6, transition: { duration: 0.3 } }}
-            className="group w-full max-w-[420px] rounded-[26px] bg-[#111416] border border-white/[0.08] p-5 relative shadow-2xl shadow-black/80 hover:border-white/20 transition-colors"
+            className="group w-full max-w-[420px] rounded-2xl sm:rounded-[26px] bg-[#111416] border border-white/[0.08] p-4 sm:p-5 relative shadow-2xl shadow-black/80 hover:border-white/20 transition-colors"
           >
             {/* Card Image with subtle zoom on hover */}
-            <div className="w-full h-[320px] sm:h-[340px] rounded-[18px] overflow-hidden bg-[#17191c] mb-5 border border-white/[0.06] relative">
+            <div className="w-full h-[260px] sm:h-[340px] rounded-xl sm:rounded-[18px] overflow-hidden bg-[#17191c] mb-4 sm:mb-5 border border-white/[0.06] relative">
               <img
                 alt="Ahmad Nur'Ain"
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"

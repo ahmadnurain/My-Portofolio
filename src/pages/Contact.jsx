@@ -156,75 +156,75 @@ const Contact = () => {
   };
 
   return (
-    <main className="relative z-10 flex-1 w-full max-w-7xl mx-auto px-6 md:px-12 pt-36 md:pt-44 pb-20 text-left">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+    <main className="relative z-10 flex-1 w-full max-w-7xl mx-auto px-4 sm:px-8 md:px-12 pt-24 sm:pt-32 md:pt-44 pb-16 sm:pb-20 text-left">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16 items-start">
         {/* LEFT COLUMN: Narrative & Structured Channels (~45%) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="lg:col-span-5 flex flex-col space-y-8"
+          className="lg:col-span-5 flex flex-col space-y-6 sm:space-y-8"
         >
           {/* Eyebrow */}
           <div className="flex items-center gap-2">
-            <span className="text-xs uppercase font-mono tracking-widest text-[#23B08A] font-semibold">
+            <span className="text-[11px] sm:text-xs uppercase font-mono tracking-widest text-[#23B08A] font-semibold">
               GET IN TOUCH
             </span>
           </div>
 
           {/* Headline & Supporting Narrative */}
-          <div className="space-y-4">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-[#dee4df] tracking-tight leading-[1.1]">
+          <div className="space-y-3 sm:space-y-4">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-extrabold text-[#dee4df] tracking-tight leading-[1.1]">
               Let&apos;s talk about{" "}
               <span className="text-[#23B08A]">what you&apos;re building.</span>
             </h1>
-            <p className="text-base sm:text-lg text-gray-300 leading-relaxed max-w-lg">
+            <p className="text-sm sm:text-lg text-gray-300 leading-relaxed max-w-lg">
               Whether you&apos;re hiring for a development role, looking for a freelance
               developer, or want to discuss a project, feel free to reach out.
             </p>
           </div>
 
           {/* Minimal Structured Contact Channels */}
-          <div className="w-full pt-4 space-y-1">
+          <div className="w-full pt-2 sm:pt-4 space-y-1">
             {/* Channel: Email */}
-            <div className="group flex items-center justify-between py-4 border-b border-white/[0.08] hover:border-[#23B08A]/50 transition-colors duration-150">
+            <div className="group flex items-center justify-between py-3.5 sm:py-4 border-b border-white/[0.08] hover:border-[#23B08A]/50 transition-colors duration-150">
               <a
                 href="mailto:ahmadnurain84@gmail.com"
-                className="flex items-center gap-3.5 flex-1 min-w-0 pr-2 focus:outline-none"
+                className="flex items-center gap-3 sm:gap-3.5 flex-1 min-w-0 pr-2 focus:outline-none"
               >
-                <Mail className="w-5 h-5 text-gray-400 group-hover:text-[#23B08A] transition-colors shrink-0" />
+                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#23B08A] transition-colors shrink-0" />
                 <div className="truncate">
-                  <p className="text-xs uppercase font-mono tracking-wider text-gray-400">
+                  <p className="text-[10px] sm:text-xs uppercase font-mono tracking-wider text-gray-400">
                     Email
                   </p>
-                  <p className="text-sm font-medium text-[#dee4df] group-hover:text-[#23B08A] transition-colors truncate">
+                  <p className="text-xs sm:text-sm font-medium text-[#dee4df] group-hover:text-[#23B08A] transition-colors truncate">
                     ahmadnurain84@gmail.com
                   </p>
                 </div>
               </a>
-              <div className="flex items-center gap-1.5 shrink-0">
+              <div className="flex items-center gap-1 shrink-0">
                 <button
                   type="button"
                   onClick={handleCopyEmail}
                   aria-label="Copy email address"
-                  className="p-2 rounded-lg text-gray-400 hover:text-[#23B08A] hover:bg-white/[0.05] transition-colors cursor-pointer"
+                  className="p-1.5 sm:p-2 rounded-lg text-gray-400 hover:text-[#23B08A] hover:bg-white/[0.05] transition-colors cursor-pointer"
                   title="Copy email to clipboard"
                 >
                   {copied ? (
-                    <span className="flex items-center gap-1 text-xs text-[#23B08A] font-mono">
+                    <span className="flex items-center gap-1 text-[11px] sm:text-xs text-[#23B08A] font-mono">
                       <Check className="w-3.5 h-3.5" />
                       <span>Copied</span>
                     </span>
                   ) : (
-                    <Copy className="w-4 h-4" />
+                    <Copy className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   )}
                 </button>
                 <a
                   href="mailto:ahmadnurain84@gmail.com"
                   aria-label="Compose email to ahmadnurain84@gmail.com"
-                  className="p-2 rounded-lg text-gray-400 group-hover:text-[#23B08A] hover:bg-white/[0.05] transition-colors"
+                  className="p-1.5 sm:p-2 rounded-lg text-gray-400 group-hover:text-[#23B08A] hover:bg-white/[0.05] transition-colors"
                 >
-                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
             </div>
@@ -234,20 +234,20 @@ const Contact = () => {
               href="https://www.linkedin.com/in/ahmad-nur-ain-4a6152253"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between py-4 border-b border-white/[0.08] hover:border-[#23B08A]/50 transition-colors duration-150 focus:outline-none"
+              className="group flex items-center justify-between py-3.5 sm:py-4 border-b border-white/[0.08] hover:border-[#23B08A]/50 transition-colors duration-150 focus:outline-none"
             >
-              <div className="flex items-center gap-3.5 min-w-0 pr-2">
-                <LinkedInIcon className="w-5 h-5 text-gray-400 group-hover:text-[#23B08A] transition-colors shrink-0" />
+              <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 pr-2">
+                <LinkedInIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#23B08A] transition-colors shrink-0" />
                 <div className="truncate">
-                  <p className="text-xs uppercase font-mono tracking-wider text-gray-400">
+                  <p className="text-[10px] sm:text-xs uppercase font-mono tracking-wider text-gray-400">
                     LinkedIn
                   </p>
-                  <p className="text-sm font-medium text-[#dee4df] group-hover:text-[#23B08A] transition-colors truncate">
+                  <p className="text-xs sm:text-sm font-medium text-[#dee4df] group-hover:text-[#23B08A] transition-colors truncate">
                     linkedin.com/in/ahmad-nur-ain-4a6152253
                   </p>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-[#23B08A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
+              <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-[#23B08A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
             </a>
 
             {/* Channel: GitHub */}
@@ -255,31 +255,31 @@ const Contact = () => {
               href="https://github.com/ahmadnurain"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between py-4 border-b border-white/[0.08] hover:border-[#23B08A]/50 transition-colors duration-150 focus:outline-none"
+              className="group flex items-center justify-between py-3.5 sm:py-4 border-b border-white/[0.08] hover:border-[#23B08A]/50 transition-colors duration-150 focus:outline-none"
             >
               <div className="flex items-center gap-3.5 min-w-0 pr-2">
-                <GithubIcon className="w-5 h-5 text-gray-400 group-hover:text-[#23B08A] transition-colors shrink-0" />
+                <GithubIcon className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 group-hover:text-[#23B08A] transition-colors shrink-0" />
                 <div className="truncate">
-                  <p className="text-xs uppercase font-mono tracking-wider text-gray-400">
+                  <p className="text-[10px] sm:text-xs uppercase font-mono tracking-wider text-gray-400">
                     GitHub
                   </p>
-                  <p className="text-sm font-medium text-[#dee4df] group-hover:text-[#23B08A] transition-colors truncate">
+                  <p className="text-xs sm:text-sm font-medium text-[#dee4df] group-hover:text-[#23B08A] transition-colors truncate">
                     github.com/ahmadnurain
                   </p>
                 </div>
               </div>
-              <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-[#23B08A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
+              <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-400 group-hover:text-[#23B08A] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
             </a>
 
             {/* Channel: Location */}
-            <div className="flex items-center justify-between py-4 border-b border-white/[0.08]">
+            <div className="flex items-center justify-between py-3.5 sm:py-4 border-b border-white/[0.08]">
               <div className="flex items-center gap-3.5 min-w-0">
-                <MapPin className="w-5 h-5 text-gray-400 shrink-0" />
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 shrink-0" />
                 <div className="truncate">
-                  <p className="text-xs uppercase font-mono tracking-wider text-gray-400">
+                  <p className="text-[10px] sm:text-xs uppercase font-mono tracking-wider text-gray-400">
                     Location
                   </p>
-                  <p className="text-sm font-medium text-[#dee4df] truncate">
+                  <p className="text-xs sm:text-sm font-medium text-[#dee4df] truncate">
                     West Java, Indonesia
                   </p>
                 </div>
@@ -288,8 +288,8 @@ const Contact = () => {
           </div>
 
           {/* Availability Statement */}
-          <div className="pt-3">
-            <p className="text-sm text-gray-300">
+          <div className="pt-1 sm:pt-3">
+            <p className="text-xs sm:text-sm text-gray-300">
               Open to full-time opportunities and selected freelance projects.
             </p>
           </div>
@@ -302,7 +302,7 @@ const Contact = () => {
           transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
           className="lg:col-span-7"
         >
-          <div className="relative bg-[#101214]/90 backdrop-blur-sm border border-white/[0.08] rounded-[28px] p-6 sm:p-8 md:p-10 shadow-2xl shadow-black/70">
+          <div className="relative bg-[#101214]/90 backdrop-blur-sm border border-white/[0.08] rounded-2xl sm:rounded-[28px] p-4 sm:p-8 md:p-10 shadow-2xl shadow-black/70">
             {submitStatus === "success" ? (
               /* Restrained inline success presentation (ready if backend integration added) */
               <div className="py-14 flex flex-col items-center text-center space-y-4">

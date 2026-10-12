@@ -50,7 +50,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   return createPortal(
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 sm:p-6 md:p-8">
+        <div className="fixed inset-0 z-[99999] flex items-center justify-center p-2.5 sm:p-6 md:p-8">
           {/* Dark Backdrop Overlay without blur so navbar does not get blurred */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -67,21 +67,21 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 15 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-4xl max-h-[90vh] bg-[#0c0e11] border border-white/[0.12] rounded-[28px] shadow-2xl shadow-black/90 overflow-hidden flex flex-col z-10 text-left"
+            className="relative w-full max-w-4xl max-h-[92dvh] sm:max-h-[90vh] bg-[#0c0e11] border border-white/[0.12] rounded-2xl sm:rounded-[28px] shadow-2xl shadow-black/90 overflow-hidden flex flex-col z-10 text-left"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
           >
             {/* STICKY HEADER */}
-            <div className="sticky top-0 z-20 flex items-center justify-between px-6 sm:px-8 py-5 bg-[#0c0e11]/90 backdrop-blur-md border-b border-white/[0.08]">
-              <div className="flex items-center gap-2.5">
-                <span className="text-xs uppercase font-mono tracking-wider text-[#23B08A] font-semibold">
+            <div className="sticky top-0 z-20 flex items-center justify-between gap-3 px-4 sm:px-8 py-3.5 sm:py-5 bg-[#0c0e11]/95 backdrop-blur-md border-b border-white/[0.08]">
+              <div className="flex flex-wrap items-center gap-2 min-w-0">
+                <span className="text-[11px] sm:text-xs uppercase font-mono tracking-wider text-[#23B08A] font-semibold truncate">
                   {project.context}
                 </span>
                 {project.achievement && (
-                  <span className="inline-flex items-center gap-1 text-[11px] font-mono text-[#23B08A] bg-[#23B08A]/10 border border-[#23B08A]/25 px-2.5 py-0.5 rounded-full">
-                    <Trophy className="w-3 h-3" />
-                    <span>{project.achievement}</span>
+                  <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono text-[#23B08A] bg-[#23B08A]/10 border border-[#23B08A]/25 px-2 sm:px-2.5 py-0.5 rounded-full truncate">
+                    <Trophy className="w-3 h-3 shrink-0" />
+                    <span className="truncate">{project.achievement}</span>
                   </span>
                 )}
               </div>
@@ -90,7 +90,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               <button
                 type="button"
                 onClick={onClose}
-                className="w-9 h-9 rounded-full bg-white/[0.05] border border-white/[0.1] text-gray-400 hover:text-white hover:bg-white/[0.1] hover:border-white/20 transition-all flex items-center justify-center cursor-pointer"
+                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/[0.05] border border-white/[0.1] text-gray-400 hover:text-white hover:bg-white/[0.1] hover:border-white/20 transition-all flex items-center justify-center cursor-pointer shrink-0"
                 aria-label="Close dialog"
               >
                 <X className="w-4 h-4" />
@@ -98,10 +98,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             </div>
 
             {/* SCROLLABLE CONTENT BODY */}
-            <div className="overflow-y-auto px-6 sm:px-8 py-6 space-y-8 custom-scrollbar">
+            <div className="overflow-y-auto px-4 sm:px-8 py-4 sm:py-6 space-y-5 sm:space-y-8 custom-scrollbar">
               {/* Screenshot Preview */}
               {project.image && (
-                <div className="w-full h-56 sm:h-72 md:h-84 rounded-2xl overflow-hidden border border-white/[0.08] bg-[#050607] shadow-lg">
+                <div className="w-full h-44 sm:h-72 md:h-84 rounded-xl sm:rounded-2xl overflow-hidden border border-white/[0.08] bg-[#050607] shadow-lg">
                   <img
                     src={project.image}
                     alt={project.title}
@@ -114,19 +114,19 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               <div>
                 <h2
                   id="modal-title"
-                  className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#F2F4F7] tracking-tight mb-3"
+                  className="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#F2F4F7] tracking-tight mb-2 sm:mb-3"
                 >
                   {project.title}
                 </h2>
 
-                <div className="flex flex-wrap items-center gap-x-6 gap-y-2 py-3 border-y border-white/[0.06] font-mono text-xs text-gray-400">
+                <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-1.5 py-2.5 sm:py-3 border-y border-white/[0.06] font-mono text-[11px] sm:text-xs text-gray-400">
                   <div>
-                    <span className="uppercase text-gray-500 mr-2">ROLE:</span>
+                    <span className="uppercase text-gray-500 mr-1.5 sm:mr-2">ROLE:</span>
                     <span className="text-[#F2F4F7] font-medium">{project.role}</span>
                   </div>
                   {project.category && (
                     <div>
-                      <span className="uppercase text-gray-500 mr-2">DOMAIN:</span>
+                      <span className="uppercase text-gray-500 mr-1.5 sm:mr-2">DOMAIN:</span>
                       <span className="text-[#23B08A] font-medium">{project.category}</span>
                     </div>
                   )}
@@ -135,11 +135,11 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
               {/* In-depth Overview */}
               <div>
-                <h3 className="text-xs font-mono uppercase tracking-widest text-[#23B08A] mb-3 flex items-center gap-2">
+                <h3 className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#23B08A] mb-2 sm:mb-3 flex items-center gap-2">
                   <Code2 className="w-3.5 h-3.5" />
                   <span>PROJECT OVERVIEW</span>
                 </h3>
-                <p className="text-[#A2A9B3] text-sm sm:text-base leading-relaxed">
+                <p className="text-[#A2A9B3] text-xs sm:text-base leading-relaxed">
                   {project.longDescription || project.description}
                 </p>
               </div>
@@ -147,19 +147,19 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               {/* Key Contributions & Technical Highlights */}
               {project.contributions && project.contributions.length > 0 && (
                 <div>
-                  <h3 className="text-xs font-mono uppercase tracking-widest text-[#23B08A] mb-4 flex items-center gap-2">
+                  <h3 className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#23B08A] mb-3 sm:mb-4 flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5" />
                     <span>KEY CONTRIBUTIONS &amp; ARCHITECTURAL HIGHLIGHTS</span>
                   </h3>
-                  <div className="grid grid-cols-1 gap-3">
+                  <div className="grid grid-cols-1 gap-2.5 sm:gap-3">
                     {project.contributions.map((item, idx) => (
                       <div
                         key={idx}
-                        className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#23B08A]/30 transition-all text-sm leading-relaxed"
+                        className="p-3 sm:p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:border-[#23B08A]/30 transition-all text-xs sm:text-sm leading-relaxed"
                       >
                         {typeof item === "string" ? (
                           <div className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#23B08A] mt-2 shrink-0" />
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#23B08A] mt-1.5 shrink-0" />
                             <span className="text-gray-300">{item}</span>
                           </div>
                         ) : (
@@ -181,15 +181,15 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
               {/* Technology Stack */}
               <div>
-                <h3 className="text-xs font-mono uppercase tracking-widest text-[#23B08A] mb-3 flex items-center gap-2">
+                <h3 className="text-[11px] sm:text-xs font-mono uppercase tracking-widest text-[#23B08A] mb-2 sm:mb-3 flex items-center gap-2">
                   <Layers className="w-3.5 h-3.5" />
                   <span>TECHNOLOGY STACK</span>
                 </h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {project.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/[0.03] border border-white/[0.08] text-gray-300"
+                      className="px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg text-[11px] sm:text-xs font-mono bg-white/[0.03] border border-white/[0.08] text-gray-300"
                     >
                       {tech}
                     </span>
@@ -199,8 +199,8 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             </div>
 
             {/* STICKY FOOTER ACTIONS */}
-            <div className="sticky bottom-0 z-20 flex flex-wrap items-center justify-between gap-4 px-6 sm:px-8 py-4 bg-[#0c0e11]/95 backdrop-blur-md border-t border-white/[0.08]">
-              <div className="text-xs font-mono text-gray-500">
+            <div className="sticky bottom-0 z-20 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 px-4 sm:px-8 py-3 sm:py-4 bg-[#0c0e11]/95 backdrop-blur-md border-t border-white/[0.08]">
+              <div className="text-[11px] font-mono text-gray-500 hidden sm:block">
                 {project.context?.includes("Institutional")
                   ? "Status: Institutional Deployment"
                   : project.context?.includes("Collaborative")
@@ -210,17 +210,17 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                   : "Status: Validated Project"}
               </div>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-end">
                 {project.repository && (
                   <a
                     href={project.repository}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.1] text-xs font-mono text-gray-200 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[42px]"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-white/[0.04] border border-white/[0.1] text-xs font-mono text-gray-200 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[38px] sm:min-h-[42px]"
                   >
                     <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
-                    <span>View Repository</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
+                    <span>Repo</span>
+                    <ArrowUpRight className="w-3 h-3 text-gray-400" />
                   </a>
                 )}
 
@@ -229,18 +229,18 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#23B08A]/15 border border-[#23B08A]/40 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/25 transition-all min-h-[42px]"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full bg-[#23B08A]/15 border border-[#23B08A]/40 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/25 transition-all min-h-[38px] sm:min-h-[42px]"
                   >
                     <Globe className="w-3.5 h-3.5" />
-                    <span>Live Demo</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <span>Demo</span>
+                    <ArrowUpRight className="w-3 h-3" />
                   </a>
                 )}
 
                 <button
                   type="button"
                   onClick={onClose}
-                  className="px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-400 hover:text-white hover:bg-white/[0.08] transition-all cursor-pointer min-h-[42px]"
+                  className="px-3.5 sm:px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-400 hover:text-white hover:bg-white/[0.08] transition-all cursor-pointer min-h-[38px] sm:min-h-[42px]"
                 >
                   Close
                 </button>

@@ -47,30 +47,30 @@ const resumeUrl =
 
 const About = () => {
   return (
-    <main className="relative z-10 flex-1 max-w-[1240px] w-full mx-auto px-6 sm:px-8 pt-32 md:pt-40 pb-24 text-left">
+    <main className="relative z-10 flex-1 max-w-[1240px] w-full mx-auto px-4 sm:px-8 pt-24 sm:pt-32 md:pt-40 pb-16 sm:pb-24 text-left">
       {/* PAGE INTRO HEADER */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/[0.06] pb-6"
+        className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 border-b border-white/[0.06] pb-4 sm:pb-6"
       >
         <div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#F2F4F7] tracking-tight">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-[#F2F4F7] tracking-tight">
             About &amp; Career
           </h1>
         </div>
         {/* Right Eyebrow with hairline divider */}
         <div className="flex items-center justify-start md:justify-end gap-3">
           <div className="h-[1px] w-12 bg-white/10"></div>
-          <span className="text-xs uppercase font-mono tracking-widest text-[#23B08A]">
+          <span className="text-[11px] sm:text-xs uppercase font-mono tracking-widest text-[#23B08A]">
             MY STORY
           </span>
         </div>
       </motion.section>
 
       {/* MAIN STORY SECTION (Two-column editorial composition) */}
-      <section className="pt-14 md:pt-18 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <section className="pt-10 md:pt-18 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
         {/* Left Editorial Column (~62% -> 7 columns on desktop) */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -79,7 +79,7 @@ const About = () => {
           className="lg:col-span-7 flex flex-col justify-start"
         >
           {/* Large Editorial Statement */}
-          <h2 className="text-3xl sm:text-4xl md:text-[44px] md:leading-[1.15] font-extrabold text-[#F2F4F7] tracking-tight mb-8">
+          <h2 className="text-2xl sm:text-4xl md:text-[44px] md:leading-[1.15] font-extrabold text-[#F2F4F7] tracking-tight mb-6 sm:mb-8">
             <span className="text-[#23B08A]">Crafting</span> reliable backend systems{" "}
             <span className="font-serif italic font-light text-slate-300">
               &amp; useful web experiences.
@@ -87,7 +87,7 @@ const About = () => {
           </h2>
 
           {/* Narrative Paragraphs from CONTENT.md */}
-          <div className="space-y-6 text-[#A2A9B3] text-base sm:text-[17px] leading-relaxed max-w-[680px]">
+          <div className="space-y-4 sm:space-y-6 text-[#A2A9B3] text-sm sm:text-[17px] leading-relaxed max-w-[680px]">
             <p>
               I am an Informatics graduate from Universitas Majalengka with a strong interest in
               backend and full-stack development. I have worked with Laravel, React.js, MySQL,
@@ -103,33 +103,33 @@ const About = () => {
           </div>
 
           {/* Primary & Secondary CTA Buttons */}
-          <div className="pt-10 md:pt-12 flex flex-wrap items-center gap-4">
+          <div className="pt-8 sm:pt-10 md:pt-12 flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto">
             <motion.a
               whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.97 }}
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 px-7 h-[52px] rounded-full bg-[#23B08A] text-[#04110D] font-semibold text-sm hover:bg-[#1d9c7b] transition-colors shadow-lg shadow-[#23B08A]/15 min-h-[44px]"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-7 h-[46px] sm:h-[52px] rounded-full bg-[#23B08A] text-[#04110D] font-semibold text-xs sm:text-sm hover:bg-[#1d9c7b] transition-colors shadow-lg shadow-[#23B08A]/15 min-h-[44px]"
             >
-              <Download className="w-5 h-5" />
+              <Download className="w-4 h-4 sm:w-5 sm:h-5" />
               <span>Download Resume</span>
             </motion.a>
 
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className="flex-1 sm:flex-initial">
               <Link
                 to="/experience"
-                className="inline-flex items-center justify-center gap-2 px-7 h-[52px] rounded-full bg-[#111416] border border-white/10 text-gray-200 font-medium text-sm hover:border-[#23B08A]/40 hover:bg-[#17191c] transition-colors min-h-[44px]"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 sm:px-7 h-[46px] sm:h-[52px] rounded-full bg-[#111416] border border-white/10 text-gray-200 font-medium text-xs sm:text-sm hover:border-[#23B08A]/40 hover:bg-[#17191c] transition-colors min-h-[44px]"
               >
-                <Briefcase className="w-5 h-5 text-gray-400" />
+                <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
                 <span>View Experience</span>
               </Link>
             </motion.div>
 
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }}>
+            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
               <Link
                 to="/projects"
-                className="inline-flex items-center justify-center gap-2 px-6 h-[52px] rounded-full border border-white/[0.08] bg-transparent text-gray-300 hover:text-white hover:border-gray-500 transition-colors text-sm font-medium min-h-[44px]"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 sm:px-6 h-[46px] sm:h-[52px] rounded-full border border-white/[0.08] bg-transparent text-gray-300 hover:text-white hover:border-gray-500 transition-colors text-xs sm:text-sm font-medium min-h-[44px]"
               >
                 <span>View Projects</span>
               </Link>
@@ -142,16 +142,16 @@ const About = () => {
           initial={{ opacity: 0, scale: 0.94, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 flex justify-center lg:justify-end w-full"
+          className="lg:col-span-5 flex justify-center lg:justify-end w-full mt-6 lg:mt-0"
         >
           <div className="relative w-full max-w-[380px]">
             {/* Subtle Radial Teal Aura Behind Portrait */}
             <div className="absolute -inset-4 bg-[#23B08A]/10 rounded-[32px] filter blur-3xl pointer-events-none opacity-60"></div>
             {/* Clean Portrait Container */}
-            <div className="relative rounded-[28px] overflow-hidden border border-white/[0.08] bg-[#101214] shadow-2xl group">
+            <div className="relative rounded-2xl sm:rounded-[28px] overflow-hidden border border-white/[0.08] bg-[#101214] shadow-2xl group">
               <img
                 alt="Ahmad Nur'Ain"
-                className="w-full h-[420px] sm:h-[460px] object-cover object-center grayscale-[10%] contrast-[1.04] group-hover:grayscale-0 transition-all duration-500 ease-out"
+                className="w-full h-[320px] sm:h-[420px] md:h-[460px] object-cover object-center grayscale-[10%] contrast-[1.04] group-hover:grayscale-0 transition-all duration-500 ease-out"
                 src="/IMG_5sw456.JPG"
                 onError={(e) => {
                   e.currentTarget.onerror = null;
@@ -169,53 +169,53 @@ const About = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="mt-20 md:mt-28 pt-12 md:pt-16 border-t border-white/[0.06]"
+        className="mt-14 sm:mt-20 md:mt-28 pt-10 sm:pt-12 md:pt-16 border-t border-white/[0.06]"
       >
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
           {/* Education */}
-          <div className="flex flex-col space-y-2.5 border-l border-white/10 pl-6 md:pl-8 text-left">
-            <span className="text-xs font-mono text-[#23B08A] uppercase tracking-wider font-semibold">
+          <div className="flex flex-col space-y-2 border-l border-white/10 pl-4 sm:pl-6 md:pl-8 text-left">
+            <span className="text-[11px] sm:text-xs font-mono text-[#23B08A] uppercase tracking-wider font-semibold">
               EDUCATION
             </span>
-            <h3 className="text-lg md:text-xl font-bold text-white tracking-tight pt-1">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight pt-0.5">
               S1 Informatika — Universitas Majalengka
             </h3>
-            <p className="text-sm font-semibold text-[#23B08A]">GPA: 3.92 / 4.00</p>
-            <p className="text-sm text-gray-400 leading-relaxed font-light">
+            <p className="text-xs sm:text-sm font-semibold text-[#23B08A]">GPA: 3.92 / 4.00</p>
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
               Comprehensive coursework rooted in algorithms, databases, data structures, and
               practical software engineering methodologies.
             </p>
           </div>
 
           {/* Focus */}
-          <div className="flex flex-col space-y-2.5 border-l border-white/10 pl-6 md:pl-8 text-left">
-            <span className="text-xs font-mono text-[#23B08A] uppercase tracking-wider font-semibold">
+          <div className="flex flex-col space-y-2 border-l border-white/10 pl-4 sm:pl-6 md:pl-8 text-left">
+            <span className="text-[11px] sm:text-xs font-mono text-[#23B08A] uppercase tracking-wider font-semibold">
               FOCUS
             </span>
-            <h3 className="text-lg md:text-xl font-bold text-white tracking-tight pt-1">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight pt-0.5">
               Backend &amp; Full-Stack Development
             </h3>
-            <p className="text-sm font-semibold text-[#23B08A]">
+            <p className="text-xs sm:text-sm font-semibold text-[#23B08A]">
               APIs, System Architecture &amp; Databases
             </p>
-            <p className="text-sm text-gray-400 leading-relaxed font-light">
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
               Dedicated to architecting resilient backend services, reliable RESTful API layers,
               optimized database schemas, and clean frontend integrations.
             </p>
           </div>
 
           {/* Location */}
-          <div className="flex flex-col space-y-2.5 border-l border-white/10 pl-6 md:pl-8 text-left">
-            <span className="text-xs font-mono text-[#23B08A] uppercase tracking-wider font-semibold">
+          <div className="flex flex-col space-y-2 border-l border-white/10 pl-4 sm:pl-6 md:pl-8 text-left">
+            <span className="text-[11px] sm:text-xs font-mono text-[#23B08A] uppercase tracking-wider font-semibold">
               LOCATION
             </span>
-            <h3 className="text-lg md:text-xl font-bold text-white tracking-tight pt-1">
+            <h3 className="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight pt-0.5">
               West Java, Indonesia
             </h3>
-            <p className="text-sm font-semibold text-[#23B08A]">
+            <p className="text-xs sm:text-sm font-semibold text-[#23B08A]">
               Indramayu / West Java
             </p>
-            <p className="text-sm text-gray-400 leading-relaxed font-light">
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
               Open to full-time engineering roles, remote team arrangements, and selected freelance
               collaborations.
             </p>
@@ -229,22 +229,22 @@ const About = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="mt-16 md:mt-24 pt-12 md:pt-16 border-t border-white/[0.06]"
+        className="mt-14 sm:mt-16 md:mt-24 pt-10 sm:pt-12 md:pt-16 border-t border-white/[0.06]"
       >
-        <div className="mb-10">
-          <span className="text-xs font-mono text-[#23B08A] uppercase tracking-wider font-semibold block mb-2">
+        <div className="mb-6 sm:mb-10">
+          <span className="text-[11px] sm:text-xs font-mono text-[#23B08A] uppercase tracking-wider font-semibold block mb-1.5 sm:mb-2">
             TOOLSET &amp; CAPABILITIES
           </span>
-          <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white tracking-tight">
             Demonstrated Technical Skills
           </h3>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {skillsData.map((group) => (
             <div
               key={group.category}
-              className="p-5 rounded-2xl bg-[#111416] border border-white/[0.06] hover:border-white/15 transition-colors"
+              className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-[#111416] border border-white/[0.06] hover:border-white/15 transition-colors"
             >
               <h4 className="text-xs uppercase font-mono tracking-wider text-gray-400 mb-4 pb-2 border-b border-white/[0.06]">
                 {group.category}
