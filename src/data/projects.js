@@ -1,12 +1,37 @@
 export const projectsData = [
   {
+    slug: "portal-alumni-ft-unma",
+    title: "Portal Alumni FT UNMA & Alumni Bergerak",
+    context: "Institutional / Client Project",
+    category: "Client & Institutional",
+    categories: ["Client & Institutional", "Backend", "Web Development"],
+    role: "Full Stack Web Developer",
+    achievement: "Commissioned by Faculty of Engineering, Universitas Majalengka",
+    description:
+      "An integrated institutional alumni management and crowdfunding platform commissioned by the Faculty of Engineering, Universitas Majalengka. Architected with a hybrid data model: integrating the central UNMA academic API (data.unma.ac.id) for alumni identity verification and SKPI records, while managing internal application databases for event moderation, email OTP verification, and Mayar payment gateway transactions with webhook handlers.",
+    stack: [
+      "Laravel",
+      "React",
+      "TypeScript",
+      "Inertia.js",
+      "Tailwind CSS",
+      "REST API",
+      "Mayar Payment Gateway",
+      "MySQL",
+    ],
+    featured: true,
+    repository: null,
+    liveUrl: null,
+    image: "/alumni-ft.png",
+  },
+  {
     slug: "smart-infrastructure-reporting",
     title: "Smart Infrastructure Reporting & AI-Driven Prioritization System (InfraStar)",
     context: "Competition / Team Project",
     category: "Competition / Team",
     categories: ["Backend", "Competition / Team"],
     role: "Backend Developer",
-    achievement: "1st Place — PERMIKOMNAS Hackathon 2025",
+    achievement: "1st Place: PERMIKOMNAS Hackathon 2025",
     description:
       "A web-based infrastructure damage reporting platform developed as a team project using Laravel, React, Inertia.js, and Flask. As the Backend Developer, I built the core backend features including image upload pipelines, automated email notifications with Laravel Mail, database architecture with Eloquent ORM, migrations, and seeders, and API integration with a Flask ML service (TensorFlow / Keras) for damage classification and report prioritization.",
     stack: [
@@ -71,7 +96,7 @@ export const projectsData = [
     category: "Web Development",
     categories: ["Web Development", "Backend", "Competition / Team", "Academic"],
     role: "Backend Developer",
-    achievement: "2nd Place — Gelar Karya Informatika 2025",
+    achievement: "2nd Place: Gelar Karya Informatika 2025",
     description:
       "A tourism ticket booking web application built with Laravel and MySQL. Features include user authentication, destination CRUD through Filament Admin Panel, Midtrans payment integration, automated e-ticket delivery by email, ticket validation, and transaction reporting.",
     stack: ["Laravel", "MySQL", "Filament", "Midtrans", "Tailwind CSS"],
@@ -119,7 +144,7 @@ export const projectsData = [
     category: "Web Development",
     categories: ["Web Development", "Competition / Team"],
     role: "Frontend Developer",
-    achievement: "2nd Place — Web Design Competition, Universitas Wiralodra 2024",
+    achievement: "2nd Place: Web Design Competition, Universitas Wiralodra 2024",
     description:
       "An advanced online course landing page developed as a team project for a web design competition, achieving 2nd Place. Delivering an interactive user experience utilizing modern animations, clean typography, and responsive layout structure.",
     stack: ["React", "Tailwind CSS", "Framer Motion"],

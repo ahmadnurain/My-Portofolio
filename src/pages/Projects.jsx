@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Trophy, ArrowUpRight, Mail, FileText, Terminal } from "lucide-react";
+import { Trophy, ArrowUpRight, Mail, FileText, Terminal, Globe } from "lucide-react";
 import PropTypes from "prop-types";
 import { projectsData } from "../data/projects";
 
@@ -27,6 +27,7 @@ GithubIcon.propTypes = {
 
 const filterCategories = [
   "All",
+  "Client & Institutional",
   "Backend",
   "Web Development",
   "Competition / Team",
@@ -46,7 +47,7 @@ const Projects = () => {
   });
 
   const featuredProject = filteredProjects.find((p) => p.featured);
-  const standardProjects = filteredProjects.filter((p) => !p.featured);
+  const standardProjects = filteredProjects.filter((p) => p !== featuredProject);
 
   return (
     <main className="relative z-10 flex-1 max-w-[1240px] w-full mx-auto px-6 sm:px-8 pt-32 md:pt-40 pb-24 text-left">
@@ -75,9 +76,8 @@ const Projects = () => {
       {/* SUPPORTING TEXT & FILTER ROW */}
       <section className="pt-8 pb-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
         <p className="text-[#A2A9B3] text-base sm:text-[17px] leading-relaxed max-w-[620px]">
-          A selection of competition, academic, team, and personal projects that reflect my
-          experience in backend development, web applications, API integration, and database-driven
-          systems.
+          A selection of institutional, client, competition, and academic projects that reflect my
+          experience in backend engineering, full-stack web applications, API integrations, and database architecture.
         </p>
 
         {/* Filter Badges */}
@@ -224,18 +224,38 @@ const Projects = () => {
                   </div>
 
                   {/* Actions */}
-                  {featuredProject.repository && (
-                    <div className="pt-3 border-t border-white/[0.06] flex items-center justify-start gap-3">
-                      <a
-                        href={featuredProject.repository}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[44px]"
-                      >
-                        <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
-                        <span>Repository</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
-                      </a>
+                  {(featuredProject.repository || featuredProject.liveUrl || featuredProject.context?.includes("Institutional")) && (
+                    <div className="pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-start gap-3">
+                      {featuredProject.repository && (
+                        <a
+                          href={featuredProject.repository}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[44px]"
+                        >
+                          <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
+                          <span>Repository</span>
+                          <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
+                        </a>
+                      )}
+                      {featuredProject.liveUrl && (
+                        <a
+                          href={featuredProject.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#23B08A]/10 border border-[#23B08A]/30 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/20 transition-all min-h-[44px]"
+                        >
+                          <Globe className="w-3.5 h-3.5" />
+                          <span>Live Platform</span>
+                          <ArrowUpRight className="w-3.5 h-3.5" />
+                        </a>
+                      )}
+                      {!featuredProject.repository && !featuredProject.liveUrl && (
+                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.06] text-xs font-mono text-gray-400">
+                          <span className="w-2 h-2 rounded-full bg-[#23B08A] animate-pulse" />
+                          Institutional Deployment (Active)
+                        </span>
+                      )}
                     </div>
                   )}
                 </div>
@@ -328,19 +348,39 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* 7. Actions (Rendered only when valid URL exists) */}
-                {project.repository && (
-                  <div className="pt-2 border-t border-white/[0.06] flex items-center justify-end gap-3">
-                    <a
-                      href={project.repository}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[44px]"
-                    >
-                      <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
-                      <span>Repository</span>
-                      <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
-                    </a>
+                {/* 7. Actions (Rendered when valid URL or Institutional status exists) */}
+                {(project.repository || project.liveUrl || project.context?.includes("Institutional")) && (
+                  <div className="pt-2 border-t border-white/[0.06] flex flex-wrap items-center justify-end gap-2.5">
+                    {!project.repository && !project.liveUrl && project.context?.includes("Institutional") && (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.02] border border-white/[0.06] text-[11px] font-mono text-gray-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#23B08A] animate-pulse" />
+                        Institutional Deployment
+                      </span>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#23B08A]/10 border border-[#23B08A]/30 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/20 transition-all min-h-[40px]"
+                      >
+                        <Globe className="w-3 h-3" />
+                        <span>Live</span>
+                        <ArrowUpRight className="w-3 h-3" />
+                      </a>
+                    )}
+                    {project.repository && (
+                      <a
+                        href={project.repository}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[44px]"
+                      >
+                        <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
+                        <span>Repository</span>
+                        <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
+                      </a>
+                    )}
                   </div>
                 )}
               </motion.div>
