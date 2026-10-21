@@ -20,7 +20,7 @@ import {
 } from "../data/experience";
 
 const resumeUrl =
-  "https://drive.google.com/file/d/1Umr-i8VQbLUF4gqKKZcGrVMKxn0sDYtx/view?usp=sharing";
+  "https://drive.google.com/file/d/1Zh_3eU_zqhU-b_XmAeRy3iW81JSEILFn/view?usp=sharing";
 
 const skillIcons = {
   terminal: <Terminal className="w-5 h-5 text-[#23B08A]" />,
