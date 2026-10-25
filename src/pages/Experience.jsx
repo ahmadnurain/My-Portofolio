@@ -18,6 +18,7 @@ import {
   skillsGroupData,
   awardsData,
 } from "../data/experience";
+import SpotlightCard from "../components/ui/SpotlightCard";
 
 const resumeUrl =
   "https://drive.google.com/file/d/1Zh_3eU_zqhU-b_XmAeRy3iW81JSEILFn/view?usp=sharing";
@@ -96,8 +97,8 @@ const Experience = () => {
                 {/* Node Marker */}
                 <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-[#17191c] border border-white/20 group-hover:border-[#23B08A] group-hover:bg-[#23B08A] transition-all duration-300" />
 
-                {/* Content Card */}
-                <div className="bg-[#101214]/80 border border-white/[0.08] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-7 hover:border-[#23B08A]/40 hover:-translate-y-0.5 transition-all duration-200 shadow-xl shadow-black/40">
+                {/* Content Card with Spotlight */}
+                <SpotlightCard className="p-4 sm:p-6 md:p-7 hover:-translate-y-0.5 transition-all duration-200 shadow-xl shadow-black/40">
                   <div className="flex flex-wrap items-baseline justify-between gap-1.5 sm:gap-2 mb-2">
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-50 group-hover:text-[#23B08A] transition-colors">
                       {item.role}
@@ -122,7 +123,7 @@ const Experience = () => {
                       </span>
                     ))}
                   </div>
-                </div>
+                </SpotlightCard>
               </div>
             </motion.article>
           ))}
@@ -217,46 +218,48 @@ const Experience = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="bg-[#101214]/90 border border-white/[0.08] rounded-xl sm:rounded-2xl p-4 sm:p-7 md:p-9 hover:border-white/20 transition-colors shadow-xl shadow-black/40"
+          className="rounded-xl sm:rounded-2xl shadow-xl shadow-black/40"
         >
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 pb-4 sm:pb-6 border-b border-white/[0.06]">
-            <div className="space-y-1 sm:space-y-1.5">
-              <div className="inline-flex items-center gap-2 mb-0.5 sm:mb-1">
-                <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-[#23B08A]" />
-                <span className="text-[11px] sm:text-xs font-mono text-gray-400">Undergraduate Degree</span>
+          <SpotlightCard className="p-4 sm:p-7 md:p-9">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 pb-4 sm:pb-6 border-b border-white/[0.06]">
+              <div className="space-y-1 sm:space-y-1.5">
+                <div className="inline-flex items-center gap-2 mb-0.5 sm:mb-1">
+                  <GraduationCap className="w-4 h-4 sm:w-5 sm:h-5 text-[#23B08A]" />
+                  <span className="text-[11px] sm:text-xs font-mono text-gray-400">Undergraduate Degree</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-50 tracking-tight">
+                  {educationData.degree}
+                </h2>
+                <p className="text-gray-300 text-xs sm:text-sm">{educationData.institution}</p>
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-50 tracking-tight">
-                {educationData.degree}
-              </h2>
-              <p className="text-gray-300 text-xs sm:text-sm">{educationData.institution}</p>
+
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-white/[0.03] border border-white/[0.08] font-mono text-xs text-gray-300">
+                  {educationData.period}
+                </div>
+                <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-[#23B08A]/10 border border-[#23B08A]/30 font-mono text-xs text-[#23B08A] font-semibold">
+                  GPA: {educationData.gpa}
+                </div>
+              </div>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-              <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-white/[0.03] border border-white/[0.08] font-mono text-xs text-gray-300">
-                {educationData.period}
-              </div>
-              <div className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-[#23B08A]/10 border border-[#23B08A]/30 font-mono text-xs text-[#23B08A] font-semibold">
-                GPA: {educationData.gpa}
+            {/* Relevant Coursework */}
+            <div className="pt-4 sm:pt-6">
+              <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-gray-400 block mb-2 sm:mb-3">
+                Relevant Academic Coursework
+              </span>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                {educationData.courses.map((course) => (
+                  <span
+                    key={course}
+                    className="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono bg-white/[0.03] border border-white/[0.06] text-gray-300"
+                  >
+                    {course}
+                  </span>
+                ))}
               </div>
             </div>
-          </div>
-
-          {/* Relevant Coursework */}
-          <div className="pt-4 sm:pt-6">
-            <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider text-gray-400 block mb-2 sm:mb-3">
-              Relevant Academic Coursework
-            </span>
-            <div className="flex flex-wrap gap-1.5 sm:gap-2">
-              {educationData.courses.map((course) => (
-                <span
-                  key={course}
-                  className="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-mono bg-white/[0.03] border border-white/[0.06] text-gray-300"
-                >
-                  {course}
-                </span>
-              ))}
-            </div>
-          </div>
+          </SpotlightCard>
         </motion.div>
       </section>
 

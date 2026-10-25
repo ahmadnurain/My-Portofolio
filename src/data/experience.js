@@ -11,7 +11,7 @@ export const experienceTimeline = [
   },
   {
     id: "practicum-assistant",
-    role: "Practicum Assistant — Disruption & Basic Automation",
+    role: "Practicum Assistant: Disruption & Basic Automation",
     organization: "Universitas Majalengka",
     period: "24 Jun 2024 – 29 Jun 2024",
     type: "Academic Support Role",
@@ -21,7 +21,7 @@ export const experienceTimeline = [
   },
   {
     id: "rakamin-frontend",
-    role: "Project-Based Virtual Intern — Frontend",
+    role: "Project-Based Virtual Intern: Frontend",
     organization: "Core Initiative Studio x Rakamin Academy",
     period: "Sep 2023 – Oct 2023",
     type: "Project-Based Virtual Internship",
@@ -37,7 +37,7 @@ export const projectExperience = [
     title: "Smart Infrastructure Reporting & AI-Driven Prioritization System (InfraStar)",
     role: "Backend Developer",
     context: "Team Project / PERMIKOMNAS Hackathon 2025",
-    achievement: "1st Place — PERMIKOMNAS Hackathon 2025",
+    achievement: "1st Place: PERMIKOMNAS Hackathon 2025",
     contribution:
       "Developed backend functionality for image upload and automated email notifications, designed database structures using Laravel Eloquent, migrations and seeders, and collaborated on integration with a Flask-based Machine Learning service.",
     stack: ["Laravel", "Flask Integration", "Laravel Mail", "Eloquent ORM", "MySQL"],
@@ -92,27 +92,27 @@ export const skillsGroupData = [
 
 export const awardsData = [
   {
-    title: "1st Place — Hackathon PERMIKOMNAS 2025",
+    title: "1st Place: Hackathon PERMIKOMNAS 2025",
     event: "PERMIKOMNAS Hackathon",
     year: "2025",
   },
   {
-    title: "2nd Place — Gelar Karya Informatika 2025",
+    title: "2nd Place: Gelar Karya Informatika 2025",
     event: "Gelar Karya Informatika",
     year: "2025",
   },
   {
-    title: "2nd Place — Web Design Competition",
+    title: "2nd Place: Web Design Competition",
     event: "Universitas Wiralodra",
     year: "2024",
   },
   {
-    title: "3rd Place — Smart Device IoT",
+    title: "3rd Place: Smart Device IoT",
     event: "UNITY #12",
     year: "2024",
   },
   {
-    title: "Honorable Mention 2 — Web Design Competition",
+    title: "Honorable Mention 2: Web Design Competition",
     event: "Universitas Majalengka",
     year: "2024",
   },

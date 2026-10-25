@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
-import { MapPin, MessageSquare } from "lucide-react";
+import { MapPin, MessageSquare, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import ShimmerButton from "./ui/ShimmerButton";
+import SpotlightCard from "./ui/SpotlightCard";
+import Marquee from "./ui/Marquee";
 
 // Lucide-style LinkedIn SVG matching Stitch reference
 const LinkedInIcon = () => (
@@ -22,7 +25,19 @@ const LinkedInIcon = () => (
   </svg>
 );
 
-const techStack = ["Laravel", "React.js", "MySQL", "PostgreSQL", "REST API"];
+const marqueeSkills = [
+  "Laravel",
+  "React.js",
+  "PostgreSQL",
+  "MySQL",
+  "REST APIs",
+  "PHP",
+  "Livewire",
+  "Filament",
+  "Tailwind CSS",
+  "Vue.js",
+  "Git & GitHub",
+];
 
 const Herosection = () => {
   return (
@@ -85,14 +100,16 @@ const Herosection = () => {
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
             className="flex flex-wrap items-center gap-2.5 sm:gap-3.5 w-full sm:w-auto"
           >
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className="flex-1 sm:flex-initial">
-              <Link
+            {/* Magic UI Shimmer Button */}
+            <div className="flex-1 sm:flex-initial">
+              <ShimmerButton
                 to="/projects"
-                className="w-full sm:w-auto inline-flex items-center justify-center min-w-[130px] sm:min-w-[150px] h-[46px] sm:h-[52px] px-5 sm:px-6 rounded-full bg-[#23B08A] text-[#04110D] font-semibold text-xs sm:text-sm hover:bg-[#1d9c7b] transition-colors shadow-lg shadow-[#23B08A]/15 min-h-[44px]"
+                className="w-full sm:w-auto min-w-[150px] shadow-lg shadow-[#23B08A]/10"
               >
                 <span>View Projects</span>
-              </Link>
-            </motion.div>
+                <ArrowRight className="w-4 h-4 ml-1" />
+              </ShimmerButton>
+            </div>
 
             <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className="flex-1 sm:flex-initial">
               <a
@@ -118,21 +135,15 @@ const Herosection = () => {
           </motion.div>
         </div>
 
-        {/* Right Column (~38-40% width) Profile Card with Motion & Interactive Tilt */}
+        {/* Right Column Profile Card with React Bits SpotlightCard */}
         <div className="lg:col-span-5 flex justify-center lg:justify-end relative w-full mt-4 lg:mt-0">
-          {/* Static Ambient Glow without continuous GPU repaint loop */}
+          {/* Static Ambient Glow */}
           <div className="absolute -inset-6 bg-[#23B08A]/[0.05] rounded-full blur-[90px] pointer-events-none -z-10" />
 
-          {/* Card Container with Entrance and Floating Effect */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.92, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -6, transition: { duration: 0.3 } }}
-            className="group w-full max-w-[420px] rounded-2xl sm:rounded-[26px] bg-[#111416] border border-white/[0.08] p-4 sm:p-5 relative shadow-2xl shadow-black/80 hover:border-white/20 transition-colors"
-          >
+          {/* Interactive Spotlight Card */}
+          <SpotlightCard className="w-full max-w-[420px] rounded-2xl sm:rounded-[26px] p-4 sm:p-5 shadow-2xl shadow-black/80">
             {/* Card Image with subtle zoom on hover */}
-            <div className="w-full h-[260px] sm:h-[340px] rounded-xl sm:rounded-[18px] overflow-hidden bg-[#17191c] mb-4 sm:mb-5 border border-white/[0.06] relative">
+            <div className="w-full h-[260px] sm:h-[340px] rounded-xl sm:rounded-[18px] overflow-hidden bg-[#17191c] mb-4 sm:mb-5 border border-white/[0.06] relative group">
               <img
                 alt="Ahmad Nur'Ain"
                 className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -145,13 +156,13 @@ const Herosection = () => {
                   e.currentTarget.src = "/erasebg-transformed.webp";
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111416]/60 via-transparent to-transparent opacity-60 pointer-events-none"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#111416]/60 via-transparent to-transparent opacity-60 pointer-events-none" />
             </div>
 
             {/* Profile Card Fields */}
             <div className="space-y-3.5 text-left">
               <div>
-                <h3 className="text-[21px] font-bold text-[#F2F4F7] tracking-tight group-hover:text-white transition-colors">
+                <h3 className="text-[21px] font-bold text-[#F2F4F7] tracking-tight">
                   Ahmad Nur&apos;Ain
                 </h3>
                 <p className="text-[13px] text-[#23B08A] font-medium mt-0.5">
@@ -159,36 +170,57 @@ const Herosection = () => {
                 </p>
               </div>
 
-              {/* Tech Stack Badges with Interactive Motion */}
-              <div className="flex flex-wrap gap-2 pt-0.5">
-                {techStack.map((tech, index) => (
-                  <motion.span
+              {/* Verified Tech Badges */}
+              <div className="flex flex-wrap gap-1.5 pt-0.5">
+                {["Laravel", "React.js", "MySQL", "PostgreSQL", "REST API"].map((tech) => (
+                  <span
                     key={tech}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.4, delay: 0.35 + index * 0.05 }}
-                    whileHover={{
-                      scale: 1.08,
-                      borderColor: "rgba(35, 176, 138, 0.4)",
-                      backgroundColor: "rgba(35, 176, 138, 0.08)",
-                    }}
-                    className="h-7 px-3 inline-flex items-center rounded-lg bg-white/[0.035] border border-white/[0.06] text-gray-300 text-[11px] font-mono cursor-default transition-colors"
+                    className="h-7 px-3 inline-flex items-center rounded-lg bg-white/[0.035] border border-white/[0.08] text-gray-300 text-[11px] font-mono hover:border-[#23B08A]/40 transition-colors"
                   >
                     {tech}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
 
               {/* Availability */}
-              <div className="pt-3.5 border-t border-white/[0.06]">
+              <div className="pt-3 border-t border-white/[0.06]">
                 <p className="text-[12px] text-gray-400 leading-snug">
                   Open to full-time opportunities and selected freelance projects
                 </p>
               </div>
             </div>
-          </motion.div>
+          </SpotlightCard>
         </div>
       </div>
+
+      {/* Infinite Tech Marquee Row - Powered by Magic UI */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.55 }}
+        className="mt-14 sm:mt-18 pt-6 border-t border-white/[0.06] w-full"
+      >
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3 px-1">
+          <span className="text-[11px] uppercase font-mono tracking-widest text-[#23B08A] font-semibold">
+            ENGINEERING STACK &amp; FRAMEWORKS
+          </span>
+          <span className="text-[11px] font-mono text-gray-500 hidden sm:inline">
+            Scroll or hover to inspect
+          </span>
+        </div>
+
+        <Marquee pauseOnHover className="py-2 [--gap:0.75rem]">
+          {marqueeSkills.map((skill) => (
+            <div
+              key={skill}
+              className="px-4 py-2 rounded-xl bg-[#111416]/90 border border-white/[0.07] hover:border-[#23B08A]/40 hover:bg-[#15191c] transition-all flex items-center gap-2 text-xs font-mono text-gray-300 shrink-0 cursor-default"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-[#23B08A]" />
+              <span>{skill}</span>
+            </div>
+          ))}
+        </Marquee>
+      </motion.div>
     </div>
   );
 };

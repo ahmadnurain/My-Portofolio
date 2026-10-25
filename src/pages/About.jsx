@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Download, Briefcase, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import SpotlightCard from "../components/ui/SpotlightCard";
 
 const skillsData = [
   {
@@ -29,13 +30,13 @@ const experiencePreview = [
     detail: "Developed parts of the Study Program website with WordPress and managed official documentation.",
   },
   {
-    role: "Practicum Assistant — Disruption & Automation",
+    role: "Practicum Assistant: Disruption & Automation",
     org: "Universitas Majalengka",
     period: "Jun 2024",
     detail: "Assisted students in MicroPython programming practicums, debugging errors, and assignment reviews.",
   },
   {
-    role: "Project-Based Virtual Intern — Frontend",
+    role: "Project-Based Virtual Intern: Frontend",
     org: "Core Initiative Studio x Rakamin Academy",
     period: "Sep 2023 – Oct 2023",
     detail: "Developed catalog landing page with HTML, CSS, JS, Vue.js, and integrated REST APIs.",
@@ -178,7 +179,7 @@ const About = () => {
               EDUCATION
             </span>
             <h3 className="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight pt-0.5">
-              S1 Informatika — Universitas Majalengka
+              S1 Informatika: Universitas Majalengka
             </h3>
             <p className="text-xs sm:text-sm font-semibold text-[#23B08A]">GPA: 3.92 / 4.00</p>
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
@@ -242,9 +243,9 @@ const About = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {skillsData.map((group) => (
-            <div
+            <SpotlightCard
               key={group.category}
-              className="p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-[#111416] border border-white/[0.06] hover:border-white/15 transition-colors"
+              className="p-4 sm:p-5 rounded-xl sm:rounded-2xl"
             >
               <h4 className="text-xs uppercase font-mono tracking-wider text-gray-400 mb-4 pb-2 border-b border-white/[0.06]">
                 {group.category}
@@ -259,7 +260,7 @@ const About = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </motion.section>

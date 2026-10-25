@@ -50,7 +50,7 @@ export const projectsData = [
   },
   {
     slug: "taniva-ai-agricultural-supply-chain",
-    title: "TANIVA — AI-Powered Agricultural Supply Chain",
+    title: "TANIVA: AI-Powered Agricultural Supply Chain",
     context: "Hackathon / Team Project",
     category: "Competition / Team",
     categories: ["Competition / Team", "Backend", "Web Development"],
@@ -104,7 +104,7 @@ export const projectsData = [
   },
   {
     slug: "desa-kepuh-digital-administration-iot",
-    title: "Desa Kepuh — Village Administration & IoT Monitoring System",
+    title: "Desa Kepuh: Village Administration & IoT Monitoring System",
     context: "Collaborative Project (Team of 2)",
     category: "Client & Institutional",
     categories: ["Client & Institutional", "Backend", "Web Development"],

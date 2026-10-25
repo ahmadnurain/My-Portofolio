@@ -62,6 +62,48 @@
   }
 }
 
+/* Magic UI & React Bits Animations */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes shimmer-slide {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes border-beam-spin {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
+}
+
+.animate-shimmer-slide {
+  animation: shimmer-slide var(--speed) linear infinite;
+}
 
 body.modal-open header {
   opacity: 0 !important;
@@ -69,3 +111,4 @@ body.modal-open header {
   transform: translateY(-24px) translateX(-50%) !important;
   transition: opacity 0.25s ease, transform 0.25s ease !important;
 }
+

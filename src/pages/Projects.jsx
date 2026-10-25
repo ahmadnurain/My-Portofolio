@@ -5,6 +5,8 @@ import { Trophy, ArrowUpRight, Mail, FileText, Terminal, Globe, Info } from "luc
 import PropTypes from "prop-types";
 import { projectsData } from "../data/projects";
 import ProjectModal from "../components/ProjectModal";
+import BorderBeam from "../components/ui/BorderBeam";
+import SpotlightCard from "../components/ui/SpotlightCard";
 
 const GithubIcon = ({ className = "w-3.5 h-3.5" }) => (
   <svg
@@ -116,6 +118,9 @@ const Projects = () => {
             className="mb-10 sm:mb-14"
           >
             <div className="relative rounded-2xl sm:rounded-[28px] border border-white/[0.08] bg-[#101214]/90 backdrop-blur-md overflow-hidden p-4 sm:p-8 lg:p-10 shadow-2xl shadow-black/60 hover:border-[#23B08A]/30 transition-all duration-300 group">
+              {/* Magic UI Border Beam on Featured Project */}
+              <BorderBeam size={260} duration={14} colorFrom="#23B08A" colorTo="#26C6A3" />
+
               {/* Subtle background ambient aura */}
               <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#23B08A]/[0.06] rounded-full blur-3xl pointer-events-none" />
 
@@ -297,10 +302,11 @@ const Projects = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.96 }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="flex flex-col justify-between rounded-xl sm:rounded-[24px] border border-white/[0.08] bg-[#101214]/90 backdrop-blur-md p-4 sm:p-6 md:p-8 hover:border-[#23B08A]/40 hover:-translate-y-1 transition-all duration-200 shadow-xl shadow-black/40 group"
+                className="h-full"
               >
-                <div>
-                  {/* Optional Real Screenshot Preview */}
+                <SpotlightCard className="h-full flex flex-col justify-between rounded-xl sm:rounded-[24px] p-4 sm:p-6 md:p-8 hover:-translate-y-1 transition-all duration-200 shadow-xl shadow-black/40 group">
+                  <div>
+                    {/* Optional Real Screenshot Preview */}
                   {project.image && (
                     <div
                       onClick={() => setSelectedProject(project)}
@@ -422,8 +428,9 @@ const Projects = () => {
                     )}
                   </div>
                 </div>
-              </motion.div>
-            ))}
+              </SpotlightCard>
+            </motion.div>
+          ))}
           </AnimatePresence>
         </div>
       </section>
