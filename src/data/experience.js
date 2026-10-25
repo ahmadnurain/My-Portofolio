@@ -3,7 +3,7 @@ export const experienceTimeline = [
     id: "accreditation-team",
     role: "Informatics Program Accreditation Team",
     organization: "Universitas Majalengka",
-    period: "Jul 2024 – Nov 2024",
+    period: "Jul 2024 - Nov 2024",
     type: "Academic / Organizational Experience",
     description:
       "Developed parts of the Informatics Study Program website using WordPress and assisted with checking and managing MoU and MoA documents for accreditation needs.",
@@ -13,7 +13,7 @@ export const experienceTimeline = [
     id: "practicum-assistant",
     role: "Practicum Assistant: Disruption & Basic Automation",
     organization: "Universitas Majalengka",
-    period: "24 Jun 2024 – 29 Jun 2024",
+    period: "24 Jun 2024 - 29 Jun 2024",
     type: "Academic Support Role",
     description:
       "Assisted students during MicroPython programming practicum sessions, helped troubleshoot programming errors and technical issues, taught practicum material, and supported assignment submission recaps.",
@@ -23,7 +23,7 @@ export const experienceTimeline = [
     id: "rakamin-frontend",
     role: "Project-Based Virtual Intern: Frontend",
     organization: "Core Initiative Studio x Rakamin Academy",
-    period: "Sep 2023 – Oct 2023",
+    period: "Sep 2023 - Oct 2023",
     type: "Project-Based Virtual Internship",
     description:
       "Developed a catalog landing page using HTML, CSS, JavaScript, and Vue.js based on an existing design. Integrated APIs to retrieve and display frontend data and validated category data returned by the API according to project requirements.",
@@ -57,7 +57,7 @@ export const projectExperience = [
 export const educationData = {
   degree: "S1 Informatika",
   institution: "Universitas Majalengka",
-  period: "2022 – 2026",
+  period: "2022 - 2026",
   gpa: "3.92 / 4.00",
   courses: [
     "Algorithms and Programming",

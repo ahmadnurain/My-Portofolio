@@ -18,7 +18,6 @@ import {
   skillsGroupData,
   awardsData,
 } from "../data/experience";
-import SpotlightCard from "../components/ui/SpotlightCard";
 
 const resumeUrl =
   "https://drive.google.com/file/d/1Zh_3eU_zqhU-b_XmAeRy3iW81JSEILFn/view?usp=sharing";
@@ -97,8 +96,8 @@ const Experience = () => {
                 {/* Node Marker */}
                 <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full bg-[#17191c] border border-white/20 group-hover:border-[#23B08A] group-hover:bg-[#23B08A] transition-all duration-300" />
 
-                {/* Content Card with Spotlight */}
-                <SpotlightCard className="p-4 sm:p-6 md:p-7 hover:-translate-y-0.5 transition-all duration-200 shadow-xl shadow-black/40">
+                {/* Content Card with Clean Styling */}
+                <div className="rounded-2xl border border-white/[0.08] bg-[#111316] p-4 sm:p-6 md:p-7 hover:border-zinc-700 transition-colors shadow-xl shadow-black/40">
                   <div className="flex flex-wrap items-baseline justify-between gap-1.5 sm:gap-2 mb-2">
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-50 group-hover:text-[#23B08A] transition-colors">
                       {item.role}
@@ -123,7 +122,7 @@ const Experience = () => {
                       </span>
                     ))}
                   </div>
-                </SpotlightCard>
+                </div>
               </div>
             </motion.article>
           ))}
@@ -220,7 +219,7 @@ const Experience = () => {
           transition={{ duration: 0.5 }}
           className="rounded-xl sm:rounded-2xl shadow-xl shadow-black/40"
         >
-          <SpotlightCard className="p-4 sm:p-7 md:p-9">
+          <div className="rounded-2xl border border-white/[0.08] bg-[#111316] p-5 sm:p-8 md:p-10 shadow-xl shadow-black/40">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-6 pb-4 sm:pb-6 border-b border-white/[0.06]">
               <div className="space-y-1 sm:space-y-1.5">
                 <div className="inline-flex items-center gap-2 mb-0.5 sm:mb-1">
@@ -259,7 +258,7 @@ const Experience = () => {
                 ))}
               </div>
             </div>
-          </SpotlightCard>
+          </div>
         </motion.div>
       </section>
 
@@ -376,7 +375,7 @@ const Experience = () => {
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#23B08A] text-[#04110D] font-semibold text-xs sm:text-sm hover:bg-[#1d9c7b] transition-all duration-200 shadow-lg shadow-[#23B08A]/10 min-h-[44px]"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 h-12 rounded-xl bg-[#23B08A] text-[#0b0e10] font-semibold text-sm hover:bg-[#209f7c] transition-all duration-150 shadow-md shadow-[#23B08A]/15 active:scale-[0.98] min-h-[44px]"
             >
               <Download className="w-4 h-4" />
               <span>Download Resume</span>
@@ -385,7 +384,7 @@ const Experience = () => {
             {/* Secondary CTA Button */}
             <Link
               to="/projects"
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-white/[0.03] border border-white/[0.1] text-gray-300 hover:text-white hover:border-[#23B08A]/40 transition-all duration-200 text-xs sm:text-sm font-medium min-h-[44px]"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 h-12 rounded-xl bg-[#14171a] border border-white/[0.1] text-gray-200 hover:text-white hover:border-[#23B08A]/50 hover:bg-[#1a1e22] transition-all duration-150 text-sm font-medium active:scale-[0.98] min-h-[44px]"
             >
               <span>View Projects</span>
               <ArrowRight className="w-4 h-4" />

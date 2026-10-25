@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Download, Briefcase, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import SpotlightCard from "../components/ui/SpotlightCard";
 
 const skillsData = [
   {
@@ -26,7 +25,7 @@ const experiencePreview = [
   {
     role: "Informatics Program Accreditation Team",
     org: "Universitas Majalengka",
-    period: "Jul 2024 – Nov 2024",
+    period: "Jul 2024 - Nov 2024",
     detail: "Developed parts of the Study Program website with WordPress and managed official documentation.",
   },
   {
@@ -38,7 +37,7 @@ const experiencePreview = [
   {
     role: "Project-Based Virtual Intern: Frontend",
     org: "Core Initiative Studio x Rakamin Academy",
-    period: "Sep 2023 – Oct 2023",
+    period: "Sep 2023 - Oct 2023",
     detail: "Developed catalog landing page with HTML, CSS, JS, Vue.js, and integrated REST APIs.",
   },
 ];
@@ -103,38 +102,32 @@ const About = () => {
             </p>
           </div>
 
-          {/* Primary & Secondary CTA Buttons */}
+          {/* Primary & Secondary CTA Buttons (Disciplined rounded-xl) */}
           <div className="pt-8 sm:pt-10 md:pt-12 flex flex-wrap items-center gap-3 sm:gap-4 w-full sm:w-auto">
-            <motion.a
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
+            <a
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-7 h-[46px] sm:h-[52px] rounded-full bg-[#23B08A] text-[#04110D] font-semibold text-xs sm:text-sm hover:bg-[#1d9c7b] transition-colors shadow-lg shadow-[#23B08A]/15 min-h-[44px]"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 h-12 rounded-xl bg-[#23B08A] text-[#0b0e10] font-semibold text-sm hover:bg-[#209f7c] transition-all duration-150 shadow-md shadow-[#23B08A]/15 active:scale-[0.98] min-h-[44px]"
             >
-              <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+              <Download className="w-4 h-4" />
               <span>Download Resume</span>
-            </motion.a>
+            </a>
 
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className="flex-1 sm:flex-initial">
-              <Link
-                to="/experience"
-                className="w-full inline-flex items-center justify-center gap-2 px-5 sm:px-7 h-[46px] sm:h-[52px] rounded-full bg-[#111416] border border-white/10 text-gray-200 font-medium text-xs sm:text-sm hover:border-[#23B08A]/40 hover:bg-[#17191c] transition-colors min-h-[44px]"
-              >
-                <Briefcase className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
-                <span>View Experience</span>
-              </Link>
-            </motion.div>
+            <Link
+              to="/experience"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 h-12 rounded-xl bg-[#14171a] border border-white/[0.1] text-gray-200 hover:text-white hover:border-[#23B08A]/50 hover:bg-[#1a1e22] transition-all duration-150 text-sm font-medium active:scale-[0.98] min-h-[44px]"
+            >
+              <Briefcase className="w-4 h-4 text-[#23B08A]" />
+              <span>View Experience</span>
+            </Link>
 
-            <motion.div whileHover={{ scale: 1.03, y: -2 }} whileTap={{ scale: 0.97 }} className="w-full sm:w-auto">
-              <Link
-                to="/projects"
-                className="w-full inline-flex items-center justify-center gap-2 px-5 sm:px-6 h-[46px] sm:h-[52px] rounded-full border border-white/[0.08] bg-transparent text-gray-300 hover:text-white hover:border-gray-500 transition-colors text-xs sm:text-sm font-medium min-h-[44px]"
-              >
-                <span>View Projects</span>
-              </Link>
-            </motion.div>
+            <Link
+              to="/projects"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 h-12 rounded-xl border border-white/[0.08] bg-transparent text-gray-300 hover:text-white hover:border-gray-500 hover:bg-white/[0.04] transition-all duration-150 text-sm font-medium active:scale-[0.98] min-h-[44px]"
+            >
+              <span>View Projects</span>
+            </Link>
           </div>
         </motion.div>
 
@@ -243,24 +236,24 @@ const About = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {skillsData.map((group) => (
-            <SpotlightCard
+            <div
               key={group.category}
-              className="p-4 sm:p-5 rounded-xl sm:rounded-2xl"
+              className="p-5 rounded-2xl bg-[#111316] border border-white/[0.08] hover:border-zinc-700 transition-colors shadow-lg"
             >
-              <h4 className="text-xs uppercase font-mono tracking-wider text-gray-400 mb-4 pb-2 border-b border-white/[0.06]">
+              <h4 className="text-xs uppercase font-mono tracking-wider text-[#23B08A] font-semibold mb-4 pb-2 border-b border-white/[0.06]">
                 {group.category}
               </h4>
               <div className="flex flex-wrap gap-2">
                 {group.items.map((skill) => (
                   <span
                     key={skill}
-                    className="px-2.5 py-1 rounded-lg bg-white/[0.03] border border-white/[0.06] text-gray-300 text-xs font-mono"
+                    className="px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/[0.06] text-gray-300 text-xs font-mono"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
-            </SpotlightCard>
+            </div>
           ))}
         </div>
       </motion.section>

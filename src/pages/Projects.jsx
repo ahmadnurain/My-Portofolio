@@ -5,8 +5,6 @@ import { Trophy, ArrowUpRight, Mail, FileText, Terminal, Globe, Info } from "luc
 import PropTypes from "prop-types";
 import { projectsData } from "../data/projects";
 import ProjectModal from "../components/ProjectModal";
-import BorderBeam from "../components/ui/BorderBeam";
-import SpotlightCard from "../components/ui/SpotlightCard";
 
 const GithubIcon = ({ className = "w-3.5 h-3.5" }) => (
   <svg
@@ -84,7 +82,7 @@ const Projects = () => {
           experience in backend engineering, full-stack web applications, API integrations, and database architecture.
         </p>
 
-        {/* Filter Badges */}
+        {/* Filter Badges (Clean rounded-lg technical chips) */}
         <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
           {filterCategories.map((cat) => {
             const isSelected = activeFilter === cat;
@@ -93,10 +91,10 @@ const Projects = () => {
                 key={cat}
                 type="button"
                 onClick={() => setActiveFilter(cat)}
-                className={`min-h-[36px] sm:min-h-[40px] px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-mono font-medium transition-all duration-200 cursor-pointer ${
+                className={`min-h-[38px] px-3.5 py-1.5 rounded-lg text-xs font-mono font-medium transition-all duration-150 cursor-pointer ${
                   isSelected
-                    ? "bg-[#23B08A]/15 text-[#23B08A] border border-[#23B08A]/50 shadow-sm shadow-[#23B08A]/10"
-                    : "bg-white/[0.03] text-gray-400 border border-white/[0.08] hover:text-white hover:border-white/20 hover:bg-white/[0.05]"
+                    ? "bg-[#23B08A] text-[#0b0e10] font-semibold shadow-sm"
+                    : "bg-[#14171a] text-gray-300 border border-white/[0.08] hover:text-white hover:border-white/20 hover:bg-[#1a1e22]"
                 }`}
               >
                 {cat}
@@ -117,12 +115,7 @@ const Projects = () => {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="mb-10 sm:mb-14"
           >
-            <div className="relative rounded-2xl sm:rounded-[28px] border border-white/[0.08] bg-[#101214]/90 backdrop-blur-md overflow-hidden p-4 sm:p-8 lg:p-10 shadow-2xl shadow-black/60 hover:border-[#23B08A]/30 transition-all duration-300 group">
-              {/* Magic UI Border Beam on Featured Project */}
-              <BorderBeam size={260} duration={14} colorFrom="#23B08A" colorTo="#26C6A3" />
-
-              {/* Subtle background ambient aura */}
-              <div className="absolute -top-24 -right-24 w-80 h-80 bg-[#23B08A]/[0.06] rounded-full blur-3xl pointer-events-none" />
+            <div className="relative rounded-2xl border border-white/[0.08] border-t-2 border-t-[#23B08A] bg-[#111316] overflow-hidden p-5 sm:p-8 lg:p-10 shadow-2xl shadow-black/60 group">
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
                 {/* Left Column: Visual Representation */}
@@ -241,14 +234,14 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Actions */}
+                  {/* Actions (Disciplined rounded-xl buttons) */}
                   <div className="pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-start gap-3">
                     <button
                       type="button"
                       onClick={() => setSelectedProject(featuredProject)}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#23B08A]/15 border border-[#23B08A]/40 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/25 transition-all min-h-[44px] cursor-pointer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#23B08A] text-[#0b0e10] text-xs font-mono font-semibold hover:bg-[#209f7c] transition-all min-h-[44px] cursor-pointer active:scale-[0.98]"
                     >
-                      <Info className="w-3.5 h-3.5" />
+                      <Info className="w-4 h-4" />
                       <span>Case Study &amp; Details</span>
                     </button>
 
@@ -257,7 +250,7 @@ const Projects = () => {
                         href={featuredProject.repository}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[44px]"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#14171a] border border-white/[0.1] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/50 hover:bg-[#1a1e22] transition-all min-h-[44px] active:scale-[0.98]"
                       >
                         <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
                         <span>Repository</span>
@@ -269,19 +262,12 @@ const Projects = () => {
                         href={featuredProject.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#23B08A]/10 border border-[#23B08A]/30 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/20 transition-all min-h-[44px]"
+                        className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-200 hover:text-white hover:border-zinc-500 hover:bg-white/[0.08] transition-all min-h-[44px] active:scale-[0.98]"
                       >
-                        <Globe className="w-3.5 h-3.5" />
+                        <Globe className="w-3.5 h-3.5 text-[#23B08A]" />
                         <span>Live Platform</span>
                         <ArrowUpRight className="w-3.5 h-3.5" />
                       </a>
-                    )}
-                    {!featuredProject.repository && !featuredProject.liveUrl && (
-                      <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.06] text-xs font-mono text-gray-400">
-                        {featuredProject.context?.includes("Institutional")
-                          ? "Institutional Deployment"
-                          : "Collaborative Prototype"}
-                      </span>
                     )}
                   </div>
                 </div>
@@ -304,20 +290,20 @@ const Projects = () => {
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 className="h-full"
               >
-                <SpotlightCard className="h-full flex flex-col justify-between rounded-xl sm:rounded-[24px] p-4 sm:p-6 md:p-8 hover:-translate-y-1 transition-all duration-200 shadow-xl shadow-black/40 group">
+                <div className="h-full flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#111316] p-5 sm:p-7 hover:border-zinc-700 hover:bg-[#13161a] transition-all duration-200 shadow-xl shadow-black/40 group">
                   <div>
                     {/* Optional Real Screenshot Preview */}
                   {project.image && (
                     <div
                       onClick={() => setSelectedProject(project)}
-                      className="w-full h-40 sm:h-48 rounded-lg sm:rounded-xl overflow-hidden mb-4 sm:mb-6 border border-white/[0.06] bg-[#090b0d] cursor-pointer group/cardimg"
+                      className="w-full h-40 sm:h-48 rounded-xl overflow-hidden mb-5 border border-white/[0.06] bg-[#090b0d] cursor-pointer group/cardimg"
                     >
                       <img
                         src={project.image}
                         alt={project.title}
                         loading="lazy"
                         decoding="async"
-                        className="w-full h-full object-cover object-top grayscale-[15%] group-hover/cardimg:grayscale-0 group-hover/cardimg:scale-103 transition-all duration-500"
+                        className="w-full h-full object-cover object-top grayscale-[15%] group-hover/cardimg:grayscale-0 group-hover/cardimg:scale-103 transition-transform duration-500"
                       />
                     </div>
                   )}
@@ -328,7 +314,7 @@ const Projects = () => {
                       {project.context}
                     </span>
                     {project.achievement && (
-                      <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono text-[#23B08A] bg-[#23B08A]/10 border border-[#23B08A]/20 px-2 py-0.5 rounded-full truncate">
+                      <span className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] font-mono text-[#23B08A] bg-[#23B08A]/10 border border-[#23B08A]/20 px-2 py-0.5 rounded-md truncate">
                         <Trophy className="w-3 h-3 shrink-0" />
                         <span className="truncate">Award Winner</span>
                       </span>
@@ -338,29 +324,29 @@ const Projects = () => {
                   {/* 2. Project Title */}
                   <h3
                     onClick={() => setSelectedProject(project)}
-                    className="text-lg sm:text-xl md:text-2xl font-bold text-[#F2F4F7] tracking-tight mb-2 sm:mb-3 group-hover:text-[#23B08A] transition-colors duration-200 cursor-pointer"
+                    className="text-lg sm:text-xl font-bold text-[#F2F4F7] tracking-tight mb-2 group-hover:text-[#23B08A] transition-colors duration-200 cursor-pointer"
                   >
                     {project.title}
                   </h3>
 
                   {/* 3. Short Description */}
-                  <p className="text-[#A2A9B3] text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-3 sm:line-clamp-4">
+                  <p className="text-[#9ea6b0] text-xs sm:text-sm leading-relaxed mb-5 line-clamp-3">
                     {project.description}
                   </p>
 
                   {/* 4. My Role & 5. Achievement */}
-                  <div className="space-y-2.5 py-3 border-y border-white/[0.06] mb-4 sm:mb-5">
+                  <div className="space-y-2 py-3 border-y border-white/[0.06] mb-5">
                     {project.role && (
-                      <div className="flex items-center justify-between text-[11px] sm:text-xs">
-                        <span className="font-mono uppercase text-gray-400 tracking-wider">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-mono uppercase text-gray-500 tracking-wider text-[11px]">
                           My Role
                         </span>
                         <span className="font-medium text-[#F2F4F7]">{project.role}</span>
                       </div>
                     )}
                     {project.achievement && (
-                      <div className="flex items-center justify-between text-[11px] sm:text-xs">
-                        <span className="font-mono uppercase text-[#23B08A] tracking-wider">
+                      <div className="flex items-center justify-between text-xs">
+                        <span className="font-mono uppercase text-[#23B08A] tracking-wider text-[11px]">
                           Achievement
                         </span>
                         <span className="font-medium text-[#F2F4F7] text-right truncate pl-2">
@@ -371,11 +357,11 @@ const Projects = () => {
                   </div>
 
                   {/* 6. Technology Stack */}
-                  <div className="flex flex-wrap gap-1.5 mb-4 sm:mb-6">
+                  <div className="flex flex-wrap gap-1.5 mb-5">
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-md text-[10px] sm:text-[11px] font-mono bg-white/[0.03] border border-white/[0.06] text-gray-300"
+                        className="px-2 py-0.5 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/[0.06] text-gray-300"
                       >
                         {tech}
                       </span>
@@ -383,31 +369,24 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* 7. Actions Bar with Details Modal Trigger */}
+                {/* 7. Actions Bar (Clean rounded-lg buttons) */}
                 <div className="pt-3 border-t border-white/[0.06] flex flex-wrap items-center justify-between gap-2">
                   <button
                     type="button"
                     onClick={() => setSelectedProject(project)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.1] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/50 hover:bg-[#23B08A]/10 transition-all min-h-[36px] sm:min-h-[40px] cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.1] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/50 hover:bg-[#23B08A]/10 transition-all min-h-[38px] cursor-pointer active:scale-[0.98]"
                   >
                     <Info className="w-3.5 h-3.5 text-[#23B08A]" />
                     <span>Details</span>
                   </button>
 
                   <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                    {!project.repository && !project.liveUrl && (
-                      <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-white/[0.02] border border-white/[0.06] text-[10px] sm:text-[11px] font-mono text-gray-400">
-                        {project.context?.includes("Institutional")
-                          ? "Deployment"
-                          : "Collaborative"}
-                      </span>
-                    )}
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#23B08A]/10 border border-[#23B08A]/30 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/20 transition-all min-h-[36px] sm:min-h-[40px]"
+                        className="inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-[#23B08A]/10 border border-[#23B08A]/30 text-xs font-mono text-[#23B08A] hover:bg-[#23B08A]/20 transition-all min-h-[38px]"
                       >
                         <Globe className="w-3 h-3" />
                         <span>Live</span>
@@ -419,16 +398,16 @@ const Projects = () => {
                         href={project.repository}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[36px] sm:min-h-[40px]"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/[0.08] text-xs font-mono text-gray-300 hover:text-white hover:border-[#23B08A]/40 hover:bg-white/[0.08] transition-all min-h-[38px]"
                       >
                         <GithubIcon className="w-3.5 h-3.5 text-[#23B08A]" />
                         <span>Code</span>
-                        <ArrowUpRight className="w-3 h-3 text-gray-400" />
+                        <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
                       </a>
                     )}
                   </div>
                 </div>
-              </SpotlightCard>
+              </div>
             </motion.div>
           ))}
           </AnimatePresence>
@@ -437,25 +416,23 @@ const Projects = () => {
 
       {/* CLOSING CTA SECTION */}
       <section className="mt-14 sm:mt-16 md:mt-24 pt-10 sm:pt-12 md:pt-16 border-t border-white/[0.06]">
-        <div className="rounded-2xl sm:rounded-[28px] border border-white/[0.08] bg-[#101214]/80 backdrop-blur-md p-5 sm:p-8 md:p-12 text-center max-w-3xl mx-auto shadow-2xl relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#23B08A]/[0.05] rounded-full blur-3xl pointer-events-none" />
-
-          <span className="text-[11px] sm:text-xs uppercase font-mono tracking-widest text-[#23B08A] font-semibold mb-2 sm:mb-3 block">
+        <div className="rounded-2xl border border-white/[0.08] bg-[#111316] p-6 sm:p-10 md:p-12 text-center max-w-3xl mx-auto shadow-2xl relative overflow-hidden">
+          <span className="text-[11px] sm:text-xs uppercase font-mono tracking-widest text-[#23B08A] font-semibold mb-2 block">
             COLLABORATION
           </span>
 
-          <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-[#F2F4F7] tracking-tight mb-3 sm:mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-[#F2F4F7] tracking-tight mb-3 sm:mb-4">
             Interested in working together?
           </h2>
 
-          <p className="text-[#A2A9B3] text-xs sm:text-base leading-relaxed max-w-xl mx-auto mb-6 sm:mb-8">
+          <p className="text-[#9ea6b0] text-xs sm:text-base leading-relaxed max-w-xl mx-auto mb-6 sm:mb-8">
             I&apos;m open to full-time opportunities, collaborations, and selected freelance projects.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link
               to="/contact"
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-7 min-h-[44px] sm:min-h-[48px] rounded-full bg-[#23B08A] text-[#04110D] font-semibold text-xs sm:text-sm hover:bg-[#1d9c7b] transition-all duration-200 active:scale-95 shadow-lg shadow-[#23B08A]/10"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 h-12 rounded-xl bg-[#23B08A] text-[#0b0e10] font-semibold text-sm hover:bg-[#209f7c] transition-all duration-150 active:scale-[0.98] shadow-md shadow-[#23B08A]/15 min-h-[44px]"
             >
               <Mail className="w-4 h-4" />
               <span>Start a Conversation</span>
@@ -465,11 +442,11 @@ const Projects = () => {
               href={resumeUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 sm:px-7 min-h-[44px] sm:min-h-[48px] rounded-full bg-[#17191c] border border-white/[0.1] text-gray-200 font-medium text-xs sm:text-sm hover:border-[#23B08A]/50 hover:text-white transition-all duration-200 active:scale-95"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 h-12 rounded-xl bg-[#14171a] border border-white/[0.1] text-gray-200 font-medium text-sm hover:border-[#23B08A]/50 hover:bg-[#1a1e22] hover:text-white transition-all duration-150 active:scale-[0.98] min-h-[44px]"
             >
               <FileText className="w-4 h-4 text-[#23B08A]" />
               <span>View Resume</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-gray-400" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-gray-500" />
             </a>
           </div>
         </div>
