@@ -28,18 +28,15 @@ const Herosection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         {/* Left Column (~58% width) */}
         <div className="lg:col-span-7 flex flex-col items-start">
-          {/* Status Eyebrow */}
-          <motion.div
+          {/* Minimal Text Eyebrow (No dot, no badge) */}
+          <motion.p
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#23B08A]/10 border border-[#23B08A]/25 mb-5 sm:mb-6"
+            className="text-gray-400 tracking-wider uppercase text-[11px] sm:text-xs font-mono font-medium mb-5 sm:mb-6"
           >
-            <span className="w-2 h-2 rounded-full bg-[#23B08A] animate-pulse" />
-            <span className="text-[11px] sm:text-xs font-mono font-medium text-[#23B08A] tracking-wider uppercase">
-              Available for Full-time &amp; Projects
-            </span>
-          </motion.div>
+            Available for Opportunities
+          </motion.p>
 
           {/* Hero Headline */}
           <motion.h1

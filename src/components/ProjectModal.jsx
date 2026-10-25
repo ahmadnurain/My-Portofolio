@@ -159,16 +159,16 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                       >
                         {typeof item === "string" ? (
                           <div className="flex items-start gap-2.5">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#23B08A] mt-1.5 shrink-0" />
+                            <span className="text-[#23B08A] font-mono font-bold text-xs shrink-0 select-none">/</span>
                             <span className="text-gray-300">{item}</span>
                           </div>
                         ) : (
                           <div>
                             <div className="text-[#F2F4F7] font-semibold mb-1 flex items-center gap-2">
-                              <span className="w-1.5 h-1.5 rounded-full bg-[#23B08A] shrink-0" />
+                              <span className="text-[#23B08A] font-mono font-bold text-xs shrink-0 select-none">/</span>
                               <span>{item.title}</span>
                             </div>
-                            <p className="text-[#A2A9B3] text-xs sm:text-sm pl-3.5">
+                            <p className="text-[#A2A9B3] text-xs sm:text-sm pl-4">
                               {item.description}
                             </p>
                           </div>

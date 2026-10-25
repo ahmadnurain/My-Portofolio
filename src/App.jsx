@@ -47,7 +47,7 @@ function App() {
       <ScrollToTopOnRoute />
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       <div className="relative min-h-screen flex flex-col justify-between overflow-x-hidden bg-[#050607] text-[#dee4df] font-sans antialiased selection:bg-[#23B08A]/30 selection:text-white">
-        {/* Static, high-performance background grid and subtle ambient aura (no repaint loops) */}
+        {/* Static background grid and subtle ambient aura */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
           <div className="absolute inset-0 animated-grid-bg" />
           <div className="absolute top-1/4 left-1/4 w-[420px] h-[420px] bg-[#23B08A]/[0.035] rounded-full blur-[90px] pointer-events-none" />

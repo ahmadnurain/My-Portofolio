@@ -291,8 +291,8 @@ const Experience = () => {
 
                 <ul className="space-y-2 sm:space-y-2.5 text-xs font-mono text-gray-300">
                   {group.items.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#23B08A]/60 mt-1 shrink-0" />
+                    <li key={item} className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors">
+                      <span className="text-[#23B08A] font-bold text-xs select-none">/</span>
                       <span>{item}</span>
                     </li>
                   ))}
