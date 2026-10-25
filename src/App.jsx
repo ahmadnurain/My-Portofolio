@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "r
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SplashScreen from "./components/SplashScreen";
+import GhostFibers from "./components/ui/GhostFibers";
 
 // Code splitting: Load route pages on-demand to keep initial bundle tiny and fast
 const Home = lazy(() => import("./pages/Home"));
@@ -47,10 +48,24 @@ function App() {
       <ScrollToTopOnRoute />
       {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       <div className="relative min-h-screen flex flex-col justify-between overflow-x-hidden bg-[#050607] text-[#dee4df] font-sans antialiased selection:bg-[#23B08A]/30 selection:text-white">
-        {/* Static background grid and subtle ambient aura */}
+        {/* Fullscreen Ghost Fibers Background */}
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-          <div className="absolute inset-0 animated-grid-bg" />
-          <div className="absolute top-1/4 left-1/4 w-[420px] h-[420px] bg-[#23B08A]/[0.035] rounded-full blur-[90px] pointer-events-none" />
+          <GhostFibers
+            glowColor="#23B08A"
+            lineColor="#6ee7b7"
+            secondaryColor="#0d9488"
+            speed={0.4}
+            threads={64}
+            density={1}
+            thickness={1}
+            glow={0.85}
+            brightness={1.05}
+            particles={0.35}
+            sparkle={0.4}
+            mouseInteraction={true}
+            hoverEffect="focus"
+            className="w-full h-full"
+          />
         </div>
 
         {/* Floating Capsule Navbar */}

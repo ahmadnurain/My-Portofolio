@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { MapPin, MessageSquare, ArrowRight, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+import BorderGlow from "./ui/BorderGlow";
 
 // Crisp SVG LinkedIn icon matching editorial weight
 const LinkedInIcon = () => (
@@ -122,8 +123,14 @@ const Herosection = () => {
           transition={{ duration: 0.7, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-5 flex justify-center lg:justify-end relative w-full mt-4 lg:mt-0"
         >
-          {/* High-Craft Profile Card */}
-          <div className="w-full max-w-[400px] rounded-2xl border border-white/[0.08] bg-[#111316] p-5 shadow-2xl shadow-black/70 hover:border-white/[0.14] transition-colors">
+          {/* High-Craft Profile Card with React Bits Border Glow */}
+          <BorderGlow
+            borderRadius={16}
+            edgeSensitivity={10}
+            glowColor="162 67 42"
+            colors={['#23B08A', '#34d399', '#0d9488']}
+            className="w-full max-w-[400px] p-5 shadow-2xl shadow-black/70"
+          >
             {/* Card Portrait */}
             <div className="w-full h-[280px] sm:h-[340px] rounded-xl overflow-hidden bg-[#0d0f11] mb-5 border border-white/[0.06] relative group">
               <img
@@ -177,7 +184,7 @@ const Herosection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </BorderGlow>
         </motion.div>
       </div>
     </div>

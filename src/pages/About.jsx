@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Download, Briefcase, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import BorderGlow from "../components/ui/BorderGlow";
 
 const skillsData = [
   {
@@ -141,18 +142,24 @@ const About = () => {
           <div className="relative w-full max-w-[380px]">
             {/* Subtle Radial Teal Aura Behind Portrait */}
             <div className="absolute -inset-4 bg-[#23B08A]/10 rounded-[32px] filter blur-3xl pointer-events-none opacity-60"></div>
-            {/* Clean Portrait Container */}
-            <div className="relative rounded-2xl sm:rounded-[28px] overflow-hidden border border-white/[0.08] bg-[#101214] shadow-2xl group">
-              <img
-                alt="Ahmad Nur'Ain"
-                className="w-full h-[320px] sm:h-[420px] md:h-[460px] object-cover object-center grayscale-[10%] contrast-[1.04] group-hover:grayscale-0 transition-all duration-500 ease-out"
-                src="/IMG_5sw456.JPG"
-                onError={(e) => {
-                  e.currentTarget.onerror = null;
-                  e.currentTarget.src = "/erasebg-transformed.webp";
-                }}
-              />
-            </div>
+            {/* Clean Portrait Container with BorderGlow */}
+            <BorderGlow
+              borderRadius={24}
+              edgeSensitivity={10}
+              className="p-1 shadow-2xl overflow-hidden group"
+            >
+              <div className="w-full h-full rounded-[22px] overflow-hidden">
+                <img
+                  alt="Ahmad Nur'Ain"
+                  className="w-full h-[320px] sm:h-[420px] md:h-[460px] object-cover object-center grayscale-[10%] contrast-[1.04] group-hover:grayscale-0 transition-all duration-500 ease-out"
+                  src="/IMG_5sw456.JPG"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/erasebg-transformed.webp";
+                  }}
+                />
+              </div>
+            </BorderGlow>
           </div>
         </motion.div>
       </section>
@@ -236,9 +243,11 @@ const About = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {skillsData.map((group) => (
-            <div
+            <BorderGlow
               key={group.category}
-              className="p-5 rounded-2xl bg-[#111316] border border-white/[0.08] hover:border-zinc-700 transition-colors shadow-lg"
+              borderRadius={16}
+              edgeSensitivity={10}
+              className="p-5 shadow-lg"
             >
               <h4 className="text-xs uppercase font-mono tracking-wider text-[#23B08A] font-semibold mb-4 pb-2 border-b border-white/[0.06]">
                 {group.category}
@@ -253,7 +262,7 @@ const About = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </BorderGlow>
           ))}
         </div>
       </motion.section>
@@ -286,9 +295,11 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {experiencePreview.map((exp) => (
-            <div
+            <BorderGlow
               key={exp.role}
-              className="p-6 rounded-2xl bg-[#111416] border border-white/[0.06] hover:border-[#23B08A]/30 transition-colors flex flex-col justify-between"
+              borderRadius={16}
+              edgeSensitivity={10}
+              className="p-6"
             >
               <div>
                 <span className="text-[11px] font-mono text-gray-400 block mb-2">{exp.period}</span>
@@ -296,7 +307,7 @@ const About = () => {
                 <p className="text-xs text-[#23B08A] font-medium mb-3">{exp.org}</p>
                 <p className="text-xs text-gray-400 leading-relaxed font-light">{exp.detail}</p>
               </div>
-            </div>
+            </BorderGlow>
           ))}
         </div>
       </motion.section>

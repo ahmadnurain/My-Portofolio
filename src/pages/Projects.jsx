@@ -5,6 +5,7 @@ import { Trophy, ArrowUpRight, Mail, FileText, Terminal, Globe, Info } from "luc
 import PropTypes from "prop-types";
 import { projectsData } from "../data/projects";
 import ProjectModal from "../components/ProjectModal";
+import BorderGlow from "../components/ui/BorderGlow";
 
 const GithubIcon = ({ className = "w-3.5 h-3.5" }) => (
   <svg
@@ -115,7 +116,11 @@ const Projects = () => {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="mb-10 sm:mb-14"
           >
-            <div className="relative rounded-2xl border border-white/[0.08] border-t-2 border-t-[#23B08A] bg-[#111316] overflow-hidden p-5 sm:p-8 lg:p-10 shadow-2xl shadow-black/60 group">
+            <BorderGlow
+              borderRadius={16}
+              edgeSensitivity={10}
+              className="p-5 sm:p-8 lg:p-10 shadow-2xl shadow-black/60 group"
+            >
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
                 {/* Left Column: Visual Representation */}
@@ -272,7 +277,7 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </BorderGlow>
           </motion.section>
         )}
       </AnimatePresence>
@@ -290,7 +295,12 @@ const Projects = () => {
                 transition={{ duration: 0.4, delay: index * 0.08 }}
                 className="h-full"
               >
-                <div className="h-full flex flex-col justify-between rounded-2xl border border-white/[0.08] bg-[#111316] p-5 sm:p-7 hover:border-zinc-700 hover:bg-[#13161a] transition-all duration-200 shadow-xl shadow-black/40 group">
+                <BorderGlow
+                  borderRadius={16}
+                  edgeSensitivity={10}
+                  className="h-full p-5 sm:p-7 shadow-xl shadow-black/40 group"
+                >
+                  <div className="flex flex-col justify-between h-full">
                   <div>
                     {/* Optional Real Screenshot Preview */}
                   {project.image && (
@@ -408,7 +418,8 @@ const Projects = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </BorderGlow>
+          </motion.div>
           ))}
           </AnimatePresence>
         </div>
