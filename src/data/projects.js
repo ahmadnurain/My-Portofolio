@@ -45,7 +45,7 @@ export const projectsData = [
     ],
     featured: true,
     repository: null,
-    liveUrl: null,
+    liveUrl: "http://alumni.ft.unma.ac.id/",
     image: "/alumni-ft.png",
   },
   {
